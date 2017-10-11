@@ -12,8 +12,9 @@
                 <h2 class="list-group-title">{{group.title}}</h2>
                 <ul>
                     <li class="list-group-item" v-for="item in group.items" @click="selectItem(item)">
-                        <img v-lazy="item.avatar" class="avatar">
+                        
                         <span class="name">{{item.name}}</span>
+                        <span class="code">{{item.code}}</span>
                     </li>
                 </ul>
             </li>
@@ -209,26 +210,32 @@
         overflow: hidden
         background: $color-background
         .list-group
-            padding-bottom: 30px
+            padding-bottom: 0
             .list-group-title
+                border-bottom: 1px solid rgba(32, 35, 37, 0.15)
                 height: 30px
                 line-height: 30px
-                padding-left: 20px
+                padding-left: 11.5px
                 font-size: $font-size-small
-                color: $color-text-l
+                color: #000
                 background: $color-highlight-background
             .list-group-item
                 display: flex
                 align-items: center
-                padding: 20px 0 0 30px
+                padding: 0 12px 0 12px
+                background: $color-background-d
+                border-bottom: 1px solid rgb(224, 224, 224);
+                height: 46px;
                 .avatar
                     width: 50px
                     height: 50px
                     border-radius: 50%
                 .name
-                    margin-left: 20px
-                    color: $color-text-l
+                    margin-left: 5px
                     font-size: $font-size-medium
+                .code
+                    margin-left: 10px
+                    font-size: $font-size-small
         .list-shortcut
             position: absolute
             z-index: 30
@@ -239,7 +246,6 @@
             padding: 20px 0
             border-radius: 10px
             text-align: center
-            background: $color-background-d
             font-family: Helvetica
             .item
                 padding: 3px
@@ -256,9 +262,9 @@
             .fixed-title
                 height: 30px
                 line-height: 30px
-                padding-left: 20px
+                padding-left: 11.5px
                 font-size: $font-size-small
-                color: $color-text-l
+                color: $color-text
                 background: $color-highlight-background
         .loading-container
             position: absolute
