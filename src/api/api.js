@@ -7,3 +7,11 @@ export function getCityList() {
         return Promise.resolve(res.data);
     });
 };
+
+export function getAirLines() {
+    const url = 'static/airlines.json';
+
+    return axios.get(url).then((res) => {
+        return Promise.resolve(res.data);
+    });
+};

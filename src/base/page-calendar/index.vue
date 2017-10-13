@@ -222,9 +222,9 @@
     width: 100%;
     color: #333333;
     background-color: #fff;
+    z-index: 11;
   }
   .calendar-list-wrapper{
-    overflow-y: scroll !important;
     overflow-x: hidden !important;
   }
 

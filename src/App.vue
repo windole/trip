@@ -14,7 +14,7 @@
     @import 'common/stylus/variable';
     #app
         color: $color-theme
-        min-height: 100vh
+        height: 100%
     ::-webkit-scrollbar
         display: none
 </style>

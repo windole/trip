@@ -1,4090 +1,1230 @@
 {
-    "hotCity": [
+  "stations":
+  {
+    "station": [
     {
-        "cityName": "北京",
-        "pinYin": "beijing",
-        "py": "bj",
-        "code": "110100"
+      "code": "AKU",
+      "quanpin": "akesu",
+      "name": "阿克苏",
+      "duanpin": "aks"
     },
     {
-        "cityName": "上海",
-        "pinYin": "shanghai",
-        "py": "sh",
-        "code": "310100"
+      "code": "AAT",
+      "quanpin": "aletai",
+      "name": "阿勒泰",
+      "duanpin": "alt"
     },
     {
-        "cityName": "厦门",
-        "pinYin": "xiamen",
-        "py": "xm",
-        "code": "350200"
+      "code": "AKA",
+      "quanpin": "ankang",
+      "name": "安康",
+      "duanpin": "ak"
     },
     {
-        "cityName": "杭州",
-        "pinYin": "hangzhou",
-        "py": "hz",
-        "code": "330100"
+      "code": "AQG",
+      "quanpin": "anqing",
+      "name": "安庆",
+      "duanpin": "aq"
     },
     {
-        "cityName": "三亚",
-        "pinYin": "sanya",
-        "py": "sy",
-        "code": "460200"
+      "code": "BFU",
+      "quanpin": "bangbu",
+      "name": "蚌埠",
+      "duanpin": "bb"
     },
     {
-        "cityName": "丽江",
-        "pinYin": "lijiang",
-        "py": "lj",
-        "code": "530700"
+      "code": "BSD",
+      "quanpin": "baoshan",
+      "name": "保山",
+      "duanpin": "bs"
     },
     {
-        "cityName": "广州",
-        "pinYin": "guangzhou",
-        "py": "gz",
-        "code": "440100"
+      "code": "BAV",
+      "quanpin": "baotou",
+      "name": "包头",
+      "duanpin": "bt"
     },
     {
-        "cityName": "香港",
-        "pinYin": "xianggang",
-        "py": "xg",
-        "code": "810100"
+      "code": "BHY",
+      "quanpin": "beihai",
+      "name": "北海",
+      "duanpin": "bh"
     },
     {
-        "cityName": "成都",
-        "pinYin": "chengdu",
-        "py": "cd",
-        "code": "510100"
+      "code": "PEK",
+      "quanpin": "beijing",
+      "name": "北京",
+      "duanpin": "bj"
     },
     {
-        "cityName": "深圳",
-        "pinYin": "shenzhen",
-        "py": "sz",
-        "code": "440300"
+      "code": "NAY",
+      "quanpin": "beijingnanyuan",
+      "name": "北京南苑",
+      "duanpin": "bjny"
     },
     {
-        "cityName": "青岛",
-        "pinYin": "qingdao",
-        "py": "qd",
-        "code": "370200"
+      "code": "CGQ",
+      "quanpin": "changchun",
+      "name": "长春",
+      "duanpin": "cc"
     },
     {
-        "cityName": "澳门",
-        "pinYin": "aomen",
-        "py": "am",
-        "code": "820100"
+      "code": "CGD",
+      "quanpin": "changde",
+      "name": "常德",
+      "duanpin": "cd"
     },
     {
-        "cityName": "武汉",
-        "pinYin": "wuhan",
-        "py": "wh",
-        "code": "420100"
+      "code": "CSX",
+      "quanpin": "changsha",
+      "name": "长沙",
+      "duanpin": "cs"
     },
     {
-        "cityName": "南京",
-        "pinYin": "nanjing",
-        "py": "nj",
-        "code": "320100"
+      "code": "CIH",
+      "quanpin": "changzhi",
+      "name": "长治",
+      "duanpin": "cz"
     },
     {
-        "cityName": "西安",
-        "pinYin": "xian",
-        "py": "xa",
-        "code": "610100"
-    }],
-    "cities": [
-    {
-        "cityName": "澳门",
-        "pinYin": "aomen",
-        "py": "am",
-        "code": "820100"
-    },
-    {
-        "cityName": "阿坝藏族羌族自治州",
-        "pinYin": "abazangzuqiangzuzizhizhou",
-        "py": "abzzqzzzz",
-        "code": "513200"
-    },
-    {
-        "cityName": "安阳",
-        "pinYin": "anyang",
-        "py": "ay",
-        "code": "410500"
-    },
-    {
-        "cityName": "安顺",
-        "pinYin": "anshun",
-        "py": "as",
-        "code": "520400"
-    },
-    {
-        "cityName": "安庆",
-        "pinYin": "anqing",
-        "py": "aq",
-        "code": "340800"
-    },
-    {
-        "cityName": "鞍山",
-        "pinYin": "anshan",
-        "py": "as",
-        "code": "210300"
-    },
-    {
-        "cityName": "安康",
-        "pinYin": "ankang",
-        "py": "ak",
-        "code": "610900"
-    },
-    {
-        "cityName": "阿克苏",
-        "pinYin": "akesu",
-        "py": "aks",
-        "code": "652900"
-    },
-    {
-        "cityName": "阿勒泰",
-        "pinYin": "aletai",
-        "py": "alt",
-        "code": "654300"
-    },
-    {
-        "cityName": "阿拉善盟",
-        "pinYin": "alashanmeng",
-        "py": "als",
-        "code": "152900"
-    },
-    {
-        "cityName": "阿里",
-        "pinYin": "ali",
-        "py": "ali",
-        "code": "542500"
-    },
-    {
-        "cityName": "阿拉尔",
-        "pinYin": "alaer",
-        "py": "ale",
-        "code": "659002"
-    },
-    {
-        "cityName": "阿尔山",
-        "pinYin": "aershan",
-        "py": "aes",
-        "code": "152202"
-    },
-    {
-        "cityName": "安昌",
-        "pinYin": "anchang",
-        "py": "ac",
-        "code": "100007"
-    },
-    {
-        "cityName": "安国",
-        "pinYin": "anguo",
-        "py": "ag",
-        "code": "130683"
-    },
-    {
-        "cityName": "安吉县",
-        "pinYin": "anjixian",
-        "py": "ajx",
-        "code": "330523"
-    },
-    {
-        "cityName": "阿图什",
-        "pinYin": "atushi",
-        "py": "ats",
-        "code": "653001"
-    },
-    {
-        "cityName": "北京",
-        "pinYin": "beijing",
-        "py": "bj",
-        "code": "110100"
-    },
-    {
-        "cityName": "北海",
-        "pinYin": "beihai",
-        "py": "bh",
-        "code": "450500"
-    },
-    {
-        "cityName": "保定",
-        "pinYin": "baoding",
-        "py": "bd",
-        "code": "130600"
-    },
-    {
-        "cityName": "宝鸡",
-        "pinYin": "baoji",
-        "py": "bj",
-        "code": "610300"
-    },
-    {
-        "cityName": "蚌埠",
-        "pinYin": "bengbu",
-        "py": "bb",
-        "code": "340300"
-    },
-    {
-        "cityName": "包头",
-        "pinYin": "baotou",
-        "py": "bt",
-        "code": "150200"
-    },
-    {
-        "cityName": "百色",
-        "pinYin": "baise",
-        "py": "bs",
-        "code": "451000"
-    },
-    {
-        "cityName": "白山",
-        "pinYin": "baishan",
-        "py": "bs",
-        "code": "220600"
-    },
-    {
-        "cityName": "滨州",
-        "pinYin": "binzhou",
-        "py": "bz",
-        "code": "371600"
-    },
-    {
-        "cityName": "保亭黎族苗族自治县",
-        "pinYin": "baotinglizumiaozuzizhixian",
-        "py": "btlzmzzzx",
-        "code": "469035"
-    },
-    {
-        "cityName": "巴中",
-        "pinYin": "bazhong",
-        "py": "bz",
-        "code": "511900"
-    },
-    {
-        "cityName": "毕节",
-        "pinYin": "bijie",
-        "py": "bj",
-        "code": "522400"
-    },
-    {
-        "cityName": "本溪",
-        "pinYin": "benxi",
-        "py": "bx",
-        "code": "210500"
-    },
-    {
-        "cityName": "巴音郭楞蒙古自治州",
-        "pinYin": "bayinguolengmengguzizhizhou",
-        "py": "byglmgzzz",
-        "code": "652800"
-    },
-    {
-        "cityName": "白城",
-        "pinYin": "baicheng",
-        "py": "bc",
-        "code": "220800"
-    },
-    {
-        "cityName": "巴彦淖尔",
-        "pinYin": "bayannaoer",
-        "py": "byne",
-        "code": "150800"
-    },
-    {
-        "cityName": "白银",
-        "pinYin": "baiyin",
-        "py": "by",
-        "code": "620400"
-    },
-    {
-        "cityName": "博尔塔拉蒙古自治州",
-        "pinYin": "boertalamengguzizhizhou",
-        "py": "betlmgzzz",
-        "code": "652700"
-    },
-    {
-        "cityName": "白沙黎族自治县",
-        "pinYin": "baishalizuzizhixian",
-        "py": "bslzzzx",
-        "code": "469030"
-    },
-    {
-        "cityName": "保山",
-        "pinYin": "baoshan",
-        "py": "bs",
-        "code": "530500"
-    },
-    {
-        "cityName": "霸州",
-        "pinYin": "bazhou",
-        "py": "bz",
-        "code": "131081"
-    },
-    {
-        "cityName": "北戴河",
-        "pinYin": "beidaihe",
-        "py": "bdh",
-        "code": "130304"
-    },
-    {
-        "cityName": "亳州",
-        "pinYin": "bozhou",
-        "py": "bz",
-        "code": "341600"
-    },
-    {
-        "cityName": "布尔津县",
-        "pinYin": "buerjinxian",
-        "py": "bejx",
-        "code": "654321"
-    },
-    {
-        "cityName": "成都",
-        "pinYin": "chengdu",
-        "py": "cd",
-        "code": "510100"
-    },
-    {
-        "cityName": "重庆",
-        "pinYin": "chongqing",
-        "py": "cq",
-        "code": "500100"
-    },
-    {
-        "cityName": "长沙",
-        "pinYin": "changsha",
-        "py": "cs",
-        "code": "430100"
-    },
-    {
-        "cityName": "长春",
-        "pinYin": "changchun",
-        "py": "cc",
-        "code": "220100"
-    },
-    {
-        "cityName": "常州",
-        "pinYin": "changzhou",
-        "py": "cz",
-        "code": "320400"
-    },
-    {
-        "cityName": "承德",
-        "pinYin": "chengde",
-        "py": "cd",
-        "code": "130800"
-    },
-    {
-        "cityName": "郴州",
-        "pinYin": "chenzhou",
-        "py": "cz",
-        "code": "431000"
-    },
-    {
-        "cityName": "常德",
-        "pinYin": "changde",
-        "py": "cd",
-        "code": "430700"
-    },
-    {
-        "cityName": "沧州",
-        "pinYin": "cangzhou",
-        "py": "cz",
-        "code": "130900"
-    },
-    {
-        "cityName": "潮州",
-        "pinYin": "chaozhou",
-        "py": "cz",
-        "code": "445100"
-    },
-    {
-        "cityName": "长治",
-        "pinYin": "changzhi",
-        "py": "cz",
-        "code": "140400"
-    },
-    {
-        "cityName": "滁州",
-        "pinYin": "chuzhou",
-        "py": "cz",
-        "code": "341100"
-    },
-    {
-        "cityName": "池州",
-        "pinYin": "chizhou",
-        "py": "cz",
-        "code": "341700"
-    },
-    {
-        "cityName": "赤峰",
-        "pinYin": "chifeng",
-        "py": "cf",
-        "code": "150400"
-    },
-    {
-        "cityName": "崇左",
-        "pinYin": "chongzuo",
-        "py": "cz",
-        "code": "451400"
-    },
-    {
-        "cityName": "楚雄",
-        "pinYin": "chuxiong",
-        "py": "cx",
-        "code": "532300"
-    },
-    {
-        "cityName": "昌吉",
-        "pinYin": "changji",
-        "py": "cj",
-        "code": "652300"
-    },
-    {
-        "cityName": "朝阳",
-        "pinYin": "chaoyang",
-        "py": "cy",
-        "code": "211300"
-    },
-    {
-        "cityName": "巢湖",
-        "pinYin": "chaohu",
-        "py": "ch",
-        "code": "341400"
-    },
-    {
-        "cityName": "昌都",
-        "pinYin": "changdu",
-        "py": "cd",
-        "code": "542100"
-    },
-    {
-        "cityName": "昌江黎族自治县",
-        "pinYin": "changjianglizuzizhixian",
-        "py": "cjlzzzx",
-        "code": "469031"
-    },
-    {
-        "cityName": "澄迈县",
-        "pinYin": "chengmai",
-        "py": "cm",
-        "code": "469027"
-    },
-    {
-        "cityName": "长葛",
-        "pinYin": "changge",
-        "py": "cg",
-        "code": "411082"
-    },
-    {
-        "cityName": "长乐",
-        "pinYin": "changle",
-        "py": "cl",
-        "code": "350182"
-    },
-    {
-        "cityName": "常宁",
-        "pinYin": "changning",
-        "py": "cn",
-        "code": "430482"
-    },
-    {
-        "cityName": "常熟",
-        "pinYin": "changshu",
-        "py": "cs",
-        "code": "320581"
-    },
-    {
-        "cityName": "赤壁",
-        "pinYin": "chibi",
-        "py": "cb",
-        "code": "421281"
-    },
-    {
-        "cityName": "崇明县",
-        "pinYin": "chongmingxian",
-        "py": "cmx",
-        "code": "310230"
-    },
-    {
-        "cityName": "崇州",
-        "pinYin": "chongzhou",
-        "py": "cz",
-        "code": "510184"
-    },
-    {
-        "cityName": "淳安县",
-        "pinYin": "chunanxian",
-        "py": "cax",
-        "code": "330127"
-    },
-    {
-        "cityName": "慈溪",
-        "pinYin": "cixi",
-        "py": "cx",
-        "code": "330282"
-    },
-    {
-        "cityName": "从化",
-        "pinYin": "conghua",
-        "py": "ch",
-        "code": "440184"
-    },
-    {
-        "cityName": "大理",
-        "pinYin": "dali",
-        "py": "dl",
-        "code": "532900"
-    },
-    {
-        "cityName": "大连",
-        "pinYin": "dalian",
-        "py": "dl",
-        "code": "210200"
-    },
-    {
-        "cityName": "东莞",
-        "pinYin": "dongguan",
-        "py": "dg",
-        "code": "441900"
-    },
-    {
-        "cityName": "德阳",
-        "pinYin": "deyang",
-        "py": "dy",
-        "code": "510600"
-    },
-    {
-        "cityName": "大同",
-        "pinYin": "datong",
-        "py": "dt",
-        "code": "140200"
-    },
-    {
-        "cityName": "丹东",
-        "pinYin": "dandong",
-        "py": "dd",
-        "code": "210600"
-    },
-    {
-        "cityName": "德州",
-        "pinYin": "dezhou",
-        "py": "dz",
-        "code": "371400"
-    },
-    {
-        "cityName": "达州",
-        "pinYin": "dazhou",
-        "py": "dz",
-        "code": "511700"
-    },
-    {
-        "cityName": "大庆",
-        "pinYin": "daqing",
-        "py": "dq",
-        "code": "230600"
-    },
-    {
-        "cityName": "东营",
-        "pinYin": "dongying",
-        "py": "dy",
-        "code": "370500"
-    },
-    {
-        "cityName": "迪庆藏族自治州",
-        "pinYin": "diqingzangzuzizhizhou",
-        "py": "dqzzzzz",
-        "code": "533400"
-    },
-    {
-        "cityName": "德宏傣族景颇族自治州",
-        "pinYin": "dehongdaizujingpozuzizhizhou",
-        "py": "dhdzjpzzzz",
-        "code": "533100"
-    },
-    {
-        "cityName": "定西",
-        "pinYin": "dingxi",
-        "py": "lx",
-        "code": "621100"
-    },
-    {
-        "cityName": "定安县",
-        "pinYin": "dingan",
-        "py": "da",
-        "code": "469025"
-    },
-    {
-        "cityName": "大兴安岭",
-        "pinYin": "daxinganling",
-        "py": "dxal",
-        "code": "232700"
-    },
-    {
-        "cityName": "东方",
-        "pinYin": "dongfang",
-        "py": "df",
-        "code": "469007"
-    },
-    {
-        "cityName": "儋县",
-        "pinYin": "danxian",
-        "py": "dx",
-        "code": "469003"
-    },
-    {
-        "cityName": "大东海",
-        "pinYin": "dadonghai",
-        "py": "ddh",
-        "code": "100021"
-    },
-    {
-        "cityName": "岱山县",
-        "pinYin": "daishanxian",
-        "py": "dsx",
-        "code": "330921"
-    },
-    {
-        "cityName": "当阳",
-        "pinYin": "dangyang",
-        "py": "dy",
-        "code": "420582"
-    },
-    {
-        "cityName": "丹霞山",
-        "pinYin": "danxianshan",
-        "py": "dxs",
-        "code": "100011"
-    },
-    {
-        "cityName": "丹阳",
-        "pinYin": "danyang",
-        "py": "dy",
-        "code": "321181"
-    },
-    {
-        "cityName": "稻城县",
-        "pinYin": "daochengxian",
-        "py": "dcx",
-        "code": "513337"
-    },
-    {
-        "cityName": "达县",
-        "pinYin": "daxian",
-        "py": "dx",
-        "code": "511721"
-    },
-    {
-        "cityName": "大研古城",
-        "pinYin": "dayangucheng",
-        "py": "dygc",
-        "code": "100029"
-    },
-    {
-        "cityName": "大冶",
-        "pinYin": "daye",
-        "py": "dy",
-        "code": "420281"
-    },
-    {
-        "cityName": "登封",
-        "pinYin": "dengfeng",
-        "py": "df",
-        "code": "410185"
-    },
-    {
-        "cityName": "邓州",
-        "pinYin": "dengzhou",
-        "py": "dz",
-        "code": "411381"
-    },
-    {
-        "cityName": "德清县",
-        "pinYin": "deqingxian",
-        "py": "dqx",
-        "code": "330521"
-    },
-    {
-        "cityName": "德兴",
-        "pinYin": "dexing",
-        "py": "dx",
-        "code": "361181"
-    },
-    {
-        "cityName": "电白县",
-        "pinYin": "dianbaixian",
-        "py": "dbx",
-        "code": "440923"
-    },
-    {
-        "cityName": "定州",
-        "pinYin": "dingzhou",
-        "py": "dz",
-        "code": "130682"
-    },
-    {
-        "cityName": "东胜",
-        "pinYin": "dongsheng",
-        "py": "ds",
-        "code": "150602"
-    },
-    {
-        "cityName": "东阳",
-        "pinYin": "dongyang",
-        "py": "dy",
-        "code": "330783"
-    },
-    {
-        "cityName": "都江堰",
-        "pinYin": "dujiangyan",
-        "py": "djy",
-        "code": "510181"
-    },
-    {
-        "cityName": "敦煌",
-        "pinYin": "dunhuang",
-        "py": "dh",
-        "code": "620982"
-    },
-    {
-        "cityName": "恩施",
-        "pinYin": "enshi",
-        "py": "es",
-        "code": "422800"
-    },
-    {
-        "cityName": "鄂尔多斯",
-        "pinYin": "eerduosi",
-        "py": "eeds",
-        "code": "150600"
-    },
-    {
-        "cityName": "鄂州",
-        "pinYin": "ezhou",
-        "py": "ez",
-        "code": "420700"
-    },
-    {
-        "cityName": "额尔古纳",
-        "pinYin": "eerguna",
-        "py": "eegn",
-        "code": "150784"
-    },
-    {
-        "cityName": "峨眉山",
-        "pinYin": "emeishan",
-        "py": "ems",
-        "code": "511181"
-    },
-    {
-        "cityName": "洱海",
-        "pinYin": "erhai",
-        "py": "eh",
-        "code": "100044"
-    },
-    {
-        "cityName": "二连浩特",
-        "pinYin": "erlianhaote",
-        "py": "elht",
-        "code": "152501"
-    },
-    {
-        "cityName": "福州",
-        "pinYin": "fuzhou",
-        "py": "fz",
-        "code": "350100"
-    },
-    {
-        "cityName": "佛山",
-        "pinYin": "foshan",
-        "py": "fs",
-        "code": "440600"
-    },
-    {
-        "cityName": "阜阳",
-        "pinYin": "fuyang",
-        "py": "fy",
-        "code": "341200"
-    },
-    {
-        "cityName": "抚州",
-        "pinYin": "fuzhou",
-        "py": "fz",
-        "code": "361000"
-    },
-    {
-        "cityName": "防城港",
-        "pinYin": "fangchenggang",
-        "py": "fcg",
-        "code": "450600"
-    },
-    {
-        "cityName": "抚顺",
-        "pinYin": "fushun",
-        "py": "fs",
-        "code": "210400"
-    },
-    {
-        "cityName": "阜新",
-        "pinYin": "fuxin",
-        "py": "fx",
-        "code": "210900"
-    },
-    {
-        "cityName": "放鸡岛",
-        "pinYin": "fangjidao",
-        "py": "fjd",
-        "code": "100012"
-    },
-    {
-        "cityName": "奉化",
-        "pinYin": "fenghua",
-        "py": "fh",
-        "code": "330283"
-    },
-    {
-        "cityName": "凤凰",
-        "pinYin": "fenghuang",
-        "py": "fh",
-        "code": "433123"
-    },
-    {
-        "cityName": "凤翔县",
-        "pinYin": "fengxiangxian",
-        "py": "fxx",
-        "code": "610322"
-    },
-    {
-        "cityName": "扶风县",
-        "pinYin": "fufengxian",
-        "py": "ffx",
-        "code": "610324"
-    },
-    {
-        "cityName": "福清",
-        "pinYin": "fuqing",
-        "py": "fq",
-        "code": "350181"
-    },
-    {
-        "cityName": "富阳",
-        "pinYin": "fuyang",
-        "py": "fy",
-        "code": "330183"
-    },
-    {
-        "cityName": "广州",
-        "pinYin": "guangzhou",
-        "py": "gz",
-        "code": "440100"
-    },
-    {
-        "cityName": "桂林",
-        "pinYin": "guilin",
-        "py": "gl",
-        "code": "450300"
-    },
-    {
-        "cityName": "贵阳",
-        "pinYin": "guiyang",
-        "py": "gy",
-        "code": "520100"
-    },
-    {
-        "cityName": "赣州",
-        "pinYin": "ganzhou",
-        "py": "gz",
-        "code": "360700"
-    },
-    {
-        "cityName": "广元",
-        "pinYin": "guangyuan",
-        "py": "gy",
-        "code": "510800"
-    },
-    {
-        "cityName": "贵港",
-        "pinYin": "guigang",
-        "py": "gg",
-        "code": "450800"
-    },
-    {
-        "cityName": "广安",
-        "pinYin": "guangan",
-        "py": "ga",
-        "code": "511600"
-    },
-    {
-        "cityName": "甘孜藏族自治州",
-        "pinYin": "ganzizangzuzizhizhou",
-        "py": "gzzzzzz",
-        "code": "513300"
-    },
-    {
-        "cityName": "高雄",
-        "pinYin": "gaoxiongshi",
-        "py": "gxs",
-        "code": "710200"
-    },
-    {
-        "cityName": "固原",
-        "pinYin": "guyuan",
-        "py": "gy",
-        "code": "640400"
-    },
-    {
-        "cityName": "甘南",
-        "pinYin": "gannanzangzuzizhizhou",
-        "py": "gnzzzzz",
-        "code": "623000"
-    },
-    {
-        "cityName": "高雄县",
-        "pinYin": "gaoxiongxian",
-        "py": "gxx",
-        "code": "712300"
-    },
-    {
-        "cityName": "果洛藏族自治州",
-        "pinYin": "guoluozangzuzizhizhou",
-        "py": "glzzzzz",
-        "code": "632600"
-    },
-    {
-        "cityName": "高碑店",
-        "pinYin": "gaobeidian",
-        "py": "gbd",
-        "code": "130684"
-    },
-    {
-        "cityName": "高要",
-        "pinYin": "gaoyao",
-        "py": "gy",
-        "code": "441283"
-    },
-    {
-        "cityName": "高邮",
-        "pinYin": "gaoyou",
-        "py": "gy",
-        "code": "321084"
-    },
-    {
-        "cityName": "格尔木",
-        "pinYin": "geermu",
-        "py": "gem",
-        "code": "632801"
-    },
-    {
-        "cityName": "个旧",
-        "pinYin": "gejiu",
-        "py": "gj",
-        "code": "532501"
-    },
-    {
-        "cityName": "根河",
-        "pinYin": "genhe",
-        "py": "gh",
-        "code": "150785"
-    },
-    {
-        "cityName": "巩义",
-        "pinYin": "gongyi",
-        "py": "gy",
-        "code": "410181"
-    },
-    {
-        "cityName": "鼓浪屿",
-        "pinYin": "gulangyu",
-        "py": "gly",
-        "code": "100018"
-    },
-    {
-        "cityName": "杭州",
-        "pinYin": "hangzhou",
-        "py": "hz",
-        "code": "330100"
-    },
-    {
-        "cityName": "哈尔滨",
-        "pinYin": "haerbin",
-        "py": "heb",
-        "code": "230100"
-    },
-    {
-        "cityName": "合肥",
-        "pinYin": "hefei",
-        "py": "hf",
-        "code": "340100"
-    },
-    {
-        "cityName": "海口",
-        "pinYin": "haikou",
-        "py": "hk",
-        "code": "460100"
-    },
-    {
-        "cityName": "惠州",
-        "pinYin": "huizhou",
-        "py": "hz",
-        "code": "441300"
-    },
-    {
-        "cityName": "黄山",
-        "pinYin": "huangshan",
-        "py": "hs",
-        "code": "341000"
-    },
-    {
-        "cityName": "呼和浩特",
-        "pinYin": "huhehaote",
-        "py": "hhht",
-        "code": "150100"
-    },
-    {
-        "cityName": "湖州",
-        "pinYin": "huzhou",
-        "py": "hz",
-        "code": "330500"
-    },
-    {
-        "cityName": "衡阳",
-        "pinYin": "hengyang",
-        "py": "hy",
-        "code": "430400"
-    },
-    {
-        "cityName": "邯郸",
-        "pinYin": "handan",
-        "py": "hd",
-        "code": "130400"
-    },
-    {
-        "cityName": "淮安",
-        "pinYin": "huaian",
-        "py": "ha",
-        "code": "320800"
-    },
-    {
-        "cityName": "葫芦岛",
-        "pinYin": "huludao",
-        "py": "hld",
-        "code": "211400"
-    },
-    {
-        "cityName": "菏泽",
-        "pinYin": "heze",
-        "py": "hz",
-        "code": "371700"
-    },
-    {
-        "cityName": "汉中",
-        "pinYin": "hanzhong",
-        "py": "hz",
-        "code": "610700"
-    },
-    {
-        "cityName": "河源",
-        "pinYin": "heyuan",
-        "py": "hp",
-        "code": "441600"
-    },
-    {
-        "cityName": "怀化",
-        "pinYin": "huaihua",
-        "py": "hh",
-        "code": "431200"
-    },
-    {
-        "cityName": "黄冈",
-        "pinYin": "huanggang",
-        "py": "hg",
-        "code": "421100"
-    },
-    {
-        "cityName": "淮南",
-        "pinYin": "huainan",
-        "py": "hn",
-        "code": "340400"
-    },
-    {
-        "cityName": "呼伦贝尔",
-        "pinYin": "hulunbeier",
-        "py": "hlbe",
-        "code": "150700"
-    },
-    {
-        "cityName": "黄石",
-        "pinYin": "huangshi",
-        "py": "hs",
-        "code": "420200"
-    },
-    {
-        "cityName": "贺州",
-        "pinYin": "hezhou",
-        "py": "hz",
-        "code": "451100"
-    },
-    {
-        "cityName": "衡水",
-        "pinYin": "hengshui",
-        "py": "hs",
-        "code": "131100"
-    },
-    {
-        "cityName": "花莲县",
-        "pinYin": "hualianxian",
-        "py": "hlx",
-        "code": "712600"
-    },
-    {
-        "cityName": "红河哈尼族彝族自治州",
-        "pinYin": "honghehanizuyizuzizhizhou",
-        "py": "hhhnzyzzzz",
-        "code": "532500"
-    },
-    {
-        "cityName": "淮北",
-        "pinYin": "huaibei",
-        "py": "hb",
-        "code": "340600"
-    },
-    {
-        "cityName": "河池",
-        "pinYin": "hechi",
-        "py": "hc",
-        "code": "451200"
-    },
-    {
-        "cityName": "鹤壁",
-        "pinYin": "hebi",
-        "py": "hb",
-        "code": "410600"
-    },
-    {
-        "cityName": "鹤岗",
-        "pinYin": "hegang",
-        "py": "hg",
-        "code": "230400"
-    },
-    {
-        "cityName": "黑河",
-        "pinYin": "heihe",
-        "py": "hh",
-        "code": "231100"
-    },
-    {
-        "cityName": "海西蒙古族藏族自治州",
-        "pinYin": "haiximengguzuzangzuzizhizhou",
-        "py": "hxmgzzzzzz",
-        "code": "632800"
-    },
-    {
-        "cityName": "哈密",
-        "pinYin": "hami",
-        "py": "hm",
-        "code": "652200"
-    },
-    {
-        "cityName": "海南藏族自治州",
-        "pinYin": "hainanzangzuzizhizhou",
-        "py": "hnzzzzz",
-        "code": "632500"
-    },
-    {
-        "cityName": "海北藏族自治州",
-        "pinYin": "haibeizangzuzizhizhou",
-        "py": "hbzzzzz",
-        "code": "632200"
-    },
-    {
-        "cityName": "和田",
-        "pinYin": "hetian",
-        "py": "ht",
-        "code": "653200"
-    },
-    {
-        "cityName": "海东",
-        "pinYin": "haidong",
-        "py": "hd",
-        "code": "632100"
-    },
-    {
-        "cityName": "黄南藏族自治州",
-        "pinYin": "huangnanzangzuzizhizhou",
-        "py": "hnzzzzz",
-        "code": "632300"
-    },
-    {
-        "cityName": "海城",
-        "pinYin": "haicheng",
-        "py": "hc",
-        "code": "210381"
-    },
-    {
-        "cityName": "海拉尔",
-        "pinYin": "hailaer",
-        "py": "hle",
-        "code": "150702"
-    },
-    {
-        "cityName": "海螺沟",
-        "pinYin": "hailuogou",
-        "py": "hlg",
-        "code": "100038"
-    },
-    {
-        "cityName": "海门",
-        "pinYin": "haimen",
-        "py": "hm",
-        "code": "320684"
-    },
-    {
-        "cityName": "海宁",
-        "pinYin": "haining",
-        "py": "hn",
-        "code": "330481"
-    },
-    {
-        "cityName": "海阳",
-        "pinYin": "haiyang",
-        "py": "hy",
-        "code": "370687"
-    },
-    {
-        "cityName": "海盐县",
-        "pinYin": "haiyanxian",
-        "py": "hyx",
-        "code": "330424"
-    },
-    {
-        "cityName": "韩城",
-        "pinYin": "hancheng",
-        "py": "hc",
-        "code": "610581"
-    },
-    {
-        "cityName": "河间",
-        "pinYin": "hejian",
-        "py": "hj",
-        "code": "130984"
-    },
-    {
-        "cityName": "衡山",
-        "pinYin": "hengshan",
-        "py": "hs",
-        "code": "100026"
-    },
-    {
-        "cityName": "和顺",
-        "pinYin": "heshunxian",
-        "py": "hsx",
-        "code": "140723"
-    },
-    {
-        "cityName": "合作",
-        "pinYin": "hezuo",
-        "py": "hz",
-        "code": "623001"
-    },
-    {
-        "cityName": "宏村",
-        "pinYin": "hongcun",
-        "py": "hc",
-        "code": "100009"
-    },
-    {
-        "cityName": "侯马",
-        "pinYin": "houma",
-        "py": "hm",
-        "code": "141081"
-    },
-    {
-        "cityName": "怀仁县",
-        "pinYin": "huairenxian",
-        "py": "hrx",
-        "code": "140624"
-    },
-    {
-        "cityName": "黄果树",
-        "pinYin": "huangguoshu",
-        "py": "hgs",
-        "code": "100013"
-    },
-    {
-        "cityName": "黄龙溪",
-        "pinYin": "huanglongxi",
-        "py": "hlx",
-        "code": "100037"
-    },
-    {
-        "cityName": "华山",
-        "pinYin": "huashan",
-        "py": "hs",
-        "code": "100014"
-    },
-    {
-        "cityName": "华阴",
-        "pinYin": "huayin",
-        "py": "hy",
-        "code": "610582"
-    },
-    {
-        "cityName": "徽州",
-        "pinYin": "huizhou",
-        "py": "hz",
-        "code": "341004"
-    },
-    {
-        "cityName": "霍林郭勒",
-        "pinYin": "huolinguole",
-        "py": "hlgl",
-        "code": "150581"
-    },
-    {
-        "cityName": "霍州",
-        "pinYin": "huozhou",
-        "py": "hz",
-        "code": "141082"
-    },
-    {
-        "cityName": "嘉兴",
-        "pinYin": "jiaxing",
-        "py": "jx",
-        "code": "330400"
-    },
-    {
-        "cityName": "济南",
-        "pinYin": "jinan",
-        "py": "jn",
-        "code": "370100"
-    },
-    {
-        "cityName": "金华",
-        "pinYin": "jinhua",
-        "py": "jh",
-        "code": "330700"
-    },
-    {
-        "cityName": "九江",
-        "pinYin": "jiujiang",
-        "py": "jj",
-        "code": "360400"
-    },
-    {
-        "cityName": "江门",
-        "pinYin": "jiangmen",
-        "py": "jm",
-        "code": "440700"
-    },
-    {
-        "cityName": "济宁",
-        "pinYin": "jining",
-        "py": "jn",
-        "code": "370800"
-    },
-    {
-        "cityName": "焦作",
-        "pinYin": "jiaozuo",
-        "py": "jz",
-        "code": "410800"
-    },
-    {
-        "cityName": "吉林",
-        "pinYin": "jilin",
-        "py": "jl",
-        "code": "220200"
-    },
-    {
-        "cityName": "荆州",
-        "pinYin": "jingzhou",
-        "py": "jz",
-        "code": "421000"
-    },
-    {
-        "cityName": "晋中",
-        "pinYin": "jinzhong",
-        "py": "jz",
-        "code": "140700"
-    },
-    {
-        "cityName": "吉安",
-        "pinYin": "jian",
-        "py": "ja",
-        "code": "360800"
-    },
-    {
-        "cityName": "揭阳",
-        "pinYin": "jieyang",
-        "py": "jy",
-        "code": "445200"
-    },
-    {
-        "cityName": "锦州",
-        "pinYin": "jinzhou",
-        "py": "jz",
-        "code": "210700"
-    },
-    {
-        "cityName": "景德镇",
-        "pinYin": "jingdezhen",
-        "py": "jdz",
-        "code": "360200"
-    },
-    {
-        "cityName": "酒泉",
-        "pinYin": "jiuquan",
-        "py": "jq",
-        "code": "620900"
-    },
-    {
-        "cityName": "佳木斯",
-        "pinYin": "jiamusi",
-        "py": "jms",
-        "code": "230800"
-    },
-    {
-        "cityName": "嘉峪关",
-        "pinYin": "jiayuguan",
-        "py": "jyg",
-        "code": "620200"
-    },
-    {
-        "cityName": "荆门",
-        "pinYin": "jingmen",
-        "py": "jm",
-        "code": "420800"
-    },
-    {
-        "cityName": "晋城",
-        "pinYin": "jincheng",
-        "py": "jc",
-        "code": "140500"
-    },
-    {
-        "cityName": "鸡西",
-        "pinYin": "jixi",
-        "py": "jx",
-        "code": "230300"
-    },
-    {
-        "cityName": "济源",
-        "pinYin": "jiyuan",
-        "py": "jy",
-        "code": "410881"
-    },
-    {
-        "cityName": "金门县(台湾)",
-        "pinYin": "jinmenxian",
-        "py": "jmx",
-        "code": "710500"
-    },
-    {
-        "cityName": "金昌",
-        "pinYin": "jinchang",
-        "py": "jc",
-        "code": "620300"
-    },
-    {
-        "cityName": "嘉义县",
-        "pinYin": "jiayixian",
-        "py": "jyx",
-        "code": "711900"
-    },
-    {
-        "cityName": "基隆",
-        "pinYin": "jilongshi",
-        "py": "jls",
-        "code": "710700"
-    },
-    {
-        "cityName": "嘉义",
-        "pinYin": "jiayishi",
-        "py": "jys",
-        "code": "710900"
-    },
-    {
-        "cityName": "建昌县",
-        "pinYin": "jianchangxian",
-        "py": "jcx",
-        "code": "211422"
-    },
-    {
-        "cityName": "建德",
-        "pinYin": "jiande",
-        "py": "jd",
-        "code": "330182"
-    },
-    {
-        "cityName": "江都",
-        "pinYin": "jiangdu",
-        "py": "jd",
-        "code": "321088"
-    },
-    {
-        "cityName": "绛县",
-        "pinYin": "jiangxian",
-        "py": "jx",
-        "code": "140826"
-    },
-    {
-        "cityName": "江阴",
-        "pinYin": "jiangyin",
-        "py": "jy",
-        "code": "320281"
-    },
-    {
-        "cityName": "嘉善县",
-        "pinYin": "jiashanxian",
-        "py": "jsx",
-        "code": "330421"
-    },
-    {
-        "cityName": "介休",
-        "pinYin": "jiexiu",
-        "py": "jx",
-        "code": "140781"
-    },
-    {
-        "cityName": "井冈山",
-        "pinYin": "jinggangshan",
-        "py": "jgs",
-        "code": "360881"
-    },
-    {
-        "cityName": "静海县",
-        "pinYin": "jinghaixian",
-        "py": "jhx",
-        "code": "120223"
-    },
-    {
-        "cityName": "景洪",
-        "pinYin": "jinghong",
-        "py": "jh",
-        "code": "532801"
-    },
-    {
-        "cityName": "集宁",
-        "pinYin": "jining",
-        "py": "jn",
-        "code": "150902"
-    },
-    {
-        "cityName": "晋江",
-        "pinYin": "jinjiang",
-        "py": "jj",
-        "code": "350582"
-    },
-    {
-        "cityName": "金门县(泉州)",
-        "pinYin": "jinmenxian",
-        "py": "jmx",
-        "code": "350527"
-    },
-    {
-        "cityName": "吉首",
-        "pinYin": "jishou",
-        "py": "js",
-        "code": "433101"
-    },
-    {
-        "cityName": "九华山",
-        "pinYin": "jiuhuashan",
-        "py": "jhs",
-        "code": "100010"
-    },
-    {
-        "cityName": "九寨沟",
-        "pinYin": "jiuzhaigou",
-        "py": "jzg",
-        "code": "513225"
-    },
-    {
-        "cityName": "蓟县",
-        "pinYin": "jixian",
-        "py": "jx",
-        "code": "120225"
-    },
-    {
-        "cityName": "句容",
-        "pinYin": "jurong",
-        "py": "jr",
-        "code": "321183"
-    },
-    {
-        "cityName": "昆明",
-        "pinYin": "kunming",
-        "py": "km",
-        "code": "530100"
-    },
-    {
-        "cityName": "开封",
-        "pinYin": "kaifeng",
-        "py": "kf",
-        "code": "410200"
-    },
-    {
-        "cityName": "喀什",
-        "pinYin": "kashi",
-        "py": "ks",
-        "code": "653100"
-    },
-    {
-        "cityName": "克拉玛依",
-        "pinYin": "kelamayi",
-        "py": "klmy",
-        "code": "650200"
-    },
-    {
-        "cityName": "克孜勒苏柯尔克孜自治州",
-        "pinYin": "kezilesukeerkezizizhizhou",
-        "py": "kzlskekzzzz",
-        "code": "653000"
-    },
-    {
-        "cityName": "喀纳斯",
-        "pinYin": "kanasi",
-        "py": "kns",
-        "code": "100015"
-    },
-    {
-        "cityName": "康定县",
-        "pinYin": "kangdingxian",
-        "py": "kdx",
-        "code": "513321"
-    },
-    {
-        "cityName": "垦丁",
-        "pinYin": "kending",
-        "py": "kd",
-        "code": "100036"
-    },
-    {
-        "cityName": "库车",
-        "pinYin": "kuche",
-        "py": "kc",
-        "code": "652923"
-    },
-    {
-        "cityName": "库尔勒",
-        "pinYin": "kuerle",
-        "py": "kel",
-        "code": "652801"
-    },
-    {
-        "cityName": "奎屯",
-        "pinYin": "kuitun",
-        "py": "kt",
-        "code": "654003"
-    },
-    {
-        "cityName": "昆山",
-        "pinYin": "kunshan",
-        "py": "ks",
-        "code": "320583"
-    },
-    {
-        "cityName": "丽江",
-        "pinYin": "lijiang",
-        "py": "lj",
-        "code": "530700"
-    },
-    {
-        "cityName": "兰州",
-        "pinYin": "lanzhou",
-        "py": "lz",
-        "code": "620100"
-    },
-    {
-        "cityName": "拉萨",
-        "pinYin": "lasa",
-        "py": "ls",
-        "code": "540100"
-    },
-    {
-        "cityName": "洛阳",
-        "pinYin": "luoyang",
-        "py": "ly",
-        "code": "410300"
-    },
-    {
-        "cityName": "柳州",
-        "pinYin": "liuzhou",
-        "py": "lz",
-        "code": "450200"
-    },
-    {
-        "cityName": "临沂",
-        "pinYin": "linyi",
-        "py": "ly",
-        "code": "371300"
-    },
-    {
-        "cityName": "乐山",
-        "pinYin": "leshan",
-        "py": "ls",
-        "code": "511100"
-    },
-    {
-        "cityName": "连云港",
-        "pinYin": "lianyungang",
-        "py": "lyg",
-        "code": "320700"
-    },
-    {
-        "cityName": "廊坊",
-        "pinYin": "langfang",
-        "py": "lf",
-        "code": "131000"
-    },
-    {
-        "cityName": "丽水",
-        "pinYin": "lishui",
-        "py": "ls",
-        "code": "331100"
-    },
-    {
-        "cityName": "临汾",
-        "pinYin": "linfen",
-        "py": "lf",
-        "code": "141000"
-    },
-    {
-        "cityName": "聊城",
-        "pinYin": "liaocheng",
-        "py": "lc",
-        "code": "371500"
-    },
-    {
-        "cityName": "龙岩",
-        "pinYin": "longyan",
-        "py": "ly",
-        "code": "350800"
-    },
-    {
-        "cityName": "凉山彝族自治州",
-        "pinYin": "liangshanyizuzizhizhou",
-        "py": "lsyzzzz",
-        "code": "513400"
-    },
-    {
-        "cityName": "六安",
-        "pinYin": "liuan",
-        "py": "la",
-        "code": "341500"
-    },
-    {
-        "cityName": "泸州",
-        "pinYin": "luzhou",
-        "py": "lz",
-        "code": "510500"
-    },
-    {
-        "cityName": "漯河",
-        "pinYin": "leihe",
-        "py": "lh",
-        "code": "411100"
-    },
-    {
-        "cityName": "娄底",
-        "pinYin": "loudi",
-        "py": "ld",
-        "code": "431300"
-    },
-    {
-        "cityName": "六盘水",
-        "pinYin": "liupanshui",
-        "py": "lps",
-        "code": "520200"
-    },
-    {
-        "cityName": "吕梁",
-        "pinYin": "lvliang",
-        "py": "ll",
-        "code": "141100"
-    },
-    {
-        "cityName": "陵水",
-        "pinYin": "lingshui",
-        "py": "ls",
-        "code": "469034"
-    },
-    {
-        "cityName": "来宾",
-        "pinYin": "laibin",
-        "py": "lb",
-        "code": "451300"
-    },
-    {
-        "cityName": "辽阳",
-        "pinYin": "liaoyang",
-        "py": "ld",
-        "code": "211000"
-    },
-    {
-        "cityName": "莱芜",
-        "pinYin": "laiwu",
-        "py": "lw",
-        "code": "371200"
-    },
-    {
-        "cityName": "林芝",
-        "pinYin": "linzhi",
-        "py": "lz",
-        "code": "542600"
-    },
-    {
-        "cityName": "陇南",
-        "pinYin": "longnan",
-        "py": "ln",
-        "code": "621200"
-    },
-    {
-        "cityName": "辽源",
-        "pinYin": "liaoyuan",
-        "py": "ly",
-        "code": "220400"
-    },
-    {
-        "cityName": "临沧",
-        "pinYin": "lincang",
-        "py": "lc",
-        "code": "530900"
-    },
-    {
-        "cityName": "乐东黎族自治县",
-        "pinYin": "ledonglizuzizhixian",
-        "py": "ldlzzzx",
-        "code": "469033"
-    },
-    {
-        "cityName": "临夏",
-        "pinYin": "linxiahuizuzizhizhou",
-        "py": "lxhzzzz",
-        "code": "622900"
-    },
-    {
-        "cityName": "临高县",
-        "pinYin": "lingao",
-        "py": "lg",
-        "code": "469028"
-    },
-    {
-        "cityName": "莱阳",
-        "pinYin": "laiyang",
-        "py": "ly",
-        "code": "370682"
-    },
-    {
-        "cityName": "莱州",
-        "pinYin": "laizhou",
-        "py": "lz",
-        "code": "370683"
-    },
-    {
-        "cityName": "阆中",
-        "pinYin": "langzhong",
-        "py": "lz",
-        "code": "511381"
-    },
-    {
-        "cityName": "兰溪",
-        "pinYin": "lanxi",
-        "py": "lx",
-        "code": "330781"
-    },
-    {
-        "cityName": "耒阳",
-        "pinYin": "leiyang",
-        "py": "ly",
-        "code": "430481"
-    },
-    {
-        "cityName": "乐陵",
-        "pinYin": "leling",
-        "py": "ll",
-        "code": "371481"
-    },
-    {
-        "cityName": "乐清",
-        "pinYin": "leqing",
-        "py": "lq",
-        "code": "330382"
-    },
-    {
-        "cityName": "连城",
-        "pinYin": "liancheng",
-        "py": "lc",
-        "code": "350825"
-    },
-    {
-        "cityName": "连州",
-        "pinYin": "lianzhou",
-        "py": "lz",
-        "code": "441882"
-    },
-    {
-        "cityName": "醴陵",
-        "pinYin": "liling",
-        "py": "ll",
-        "code": "430281"
-    },
-    {
-        "cityName": "临安",
-        "pinYin": "linan",
-        "py": "la",
-        "code": "330185"
-    },
-    {
-        "cityName": "灵宝",
-        "pinYin": "lingbao",
-        "py": "lb",
-        "code": "411282"
-    },
-    {
-        "cityName": "灵石县",
-        "pinYin": "lingshixian",
-        "py": "lsx",
-        "code": "140729"
-    },
-    {
-        "cityName": "临海",
-        "pinYin": "linhai",
-        "py": "lh",
-        "code": "331082"
-    },
-    {
-        "cityName": "临河",
-        "pinYin": "linhe",
-        "py": "lh",
-        "code": "150802"
-    },
-    {
-        "cityName": "临湘",
-        "pinYin": "linxiang",
-        "py": "lx",
-        "code": "430682"
-    },
-    {
-        "cityName": "林芝县",
-        "pinYin": "linzhixian",
-        "py": "lzx",
-        "code": "542621"
-    },
-    {
-        "cityName": "黎平",
-        "pinYin": "liping",
-        "py": "lp",
-        "code": "522631"
-    },
-    {
-        "cityName": "荔浦县",
-        "pinYin": "lipuxian",
-        "py": "ltx",
-        "code": "450331"
-    },
-    {
-        "cityName": "浏阳",
-        "pinYin": "liuyang",
-        "py": "ly",
-        "code": "430181"
-    },
-    {
-        "cityName": "龙海",
-        "pinYin": "longhai",
-        "py": "lh",
-        "code": "350681"
-    },
-    {
-        "cityName": "隆化县",
-        "pinYin": "longhuaxian",
-        "py": "lhx",
-        "code": "130825"
-    },
-    {
-        "cityName": "龙口",
-        "pinYin": "longkou",
-        "py": "lk",
-        "code": "370681"
-    },
-    {
-        "cityName": "龙门县",
-        "pinYin": "longmenxian",
-        "py": "lmx",
-        "code": "441324"
-    },
-    {
-        "cityName": "滦平县",
-        "pinYin": "luanpingxian",
-        "py": "lpx",
-        "code": "130824"
-    },
-    {
-        "cityName": "滦县",
-        "pinYin": "luanxian",
-        "py": "lx",
-        "code": "130223"
-    },
-    {
-        "cityName": "泸沽湖",
-        "pinYin": "luguhu",
-        "py": "lgh",
-        "code": "100028"
-    },
-    {
-        "cityName": "庐山",
-        "pinYin": "lushan",
-        "py": "ls",
-        "code": "360402"
-    },
-    {
-        "cityName": "潞西",
-        "pinYin": "luxi",
-        "py": "lx",
-        "code": "533103"
-    },
-    {
-        "cityName": "绵阳",
-        "pinYin": "mianyang",
-        "py": "my",
-        "code": "510700"
-    },
-    {
-        "cityName": "茂名",
-        "pinYin": "maoming",
-        "py": "mm",
-        "code": "440900"
-    },
-    {
-        "cityName": "牡丹江",
-        "pinYin": "mudanjiang",
-        "py": "mdj",
-        "code": "231000"
-    },
-    {
-        "cityName": "马鞍山",
-        "pinYin": "maanshan",
-        "py": "mas",
-        "code": "340500"
-    },
-    {
-        "cityName": "梅州",
-        "pinYin": "meizhou",
-        "py": "mz",
-        "code": "441400"
-    },
-    {
-        "cityName": "眉山",
-        "pinYin": "meishan",
-        "py": "ms",
-        "code": "511400"
-    },
-    {
-        "cityName": "苗栗县",
-        "pinYin": "miaolixian",
-        "py": "mlx",
-        "code": "711500"
-    },
-    {
-        "cityName": "满洲里",
-        "pinYin": "manzhouli",
-        "py": "mzl",
-        "code": "150781"
-    },
-    {
-        "cityName": "梅县",
-        "pinYin": "meixian",
-        "py": "mx",
-        "code": "441421"
-    },
-    {
-        "cityName": "绵竹",
-        "pinYin": "mianzhu",
-        "py": "mz",
-        "code": "510683"
-    },
-    {
-        "cityName": "汨罗",
-        "pinYin": "miluo",
-        "py": "ml",
-        "code": "430681"
-    },
-    {
-        "cityName": "漠河",
-        "pinYin": "mohe",
-        "py": "kc",
-        "code": "232723"
-    },
-    {
-        "cityName": "木渎",
-        "pinYin": "mudu",
-        "py": "md",
-        "code": "100001"
-    },
-    {
-        "cityName": "南京",
-        "pinYin": "nanjing",
-        "py": "nj",
-        "code": "320100"
-    },
-    {
-        "cityName": "宁波",
-        "pinYin": "ningbo",
-        "py": "nb",
-        "code": "330200"
-    },
-    {
-        "cityName": "南昌",
-        "pinYin": "nanchang",
-        "py": "nc",
-        "code": "360100"
-    },
-    {
-        "cityName": "南宁",
-        "pinYin": "nanning",
-        "py": "nn",
-        "code": "450100"
-    },
-    {
-        "cityName": "南通",
-        "pinYin": "nantong",
-        "py": "nt",
-        "code": "320600"
-    },
-    {
-        "cityName": "南充",
-        "pinYin": "nanchong",
-        "py": "nc",
-        "code": "511300"
-    },
-    {
-        "cityName": "宁德",
-        "pinYin": "ningde",
-        "py": "nd",
-        "code": "350900"
-    },
-    {
-        "cityName": "南阳",
-        "pinYin": "nanyang",
-        "py": "ny",
-        "code": "411300"
-    },
-    {
-        "cityName": "南平",
-        "pinYin": "nanping",
-        "py": "np",
-        "code": "350700"
-    },
-    {
-        "cityName": "内江",
-        "pinYin": "neijiang",
-        "py": "nj",
-        "code": "511000"
-    },
-    {
-        "cityName": "南投县",
-        "pinYin": "nantouxian",
-        "py": "ntx",
-        "code": "710600"
-    },
-    {
-        "cityName": "那曲",
-        "pinYin": "naqu",
-        "py": "nq",
-        "code": "542400"
-    },
-    {
-        "cityName": "怒江傈僳族自治州",
-        "pinYin": "nujianglisuzuzizhizhou",
-        "py": "njlszzzz",
-        "code": "533300"
-    },
-    {
-        "cityName": "南沙群岛",
-        "pinYin": "nanshaqundaoxian",
-        "py": "nsqdx",
-        "code": "469038"
-    },
-    {
-        "cityName": "南安",
-        "pinYin": "nanan",
-        "py": "na",
-        "code": "350583"
-    },
-    {
-        "cityName": "南澳县",
-        "pinYin": "nanaoxian",
-        "py": "nax",
-        "code": "440523"
-    },
-    {
-        "cityName": "南浔",
-        "pinYin": "nanxun",
-        "py": "nx",
-        "code": "330503"
-    },
-    {
-        "cityName": "宁城县",
-        "pinYin": "ningchengxian",
-        "py": "ncx",
-        "code": "150429"
-    },
-    {
-        "cityName": "宁海县",
-        "pinYin": "ninghaixian",
-        "py": "nhx",
-        "code": "330226"
-    },
-    {
-        "cityName": "莆田",
-        "pinYin": "putian",
-        "py": "pt",
-        "code": "350300"
-    },
-    {
-        "cityName": "平顶山",
-        "pinYin": "pingdingshan",
-        "py": "pds",
-        "code": "410400"
-    },
-    {
-        "cityName": "萍乡",
-        "pinYin": "pingxiang",
-        "py": "px",
-        "code": "360300"
-    },
-    {
-        "cityName": "屏东县",
-        "pinYin": "pingdongxian",
-        "py": "pdx",
-        "code": "712400"
-    },
-    {
-        "cityName": "濮阳",
-        "pinYin": "puyang",
-        "py": "tq",
-        "code": "410900"
-    },
-    {
-        "cityName": "攀枝花",
-        "pinYin": "panzhihua",
-        "py": "pzh",
-        "code": "510400"
-    },
-    {
-        "cityName": "盘锦",
-        "pinYin": "panjin",
-        "py": "pj",
-        "code": "211100"
-    },
-    {
-        "cityName": "普洱",
-        "pinYin": "puer",
-        "py": "pe",
-        "code": "530800"
-    },
-    {
-        "cityName": "平凉",
-        "pinYin": "pingliang",
-        "py": "pl",
-        "code": "620800"
-    },
-    {
-        "cityName": "澎湖县",
-        "pinYin": "penghuxian",
-        "py": "phx",
-        "code": "712700"
-    },
-    {
-        "cityName": "磐安县",
-        "pinYin": "pananxian",
-        "py": "pax",
-        "code": "330727"
-    },
-    {
-        "cityName": "蓬莱",
-        "pinYin": "penglai",
-        "py": "pl",
-        "code": "370684"
-    },
-    {
-        "cityName": "彭州",
-        "pinYin": "pengzhou",
-        "py": "pz",
-        "code": "510182"
-    },
-    {
-        "cityName": "平湖",
-        "pinYin": "pinghu",
-        "py": "ph",
-        "code": "330482"
-    },
-    {
-        "cityName": "平乐",
-        "pinYin": "pinglexian",
-        "py": "plx",
-        "code": "450330"
-    },
-    {
-        "cityName": "平遥县",
-        "pinYin": "pingyaoxian",
-        "py": "pyx",
-        "code": "140728"
-    },
-    {
-        "cityName": "浦江县",
-        "pinYin": "pujiangxian",
-        "py": "pjx",
-        "code": "330726"
-    },
-    {
-        "cityName": "普宁",
-        "pinYin": "puning",
-        "py": "pn",
-        "code": "445281"
-    },
-    {
-        "cityName": "普陀山",
-        "pinYin": "putuoshan",
-        "py": "pts",
-        "code": "100008"
-    },
-    {
-        "cityName": "青岛",
-        "pinYin": "qingdao",
-        "py": "qd",
-        "code": "370200"
-    },
-    {
-        "cityName": "秦皇岛",
-        "pinYin": "qinhuangdao",
-        "py": "qhd",
-        "code": "130300"
-    },
-    {
-        "cityName": "泉州",
-        "pinYin": "quanzhou",
-        "py": "qz",
-        "code": "350500"
-    },
-    {
-        "cityName": "清远",
-        "pinYin": "qingyuan",
-        "py": "qy",
-        "code": "441800"
-    },
-    {
-        "cityName": "黔东南苗族侗族自治州",
-        "pinYin": "qiandongnanmiaozudongzuzizhizhou",
-        "py": "qdnmzdzzzz",
-        "code": "522600"
-    },
-    {
-        "cityName": "齐齐哈尔",
-        "pinYin": "qiqihaer",
-        "py": "qqhe",
-        "code": "230200"
-    },
-    {
-        "cityName": "衢州",
-        "pinYin": "quzhou",
-        "py": "qz",
-        "code": "330800"
-    },
-    {
-        "cityName": "琼海",
-        "pinYin": "qionghai",
-        "py": "qh",
-        "code": "469002"
-    },
-    {
-        "cityName": "曲靖",
-        "pinYin": "qujing",
-        "py": "qj",
-        "code": "530300"
-    },
-    {
-        "cityName": "钦州",
-        "pinYin": "qinzhou",
-        "py": "qz",
-        "code": "450700"
-    },
-    {
-        "cityName": "黔南布依族苗族自治州",
-        "pinYin": "qiannanbuyizumiaozuzizhizhou",
-        "py": "qnbyzmzzzz",
-        "code": "522700"
-    },
-    {
-        "cityName": "黔西南布依族苗族自治州",
-        "pinYin": "qianxinanbuyizumiaozuzizhizhou",
-        "py": "qxnbyzmzzzz",
-        "code": "522300"
-    },
-    {
-        "cityName": "庆阳",
-        "pinYin": "qingyang",
-        "py": "qy",
-        "code": "621000"
-    },
-    {
-        "cityName": "潜江",
-        "pinYin": "qianjiang",
-        "py": "qj",
-        "code": "429005"
-    },
-    {
-        "cityName": "七台河",
-        "pinYin": "qitaihe",
-        "py": "qth",
-        "code": "230900"
-    },
-    {
-        "cityName": "琼中黎族苗族自治县",
-        "pinYin": "qiongzhonglizumiaozuzizhixian",
-        "py": "qzlzmzzzx",
-        "code": "469036"
-    },
-    {
-        "cityName": "千岛湖",
-        "pinYin": "qiandaohu",
-        "py": "qdh",
-        "code": "100017"
-    },
-    {
-        "cityName": "乾县",
-        "pinYin": "qianxian",
-        "py": "qx",
-        "code": "610424"
-    },
-    {
-        "cityName": "祁门县",
-        "pinYin": "qimenxian",
-        "py": "qmx",
-        "code": "341024"
-    },
-    {
-        "cityName": "青城山",
-        "pinYin": "qingchengshan",
-        "py": "qcs",
-        "code": "100023"
-    },
-    {
-        "cityName": "青铜峡",
-        "pinYin": "qingtongxia",
-        "py": "qtx",
-        "code": "640381"
-    },
-    {
-        "cityName": "清新县",
-        "pinYin": "qingxinxian",
-        "py": "qxx",
-        "code": "441827"
-    },
-    {
-        "cityName": "邛崃",
-        "pinYin": "qionglai",
-        "py": "ql",
-        "code": "510183"
-    },
-    {
-        "cityName": "岐山县",
-        "pinYin": "qishanxian",
-        "py": "qsx",
-        "code": "610323"
-    },
-    {
-        "cityName": "栖霞",
-        "pinYin": "qixia",
-        "py": "qx",
-        "code": "370686"
-    },
-    {
-        "cityName": "祁县",
-        "pinYin": "qixian",
-        "py": "qx",
-        "code": "140727"
-    },
-    {
-        "cityName": "曲阜",
-        "pinYin": "qufu",
-        "py": "qf",
-        "code": "370881"
-    },
-    {
-        "cityName": "日照",
-        "pinYin": "rizhao",
-        "py": "rz",
-        "code": "371100"
-    },
-    {
-        "cityName": "日喀则",
-        "pinYin": "rikaze",
-        "py": "rikaze",
-        "code": "542300"
-    },
-    {
-        "cityName": "仁化县",
-        "pinYin": "renhuaxian",
-        "py": "rhx",
-        "code": "440224"
-    },
-    {
-        "cityName": "日月潭",
-        "pinYin": "riyuetan",
-        "py": "ryt",
-        "code": "100030"
-    },
-    {
-        "cityName": "瑞安",
-        "pinYin": "ruian",
-        "py": "ra",
-        "code": "330381"
-    },
-    {
-        "cityName": "瑞昌",
-        "pinYin": "ruichang",
-        "py": "rc",
-        "code": "360481"
-    },
-    {
-        "cityName": "芮城县",
-        "pinYin": "ruichengxian",
-        "py": "rcx",
-        "code": "140830"
-    },
-    {
-        "cityName": "瑞丽",
-        "pinYin": "ruili",
-        "py": "rl",
-        "code": "533102"
-    },
-    {
-        "cityName": "上海",
-        "pinYin": "shanghai",
-        "py": "sh",
-        "code": "310100"
-    },
-    {
-        "cityName": "三亚",
-        "pinYin": "sanya",
-        "py": "sy",
-        "code": "460200"
-    },
-    {
-        "cityName": "深圳",
-        "pinYin": "shenzhen",
-        "py": "sz",
-        "code": "440300"
-    },
-    {
-        "cityName": "苏州",
-        "pinYin": "suzhou",
-        "py": "sz",
-        "code": "320500"
-    },
-    {
-        "cityName": "沈阳",
-        "pinYin": "shenyang",
-        "py": "sy",
-        "code": "210100"
-    },
-    {
-        "cityName": "石家庄",
-        "pinYin": "shijiazhuang",
-        "py": "sjz",
-        "code": "130100"
-    },
-    {
-        "cityName": "绍兴",
-        "pinYin": "shaoxing",
-        "py": "sx",
-        "code": "330600"
-    },
-    {
-        "cityName": "汕头",
-        "pinYin": "shantou",
-        "py": "st",
-        "code": "440500"
-    },
-    {
-        "cityName": "上饶",
-        "pinYin": "shangrao",
-        "py": "sr",
-        "code": "361100"
-    },
-    {
-        "cityName": "韶关",
-        "pinYin": "shaoguan",
-        "py": "sg",
-        "code": "440200"
-    },
-    {
-        "cityName": "十堰",
-        "pinYin": "shiyan",
-        "py": "sy",
-        "code": "420300"
-    },
-    {
-        "cityName": "商丘",
-        "pinYin": "shangqiu",
-        "py": "sq",
-        "code": "411400"
-    },
-    {
-        "cityName": "汕尾",
-        "pinYin": "shanwei",
-        "py": "sw",
-        "code": "441500"
-    },
-    {
-        "cityName": "三明",
-        "pinYin": "sanming",
-        "py": "sm",
-        "code": "350400"
-    },
-    {
-        "cityName": "宿迁",
-        "pinYin": "suqian",
-        "py": "sq",
-        "code": "321300"
-    },
-    {
-        "cityName": "遂宁",
-        "pinYin": "suining",
-        "py": "sn",
-        "code": "510900"
-    },
-    {
-        "cityName": "宿州",
-        "pinYin": "suzhou",
-        "py": "sz",
-        "code": "341300"
-    },
-    {
-        "cityName": "邵阳",
-        "pinYin": "shaoyang",
-        "py": "sy",
-        "code": "430500"
-    },
-    {
-        "cityName": "三门峡",
-        "pinYin": "sanmenxia",
-        "py": "smx",
-        "code": "411200"
-    },
-    {
-        "cityName": "随州",
-        "pinYin": "suizhou",
-        "py": "sz",
-        "code": "421300"
-    },
-    {
-        "cityName": "四平",
-        "pinYin": "siping",
-        "py": "sp",
-        "code": "220300"
-    },
-    {
-        "cityName": "商洛",
-        "pinYin": "shangluo",
-        "py": "sn",
-        "code": "611000"
-    },
-    {
-        "cityName": "绥化",
-        "pinYin": "suihua",
-        "py": "hl",
-        "code": "231200"
-    },
-    {
-        "cityName": "朔州",
-        "pinYin": "shuozhou",
-        "py": "sz",
-        "code": "140600"
-    },
-    {
-        "cityName": "松原",
-        "pinYin": "songyuan",
-        "py": "sy",
-        "code": "220700"
-    },
-    {
-        "cityName": "神农架林区",
-        "pinYin": "shennongjialinqu",
-        "py": "snjlq",
-        "code": "429021"
-    },
-    {
-        "cityName": "石河子",
-        "pinYin": "shihezi",
-        "py": "shz",
-        "code": "659001"
-    },
-    {
-        "cityName": "石嘴山",
-        "pinYin": "shizuishan",
-        "py": "szs",
-        "code": "640200"
-    },
-    {
-        "cityName": "双鸭山",
-        "pinYin": "shuangyashan",
-        "py": "sys",
-        "code": "230500"
-    },
-    {
-        "cityName": "山南",
-        "pinYin": "shannandiqu",
-        "py": "sndq",
-        "code": "542200"
-    },
-    {
-        "cityName": "三河",
-        "pinYin": "sanhe",
-        "py": "sh",
-        "code": "131082"
-    },
-    {
-        "cityName": "三门县",
-        "pinYin": "sanmenxian",
-        "py": "smx",
-        "code": "331022"
-    },
-    {
-        "cityName": "三清山",
-        "pinYin": "sanqingshan",
-        "py": "sqs",
-        "code": "100022"
-    },
-    {
-        "cityName": "三亚湾",
-        "pinYin": "sanyawan",
-        "py": "syw",
-        "code": "100019"
-    },
-    {
-        "cityName": "上虞",
-        "pinYin": "shangyu",
-        "py": "sy",
-        "code": "330682"
-    },
-    {
-        "cityName": "山海关",
-        "pinYin": "shanhaiguan",
-        "py": "shg",
-        "code": "130303"
-    },
-    {
-        "cityName": "山阴县",
-        "pinYin": "shanyinxian",
-        "py": "syx",
-        "code": "140621"
-    },
-    {
-        "cityName": "韶山",
-        "pinYin": "shaoshan",
-        "py": "ss",
-        "code": "430382"
-    },
-    {
-        "cityName": "绍兴县",
-        "pinYin": "shaoxingxian",
-        "py": "sxx",
-        "code": "330621"
-    },
-    {
-        "cityName": "沙县",
-        "pinYin": "shaxian",
-        "py": "sx",
-        "code": "350427"
-    },
-    {
-        "cityName": "嵊泗",
-        "pinYin": "shengsixian",
-        "py": "ssx",
-        "code": "330922"
-    },
-    {
-        "cityName": "嵊州",
-        "pinYin": "shengzhou",
-        "py": "sz",
-        "code": "330683"
-    },
-    {
-        "cityName": "神木县",
-        "pinYin": "shenmuxian",
-        "py": "smx",
-        "code": "610821"
-    },
-    {
-        "cityName": "歙县",
-        "pinYin": "shexian",
-        "py": "sx",
-        "code": "341021"
-    },
-    {
-        "cityName": "石狮",
-        "pinYin": "shishi",
-        "py": "ss",
-        "code": "350581"
-    },
-    {
-        "cityName": "双廊",
-        "pinYin": "shuanglang",
-        "py": "sl",
-        "code": "100041"
-    },
-    {
-        "cityName": "束河古镇",
-        "pinYin": "shuheguzhen",
-        "py": "shgz",
-        "code": "100016"
-    },
-    {
-        "cityName": "四会",
-        "pinYin": "sihui",
-        "py": "sh",
-        "code": "441284"
-    },
-    {
-        "cityName": "思茅",
-        "pinYin": "simao",
-        "py": "sm",
-        "code": "530802"
-    },
-    {
-        "cityName": "遂昌",
-        "pinYin": "suichang",
-        "py": "sc",
-        "code": "331123"
-    },
-    {
-        "cityName": "绥中县",
-        "pinYin": "suizhongxian",
-        "py": "szx",
-        "code": "211421"
-    },
-    {
-        "cityName": "天津",
-        "pinYin": "tianjin",
-        "py": "tj",
-        "code": "120100"
-    },
-    {
-        "cityName": "太原",
-        "pinYin": "taiyuan",
-        "py": "ty",
-        "code": "140100"
-    },
-    {
-        "cityName": "台北",
-        "pinYin": "taibeishi",
-        "py": "tbs",
-        "code": "710100"
-    },
-    {
-        "cityName": "泰安",
-        "pinYin": "taian",
-        "py": "ta",
-        "code": "370900"
-    },
-    {
-        "cityName": "台州",
-        "pinYin": "taizhou",
-        "py": "tz",
-        "code": "331000"
-    },
-    {
-        "cityName": "唐山",
-        "pinYin": "tangshan",
-        "py": "ts",
-        "code": "130200"
-    },
-    {
-        "cityName": "泰州",
-        "pinYin": "taizhou",
-        "py": "tz",
-        "code": "321200"
-    },
-    {
-        "cityName": "天水",
-        "pinYin": "tianshui",
-        "py": "ts",
-        "code": "620500"
-    },
-    {
-        "cityName": "通辽",
-        "pinYin": "tongliao",
-        "py": "tl",
-        "code": "150500"
-    },
-    {
-        "cityName": "铜仁",
-        "pinYin": "tongren",
-        "py": "tr",
-        "code": "522200"
-    },
-    {
-        "cityName": "铜陵",
-        "pinYin": "tongling",
-        "py": "tl",
-        "code": "340700"
-    },
-    {
-        "cityName": "通化",
-        "pinYin": "tonghua",
-        "py": "th",
-        "code": "220500"
-    },
-    {
-        "cityName": "铁岭",
-        "pinYin": "tieling",
-        "py": "tl",
-        "code": "211200"
-    },
-    {
-        "cityName": "台中",
-        "pinYin": "taizhongshi",
-        "py": "tzs",
-        "code": "710400"
-    },
-    {
-        "cityName": "吐鲁番",
-        "pinYin": "tulufan",
-        "py": "tlf",
-        "code": "652100"
+      "code": "CZX",
+      "quanpin": "changzhou",
+      "name": "常州",
+      "duanpin": "cz"
     },
     {
-        "cityName": "铜川",
-        "pinYin": "tongchuan",
-        "py": "tc",
-        "code": "610200"
+      "code": "CHG",
+      "quanpin": "chaoyang",
+      "name": "朝阳",
+      "duanpin": "cy"
     },
     {
-        "cityName": "天门",
-        "pinYin": "tianmen",
-        "py": "tm",
-        "code": "429006"
+      "code": "CTU",
+      "quanpin": "chengdu",
+      "name": "成都",
+      "duanpin": "cd"
     },
     {
-        "cityName": "台南",
-        "pinYin": "tainanshi",
-        "py": "tns",
-        "code": "710300"
+      "code": "CIF",
+      "quanpin": "chifeng",
+      "name": "赤峰",
+      "duanpin": "cf"
     },
     {
-        "cityName": "塔城",
-        "pinYin": "tacheng",
-        "py": "tc",
-        "code": "654200"
+      "code": "CKG",
+      "quanpin": "chongqing",
+      "name": "重庆",
+      "duanpin": "cq"
     },
     {
-        "cityName": "桃园县",
-        "pinYin": "taoyuanxian",
-        "py": "tyx",
-        "code": "711400"
+      "code": "DLU",
+      "quanpin": "dali",
+      "name": "大理",
+      "duanpin": "dl"
     },
     {
-        "cityName": "台东县",
-        "pinYin": "taidongxian",
-        "py": "tdx",
-        "code": "712500"
+      "code": "DLC",
+      "quanpin": "dalian",
+      "name": "大连",
+      "duanpin": "dl"
     },
     {
-        "cityName": "台南县",
-        "pinYin": "tainanxian",
-        "py": "tnx",
-        "code": "712200"
+      "code": "DAT",
+      "quanpin": "datong",
+      "name": "大同",
+      "duanpin": "dt"
     },
     {
-        "cityName": "屯昌县",
-        "pinYin": "tunchang",
-        "py": "tc",
-        "code": "469026"
+      "code": "DAX",
+      "quanpin": "daxian",
+      "name": "达县",
+      "duanpin": "dx"
     },
     {
-        "cityName": "图木舒克",
-        "pinYin": "tumushuke",
-        "py": "tmsk",
-        "code": "659003"
+      "code": "DDG",
+      "quanpin": "dandong",
+      "name": "丹东",
+      "duanpin": "dd"
     },
     {
-        "cityName": "太仓",
-        "pinYin": "taicang",
-        "py": "tc",
-        "code": "320585"
+      "code": "LUM",
+      "quanpin": "dehongmangshi",
+      "name": "德宏芒市",
+      "duanpin": "dhms"
     },
     {
-        "cityName": "太湖县",
-        "pinYin": "taihuxian",
-        "py": "th",
-        "code": "340825"
+      "code": "ENH",
+      "quanpin": "enshi",
+      "name": "恩施",
+      "duanpin": "es"
     },
     {
-        "cityName": "泰山",
-        "pinYin": "taishan",
-        "py": "ts",
-        "code": "370902"
+      "code": "FUG",
+      "quanpin": "fuyang",
+      "name": "阜阳",
+      "duanpin": "fy"
     },
     {
-        "cityName": "台山",
-        "pinYin": "taishan",
-        "py": "ts",
-        "code": "440781"
+      "code": "FYN",
+      "quanpin": "fuyun",
+      "name": "富蕴",
+      "duanpin": "fy"
     },
     {
-        "cityName": "台湾",
-        "pinYin": "taiwan",
-        "py": "tw",
-        "code": "100035"
+      "code": "FOC",
+      "quanpin": "fuzhou",
+      "name": "福州",
+      "duanpin": "fz"
     },
     {
-        "cityName": "腾冲",
-        "pinYin": "tengchong",
-        "py": "tc",
-        "code": "530522"
+      "code": "KOW",
+      "quanpin": "ganzhou",
+      "name": "赣州",
+      "duanpin": "gz"
     },
     {
-        "cityName": "滕州",
-        "pinYin": "tengzhou",
-        "py": "tz",
-        "code": "370481"
+      "code": "GOQ",
+      "quanpin": "geermu",
+      "name": "格尔木",
+      "duanpin": "gem"
     },
     {
-        "cityName": "天台县",
-        "pinYin": "tiantaixian",
-        "py": "ttx",
-        "code": "331023"
+      "code": "GHN",
+      "quanpin": "guanghan",
+      "name": "广汉",
+      "duanpin": "gg"
     },
     {
-        "cityName": "同里",
-        "pinYin": "tongli",
-        "py": "tl",
-        "code": "100003"
+      "code": "CAN",
+      "quanpin": "guangzhou",
+      "name": "广州",
+      "duanpin": "gz"
     },
     {
-        "cityName": "桐庐县",
-        "pinYin": "tongluxian",
-        "py": "tlx",
-        "code": "330122"
+      "code": "KWL",
+      "quanpin": "guilin",
+      "name": "桂林",
+      "duanpin": "gl"
     },
     {
-        "cityName": "桐乡",
-        "pinYin": "tongxiang",
-        "py": "tx",
-        "code": "330483"
+      "code": "KWE",
+      "quanpin": "guiyang",
+      "name": "贵阳",
+      "duanpin": "gy"
     },
     {
-        "cityName": "屯溪",
-        "pinYin": "tunxi",
-        "py": "tx",
-        "code": "341002"
+      "code": "HMI",
+      "quanpin": "hami",
+      "name": "哈密",
+      "duanpin": "hm"
     },
     {
-        "cityName": "武汉",
-        "pinYin": "wuhan",
-        "py": "wh",
-        "code": "420100"
+      "code": "HRB",
+      "quanpin": "haerbin",
+      "name": "哈尔滨",
+      "duanpin": "heb"
     },
     {
-        "cityName": "无锡",
-        "pinYin": "wuxi",
-        "py": "wx",
-        "code": "320200"
+      "code": "HAK",
+      "quanpin": "haikou",
+      "name": "海口",
+      "duanpin": "hk"
     },
     {
-        "cityName": "温州",
-        "pinYin": "wenzhou",
-        "py": "wz",
-        "code": "330300"
+      "code": "HLD",
+      "quanpin": "hailaer",
+      "name": "海拉尔",
+      "duanpin": "hle"
     },
     {
-        "cityName": "乌鲁木齐",
-        "pinYin": "wulumuqi",
-        "py": "wlmq",
-        "code": "650100"
+      "code": "HZG",
+      "quanpin": "hanzhong",
+      "name": "汉中",
+      "duanpin": "hz"
     },
     {
-        "cityName": "威海",
-        "pinYin": "weihai",
-        "py": "wh",
-        "code": "371000"
+      "code": "HGH",
+      "quanpin": "hangzhou",
+      "name": "杭州",
+      "duanpin": "hz"
     },
     {
-        "cityName": "潍坊",
-        "pinYin": "weifang",
-        "py": "wf",
-        "code": "370700"
+      "code": "HFE",
+      "quanpin": "hefei",
+      "name": "合肥",
+      "duanpin": "hf"
     },
     {
-        "cityName": "芜湖",
-        "pinYin": "wuhu",
-        "py": "wh",
-        "code": "340200"
+      "code": "HTN",
+      "quanpin": "hetian",
+      "name": "和田",
+      "duanpin": "ht"
     },
     {
-        "cityName": "渭南",
-        "pinYin": "weinan",
-        "py": "wn",
-        "code": "610500"
+      "code": "HEK",
+      "quanpin": "heihe",
+      "name": "黑河",
+      "duanpin": "hh"
     },
     {
-        "cityName": "梧州",
-        "pinYin": "wuzhou",
-        "py": "wz",
-        "code": "450400"
+      "code": "HNY",
+      "quanpin": "hengyang",
+      "name": "衡阳",
+      "duanpin": "hy"
     },
     {
-        "cityName": "万宁",
-        "pinYin": "wangning",
-        "py": "wn",
-        "code": "469006"
+      "code": "HET",
+      "quanpin": "huhehaote",
+      "name": "呼和浩特",
+      "duanpin": "hhht"
     },
     {
-        "cityName": "文昌",
-        "pinYin": "wenchang",
-        "py": "wc",
-        "code": "469005"
+      "code": "TXN",
+      "quanpin": "huangshan",
+      "name": "黄山",
+      "duanpin": "hs"
     },
     {
-        "cityName": "武威",
-        "pinYin": "wuwei",
-        "py": "ww",
-        "code": "620600"
+      "code": "HYN",
+      "quanpin": "taizhouhuangyan",
+      "name": "台州黄岩",
+      "duanpin": "tzhy"
     },
     {
-        "cityName": "文山",
-        "pinYin": "wenshan",
-        "py": "ws",
-        "code": "532600"
+      "code": "JZH",
+      "quanpin": "jiuzhaigou",
+      "name": "九寨沟",
+      "duanpin": "jzg"
     },
     {
-        "cityName": "乌兰察布",
-        "pinYin": "wulanchabu",
-        "py": "wlcb",
-        "code": "150900"
+      "code": "KNC",
+      "quanpin": "jian",
+      "name": "吉安",
+      "duanpin": "ja"
     },
     {
-        "cityName": "乌海",
-        "pinYin": "wuhai",
-        "py": "wh",
-        "code": "150300"
+      "code": "JNG",
+      "quanpin": "jining",
+      "name": "济宁",
+      "duanpin": "jn"
     },
     {
-        "cityName": "五指山",
-        "pinYin": "wuzhishan",
-        "py": "wzs",
-        "code": "469001"
+      "code": "JIL",
+      "quanpin": "jiling",
+      "name": "吉林",
+      "duanpin": "jl"
     },
     {
-        "cityName": "吴忠",
-        "pinYin": "wuzhong",
-        "py": "wz",
-        "code": "640300"
+      "code": "TNA",
+      "quanpin": "jinan",
+      "name": "济南",
+      "duanpin": "jn"
     },
     {
-        "cityName": "五家渠",
-        "pinYin": "wujiaqu",
-        "py": "wjq",
-        "code": "659004"
+      "code": "JMU",
+      "quanpin": "jiamusi",
+      "name": "佳木斯",
+      "duanpin": "jms"
     },
     {
-        "cityName": "万州",
-        "pinYin": "wanzhou",
-        "py": "wz",
-        "code": "500101"
+      "code": "JGN",
+      "quanpin": "jiayuguan",
+      "name": "嘉峪关",
+      "duanpin": "jyg"
     },
     {
-        "cityName": "涠洲岛",
-        "pinYin": "weizhoudao",
-        "py": "wzd",
-        "code": "100039"
+      "code": "JJN",
+      "quanpin": "quanzhoujinjiang",
+      "name": "泉州晋江",
+      "duanpin": "qzjj"
     },
     {
-        "cityName": "温岭",
-        "pinYin": "wenling",
-        "py": "wl",
-        "code": "331081"
+      "code": "JNZ",
+      "quanpin": "jinzhou",
+      "name": "锦州",
+      "duanpin": "jz"
     },
     {
-        "cityName": "五大连池",
-        "pinYin": "wudalianchi",
-        "py": "wdlc",
-        "code": "231182"
+      "code": "JDZ",
+      "quanpin": "jingdezheng",
+      "name": "景德镇",
+      "duanpin": "jdz"
     },
     {
-        "cityName": "武当山",
-        "pinYin": "wudangshan",
-        "py": "wds",
-        "code": "100040"
+      "code": "JGS",
+      "quanpin": "jinggangshan",
+      "name": "井冈山",
+      "duanpin": "jgs"
     },
     {
-        "cityName": "吴江",
-        "pinYin": "wujiang",
-        "py": "wj",
-        "code": "320584"
+      "code": "JHG",
+      "quanpin": "xishuangbanna",
+      "name": "西双版纳",
+      "duanpin": "xsbn"
     },
     {
-        "cityName": "乌兰浩特",
-        "pinYin": "wulanhaote",
-        "py": "wlht",
-        "code": "152201"
+      "code": "JIU",
+      "quanpin": "jiujiang",
+      "name": "九江",
+      "duanpin": "jj"
     },
     {
-        "cityName": "巫山县",
-        "pinYin": "wushanxian",
-        "py": "wsx",
-        "code": "500237"
+      "code": "CHW",
+      "quanpin": "jiuquan",
+      "name": "酒泉",
+      "duanpin": "jq"
     },
     {
-        "cityName": "五台山",
-        "pinYin": "wutaishan",
-        "py": "wts",
-        "code": "100000"
+      "code": "JUZ",
+      "quanpin": "quzhou",
+      "name": "衢州",
+      "duanpin": "qz"
     },
     {
-        "cityName": "武夷山",
-        "pinYin": "wuyishan",
-        "py": "wys",
-        "code": "350782"
+      "code": "KHG",
+      "quanpin": "kashi",
+      "name": "喀什",
+      "duanpin": "ks"
     },
     {
-        "cityName": "武义县",
-        "pinYin": "wuyixian",
-        "py": "wyx",
-        "code": "330723"
+      "code": "KRY",
+      "quanpin": "kelamayi",
+      "name": "克拉玛依",
+      "duanpin": "klmy"
     },
     {
-        "cityName": "婺源县",
-        "pinYin": "wuyuanxian",
-        "py": "wyx",
-        "code": "361130"
+      "code": "KRL",
+      "quanpin": "kuerle",
+      "name": "库尔勒",
+      "duanpin": "kel"
     },
     {
-        "cityName": "乌镇",
-        "pinYin": "wuzhen",
-        "py": "wz",
-        "code": "100006"
+      "code": "KMG",
+      "quanpin": "kunming",
+      "name": "昆明",
+      "duanpin": "km"
     },
     {
-        "cityName": "厦门",
-        "pinYin": "xiamen",
-        "py": "xm",
-        "code": "350200"
+      "code": "KCA",
+      "quanpin": "kuche",
+      "name": "库车",
+      "duanpin": "kc"
     },
     {
-        "cityName": "香港",
-        "pinYin": "xianggang",
-        "py": "xg",
-        "code": "810100"
+      "code": "LHW",
+      "quanpin": "lanzhou",
+      "name": "兰州",
+      "duanpin": "lz"
     },
     {
-        "cityName": "西安",
-        "pinYin": "xian",
-        "py": "xa",
-        "code": "610100"
+      "code": "LXA",
+      "quanpin": "lasa",
+      "name": "拉萨",
+      "duanpin": "ls"
     },
     {
-        "cityName": "西宁",
-        "pinYin": "xining",
-        "py": "xn",
-        "code": "630100"
+      "code": "LJG",
+      "quanpin": "lijiang",
+      "name": "丽江",
+      "duanpin": "lj"
     },
     {
-        "cityName": "徐州",
-        "pinYin": "xuzhou",
-        "py": "xz",
-        "code": "320300"
+      "code": "RSU",
+      "quanpin": "lishui",
+      "name": "丽水",
+      "duanpin": "ls"
     },
     {
-        "cityName": "湘西土家族苗族自治州",
-        "pinYin": "xiangxitujiazumiaozuzizhizhou",
-        "py": "xxtjzmzzzz",
-        "code": "433100"
+      "code": "LYG",
+      "quanpin": "lianyungang",
+      "name": "连云港",
+      "duanpin": "lyg"
     },
     {
-        "cityName": "西双版纳",
-        "pinYin": "xishuangbanna",
-        "py": "xsbn",
-        "code": "532800"
+      "code": "LNJ",
+      "quanpin": "lincang",
+      "name": "临沧",
+      "duanpin": "lc"
     },
     {
-        "cityName": "咸阳",
-        "pinYin": "xianyang",
-        "py": "xy",
-        "code": "610400"
+      "code": "LYI",
+      "quanpin": "linyi",
+      "name": "临沂",
+      "duanpin": "ly"
     },
     {
-        "cityName": "新乡",
-        "pinYin": "xinxiang",
-        "py": "xx",
-        "code": "410700"
+      "code": "LZH",
+      "quanpin": "liuzhou",
+      "name": "柳州",
+      "duanpin": "lz"
     },
     {
-        "cityName": "信阳",
-        "pinYin": "xinyang",
-        "py": "xy",
-        "code": "411500"
+      "code": "LZO",
+      "quanpin": "luzhou",
+      "name": "泸州",
+      "duanpin": "lz"
     },
     {
-        "cityName": "襄樊",
-        "pinYin": "xiangfan",
-        "py": "xf",
-        "code": "420600"
+      "code": "LYA",
+      "quanpin": "luoyang",
+      "name": "洛阳",
+      "duanpin": "ly"
     },
     {
-        "cityName": "许昌",
-        "pinYin": "xuchang",
-        "py": "xc",
-        "code": "411000"
+      "code": "MIG",
+      "quanpin": "mianyang",
+      "name": "绵阳",
+      "duanpin": "my"
     },
     {
-        "cityName": "湘潭",
-        "pinYin": "xiangtan",
-        "py": "xt",
-        "code": "430300"
+      "code": "NZH",
+      "quanpin": "manzhouli",
+      "name": "满洲里",
+      "duanpin": "mzl"
     },
     {
-        "cityName": "邢台",
-        "pinYin": "xingtai",
-        "py": "xt",
-        "code": "130500"
+      "code": "MXZ",
+      "quanpin": "meixian",
+      "name": "梅县",
+      "duanpin": "mx"
     },
     {
-        "cityName": "孝感",
-        "pinYin": "xiaogan",
-        "py": "xg",
-        "code": "420900"
+      "code": "MDG",
+      "quanpin": "mudanjiang",
+      "name": "牡丹江",
+      "duanpin": "mdj"
     },
     {
-        "cityName": "咸宁",
-        "pinYin": "xianning",
-        "py": "xn",
-        "code": "421200"
+      "code": "KHN",
+      "quanpin": "nanchang",
+      "name": "南昌",
+      "duanpin": "nc"
     },
     {
-        "cityName": "忻州",
-        "pinYin": "xinzhou",
-        "py": "xz",
-        "code": "140900"
+      "code": "NAO",
+      "quanpin": "nanchong",
+      "name": "南充",
+      "duanpin": "nc"
     },
     {
-        "cityName": "宣城",
-        "pinYin": "xuancheng",
-        "py": "xc",
-        "code": "341800"
+      "code": "NKG",
+      "quanpin": "nanjing",
+      "name": "南京",
+      "duanpin": "nj"
     },
     {
-        "cityName": "新余",
-        "pinYin": "xinyu",
-        "py": "xy",
-        "code": "360500"
+      "code": "NNG",
+      "quanpin": "nanning",
+      "name": "南宁",
+      "duanpin": "nn"
     },
     {
-        "cityName": "仙桃",
-        "pinYin": "xiantao",
-        "py": "xt",
-        "code": "429004"
+      "code": "NTG",
+      "quanpin": "nantong",
+      "name": "南通",
+      "duanpin": "nt"
     },
     {
-        "cityName": "锡林郭勒盟",
-        "pinYin": "xilinguole",
-        "py": "xlgl",
-        "code": "152500"
+      "code": "NNY",
+      "quanpin": "nanyang",
+      "name": "南阳",
+      "duanpin": "ny"
     },
     {
-        "cityName": "兴安盟",
-        "pinYin": "xinganmeng",
-        "py": "xam",
-        "code": "152200"
+      "code": "NGB",
+      "quanpin": "ningbo",
+      "name": "宁波",
+      "duanpin": "nb"
     },
     {
-        "cityName": "新北",
-        "pinYin": "xinbeishi",
-        "py": "xbx",
-        "code": "711100"
+      "code": "PZI",
+      "quanpin": "panzhihua",
+      "name": "攀枝花",
+      "duanpin": "pzh"
     },
     {
-        "cityName": "新竹县",
-        "pinYin": "xinzhuxian",
-        "py": "xzx",
-        "code": "711300"
+      "code": "NDG",
+      "quanpin": "qiqihaer",
+      "name": "齐齐哈尔",
+      "duanpin": "qqhe"
     },
     {
-        "cityName": "新竹",
-        "pinYin": "xinzhushi",
-        "py": "xzs",
-        "code": "710800"
+      "code": "IQM",
+      "quanpin": "qiemo",
+      "name": "且末",
+      "duanpin": "qm"
     },
     {
-        "cityName": "西沙群岛",
-        "pinYin": "xishaqundaoxian",
-        "py": "xsqdx",
-        "code": "469037"
+      "code": "SHP",
+      "quanpin": "qinhuangdao",
+      "name": "秦皇岛",
+      "duanpin": "qhd"
     },
     {
-        "cityName": "香格里拉",
-        "pinYin": "xianggelila",
-        "py": "xgll",
-        "code": "533421"
+      "code": "TAO",
+      "quanpin": "qingdao",
+      "name": "青岛",
+      "duanpin": "qd"
     },
     {
-        "cityName": "象山县",
-        "pinYin": "xiangshanxian",
-        "py": "xsx",
-        "code": "330225"
+      "code": "IQN",
+      "quanpin": "qingyang",
+      "name": "庆阳",
+      "duanpin": "qy"
     },
     {
-        "cityName": "湘乡",
-        "pinYin": "xiangxiang",
-        "py": "xx",
-        "code": "430381"
+      "code": "SYX",
+      "quanpin": "sanya",
+      "name": "三亚",
+      "duanpin": "sy"
     },
     {
-        "cityName": "仙居县",
-        "pinYin": "xianjuxian",
-        "py": "xjx",
-        "code": "331024"
+      "code": "SHS",
+      "quanpin": "shashi",
+      "name": "沙市",
+      "duanpin": "ss"
     },
     {
-        "cityName": "西昌",
-        "pinYin": "xichang",
-        "py": "xc",
-        "code": "513401"
+      "code": "SWA",
+      "quanpin": "jieyang",
+      "name": "揭阳",
+      "duanpin": "jy"
     },
     {
-        "cityName": "锡林浩特",
-        "pinYin": "xilinhaote",
-        "py": "xlht",
-        "code": "152502"
+      "code": "SHA",
+      "quanpin": "shanghaihongqiao",
+      "name": "上海虹桥",
+      "duanpin": "sshq"
     },
     {
-        "cityName": "新昌县",
-        "pinYin": "xinchangxian",
-        "py": "xcx",
-        "code": "330624"
+      "code": "PVG",
+      "quanpin": "shanghaipudong",
+      "name": "上海浦东",
+      "duanpin": "sspd"
     },
     {
-        "cityName": "兴城",
-        "pinYin": "xingcheng",
-        "py": "xc",
-        "code": "211481"
+      "code": "SHE",
+      "quanpin": "shenyang",
+      "name": "沈阳",
+      "duanpin": "sy"
     },
     {
-        "cityName": "兴隆县",
-        "pinYin": "xinglongxian",
-        "py": "xlx",
-        "code": "130822"
+      "code": "SZX",
+      "quanpin": "shenzhen",
+      "name": "深圳",
+      "duanpin": "sz"
     },
     {
-        "cityName": "兴宁",
-        "pinYin": "xingning",
-        "py": "xn",
-        "code": "441481"
+      "code": "SJW",
+      "quanpin": "shijiazhuang",
+      "name": "石家庄",
+      "duanpin": "sjz"
     },
     {
-        "cityName": "荥阳",
-        "pinYin": "xingyang",
-        "py": "xy",
-        "code": "410182"
+      "code": "SYM",
+      "quanpin": "simao",
+      "name": "思茅",
+      "duanpin": "sm"
     },
     {
-        "cityName": "兴义",
-        "pinYin": "xingyi",
-        "py": "xy",
-        "code": "522301"
+      "code": "TCG",
+      "quanpin": "tacheng",
+      "name": "塔城",
+      "duanpin": "tc"
     },
     {
-        "cityName": "新密",
-        "pinYin": "xinmi",
-        "py": "xm",
-        "code": "410183"
+      "code": "TYN",
+      "quanpin": "taiyuan",
+      "name": "太原",
+      "duanpin": "ty"
     },
     {
-        "cityName": "新民",
-        "pinYin": "xinmin",
-        "py": "xm",
-        "code": "210181"
+      "code": "TSN",
+      "quanpin": "tianjin",
+      "name": "天津",
+      "duanpin": "tj"
     },
     {
-        "cityName": "新郑",
-        "pinYin": "xinzheng",
-        "py": "xz",
-        "code": "410184"
+      "code": "TNH",
+      "quanpin": "tonghua",
+      "name": "通化",
+      "duanpin": "th"
     },
     {
-        "cityName": "西塘",
-        "pinYin": "xitang",
-        "py": "xt",
-        "code": "100005"
+      "code": "TGO",
+      "quanpin": "tongliao",
+      "name": "通辽",
+      "duanpin": "tl"
     },
     {
-        "cityName": "休宁县",
-        "pinYin": "xiuningxian",
-        "py": "xnx",
-        "code": "341022"
+      "code": "TEN",
+      "quanpin": "tongren",
+      "name": "铜仁",
+      "duanpin": "tr"
     },
     {
-        "cityName": "巽寮湾",
-        "pinYin": "xunliaowan",
-        "py": "xlw",
-        "code": "100031"
+      "code": "HLH",
+      "quanpin": "wulanhaote",
+      "name": "乌兰浩特",
+      "duanpin": "wlht"
     },
     {
-        "cityName": "盱眙县",
-        "pinYin": "xuyixian",
-        "py": "xyx",
-        "code": "320830"
+      "code": "URC",
+      "quanpin": "wulumuqi",
+      "name": "乌鲁木齐",
+      "duanpin": "wlmq"
     },
     {
-        "cityName": "阳江",
-        "pinYin": "yangjiang",
-        "py": "yj",
-        "code": "441700"
+      "code": "WXN",
+      "quanpin": "wanzhou",
+      "name": "万州",
+      "duanpin": "wz"
     },
     {
-        "cityName": "烟台",
-        "pinYin": "yantai",
-        "py": "yt",
-        "code": "370600"
+      "code": "WEF",
+      "quanpin": "weifang",
+      "name": "潍坊",
+      "duanpin": "wf"
     },
     {
-        "cityName": "扬州",
-        "pinYin": "yangzhou",
-        "py": "yz",
-        "code": "321000"
+      "code": "WEH",
+      "quanpin": "weihai",
+      "name": "威海",
+      "duanpin": "wh"
     },
     {
-        "cityName": "宜昌",
-        "pinYin": "yichang",
-        "py": "yc",
-        "code": "420500"
+      "code": "WNH",
+      "quanpin": "wenshan",
+      "name": "文山",
+      "duanpin": "ws"
     },
     {
-        "cityName": "银川",
-        "pinYin": "yinchuan",
-        "py": "yc",
-        "code": "640100"
+      "code": "WNZ",
+      "quanpin": "wenzhou",
+      "name": "温州",
+      "duanpin": "wz"
     },
     {
-        "cityName": "盐城",
-        "pinYin": "yancheng",
-        "py": "yc",
-        "code": "320900"
+      "code": "WUA",
+      "quanpin": "wuhai",
+      "name": "乌海",
+      "duanpin": "wh"
     },
     {
-        "cityName": "玉溪",
-        "pinYin": "yuxi",
-        "py": "yx",
-        "code": "530400"
+      "code": "WUH",
+      "quanpin": "wuhan",
+      "name": "武汉",
+      "duanpin": "wh"
     },
     {
-        "cityName": "岳阳",
-        "pinYin": "yueyang",
-        "py": "yy",
-        "code": "430600"
+      "code": "WUX",
+      "quanpin": "wuxi",
+      "name": "无锡",
+      "duanpin": "wx"
     },
     {
-        "cityName": "宜春",
-        "pinYin": "yichun",
-        "py": "yc",
-        "code": "360900"
+      "code": "WUS",
+      "quanpin": "wuyishan",
+      "name": "武夷山",
+      "duanpin": "wys"
     },
     {
-        "cityName": "宜宾",
-        "pinYin": "yibin",
-        "py": "yb",
-        "code": "511500"
+      "code": "WUZ",
+      "quanpin": "wuzhou",
+      "name": "梧州",
+      "duanpin": "wz"
     },
     {
-        "cityName": "榆林",
-        "pinYin": "yulin",
-        "py": "yl",
-        "code": "610800"
+      "code": "XIY",
+      "quanpin": "xian",
+      "name": "西安",
+      "duanpin": "xa"
     },
     {
-        "cityName": "营口",
-        "pinYin": "yingkou",
-        "py": "yk",
-        "code": "210800"
+      "code": "XIC",
+      "quanpin": "nanchang",
+      "name": "西昌",
+      "duanpin": "nc"
     },
     {
-        "cityName": "运城",
-        "pinYin": "yuncheng",
-        "py": "yc",
-        "code": "140800"
+      "code": "XNN",
+      "quanpin": "xining",
+      "name": "西宁",
+      "duanpin": "xn"
     },
     {
-        "cityName": "延安",
-        "pinYin": "yanan",
-        "py": "ya",
-        "code": "610600"
+      "code": "XIL",
+      "quanpin": "xilinhaote",
+      "name": "锡林浩特",
+      "duanpin": "xlht"
     },
     {
-        "cityName": "玉林",
-        "pinYin": "yulin",
-        "py": "yl",
-        "code": "450900"
+      "code": "XMN",
+      "quanpin": "xiamen",
+      "name": "厦门",
+      "duanpin": "xm"
     },
     {
-        "cityName": "雅安",
-        "pinYin": "yaan",
-        "py": "hy",
-        "code": "511800"
+      "code": "XFN",
+      "quanpin": "xiangfan",
+      "name": "襄樊",
+      "duanpin": "xf"
     },
     {
-        "cityName": "延吉",
-        "pinYin": "yanji",
-        "py": "yj",
-        "code": "222400"
+      "code": "XUZ",
+      "quanpin": "xuzhou",
+      "name": "徐州",
+      "duanpin": "xz"
     },
     {
-        "cityName": "永州",
-        "pinYin": "yongzhou",
-        "py": "yz",
-        "code": "431100"
+      "code": "ENY",
+      "quanpin": "yanan",
+      "name": "延安",
+      "duanpin": "ya"
     },
     {
-        "cityName": "鹰潭",
-        "pinYin": "yingtan",
-        "py": "yt",
-        "code": "360600"
+      "code": "YNZ",
+      "quanpin": "yancheng",
+      "name": "盐城",
+      "duanpin": "yc"
     },
     {
-        "cityName": "益阳",
-        "pinYin": "yiyang",
-        "py": "yy",
-        "code": "430900"
+      "code": "YNJ",
+      "quanpin": "yanji",
+      "name": "延吉",
+      "duanpin": "yj"
     },
     {
-        "cityName": "伊犁哈萨克自治州",
-        "pinYin": "yilihasakezizhizhou",
-        "py": "ylhskzzz",
-        "code": "654000"
+      "code": "YNT",
+      "quanpin": "yantai",
+      "name": "烟台",
+      "duanpin": "yt"
     },
     {
-        "cityName": "云浮",
-        "pinYin": "yunfu",
-        "py": "yf",
-        "code": "445300"
+      "code": "YBP",
+      "quanpin": "yibin",
+      "name": "宜宾",
+      "duanpin": "yb"
     },
     {
-        "cityName": "阳泉",
-        "pinYin": "yangquan",
-        "py": "yq",
-        "code": "140300"
+      "code": "YIH",
+      "quanpin": "yichang",
+      "name": "宜昌",
+      "duanpin": "yc"
     },
     {
-        "cityName": "伊春",
-        "pinYin": "yichun",
-        "py": "yc",
-        "code": "230700"
+      "code": "YIN",
+      "quanpin": "yining",
+      "name": "伊宁",
+      "duanpin": "yn"
     },
     {
-        "cityName": "宜兰县",
-        "pinYin": "yilanxian",
-        "py": "ylx",
-        "code": "711200"
+      "code": "YIW",
+      "quanpin": "yiwu",
+      "name": "义乌",
+      "duanpin": "yw"
     },
     {
-        "cityName": "玉树",
-        "pinYin": "yushu",
-        "py": "kc",
-        "code": "632700"
+      "code": "INC",
+      "quanpin": "yinchuang",
+      "name": "银川",
+      "duanpin": "yc"
     },
     {
-        "cityName": "云林县",
-        "pinYin": "yunlinxian",
-        "py": "ylx",
-        "code": "712100"
+      "code": "ENE",
+      "quanpin": "yingde",
+      "name": "英德",
+      "duanpin": "yd"
     },
     {
-        "cityName": "亚布力",
-        "pinYin": "yabuli",
-        "py": "ybl",
-        "code": "100025"
+      "code": "LLF",
+      "quanpin": "yongzhou",
+      "name": "永州",
+      "duanpin": "yz"
     },
     {
-        "cityName": "牙克石",
-        "pinYin": "yakeshi",
-        "py": "yks",
-        "code": "150782"
+      "code": "UYN",
+      "quanpin": "yulin",
+      "name": "榆林",
+      "duanpin": "yl"
     },
     {
-        "cityName": "亚龙湾",
-        "pinYin": "yalongwan",
-        "py": "ylw",
-        "code": "100020"
+      "code": "ZHA",
+      "quanpin": "zhanjiang",
+      "name": "湛江",
+      "duanpin": "zj"
     },
     {
-        "cityName": "雁荡山",
-        "pinYin": "yandangshan",
-        "py": "yds",
-        "code": "100004"
+      "code": "DYG",
+      "quanpin": "zhangjiajie",
+      "name": "张家界",
+      "duanpin": "zjj"
     },
     {
-        "cityName": "阳朔",
-        "pinYin": "yangshuoxian",
-        "py": "ysx",
-        "code": "450321"
+      "code": "ZAT",
+      "quanpin": "zhaotong",
+      "name": "昭通",
+      "duanpin": "zt"
     },
     {
-        "cityName": "扬中",
-        "pinYin": "yangzhong",
-        "py": "yz",
-        "code": "321182"
+      "code": "CGO",
+      "quanpin": "zhengzhou",
+      "name": "郑州",
+      "duanpin": "zz"
     },
     {
-        "cityName": "偃师",
-        "pinYin": "yanshi",
-        "py": "ys",
-        "code": "410381"
+      "code": "HJJ",
+      "quanpin": "zhijiang",
+      "name": "芷江",
+      "duanpin": "zj"
     },
     {
-        "cityName": "兖州",
-        "pinYin": "yanzhou",
-        "py": "yz",
-        "code": "370882"
+      "code": "DIG",
+      "quanpin": "diqingxianggelila",
+      "name": "迪庆香格里拉",
+      "duanpin": "dqxgll"
     },
     {
-        "cityName": "宜都",
-        "pinYin": "yidu",
-        "py": "yd",
-        "code": "420581"
+      "code": "HSN",
+      "quanpin": "zhoushan",
+      "name": "舟山",
+      "duanpin": "zs"
     },
     {
-        "cityName": "义马",
-        "pinYin": "yima",
-        "py": "ym",
-        "code": "411281"
+      "code": "ZUH",
+      "quanpin": "zhuhai",
+      "name": "珠海",
+      "duanpin": "zh"
     },
     {
-        "cityName": "英德",
-        "pinYin": "yingde",
-        "py": "yd",
-        "code": "441881"
+      "code": "ZYI",
+      "quanpin": "zunyi",
+      "name": "遵义",
+      "duanpin": "zy"
     },
     {
-        "cityName": "应县",
-        "pinYin": "yingxian",
-        "py": "yx",
-        "code": "140622"
+      "code": "GYS",
+      "quanpin": "guangyuan",
+      "name": "广元",
+      "duanpin": "gy"
     },
     {
-        "cityName": "伊宁",
-        "pinYin": "yining",
-        "py": "yn",
-        "code": "654002"
+      "code": "DNH",
+      "quanpin": "dunhuang",
+      "name": "敦煌",
+      "duanpin": "dh"
     },
     {
-        "cityName": "义乌",
-        "pinYin": "yiwu",
-        "py": "yw",
-        "code": "330782"
+      "code": "BPX",
+      "quanpin": "changdu",
+      "name": "昌都",
+      "duanpin": "cd"
     },
     {
-        "cityName": "黟县",
-        "pinYin": "yixian",
-        "py": "yx",
-        "code": "341023"
+      "code": "YCU",
+      "quanpin": "yuncheng",
+      "name": "运城",
+      "duanpin": "yc"
     },
     {
-        "cityName": "宜兴",
-        "pinYin": "yixing",
-        "py": "yx",
-        "code": "320282"
+      "code": "ACX",
+      "quanpin": "xingyi",
+      "name": "兴义",
+      "duanpin": "xy"
     },
     {
-        "cityName": "永安",
-        "pinYin": "yongan",
-        "py": "ya",
-        "code": "350481"
+      "code": "DSN",
+      "quanpin": "eerduosi",
+      "name": "鄂尔多斯",
+      "duanpin": "eeds"
     },
     {
-        "cityName": "永城",
-        "pinYin": "yongcheng",
-        "py": "yc",
-        "code": "411481"
+      "code": "DOY",
+      "quanpin": "dongying",
+      "name": "东营",
+      "duanpin": "dy"
     },
     {
-        "cityName": "永济",
-        "pinYin": "yongji",
-        "py": "yj",
-        "code": "140881"
+      "code": "HDG",
+      "quanpin": "handan",
+      "name": "邯郸",
+      "duanpin": "hd"
     },
     {
-        "cityName": "永康",
-        "pinYin": "yongkang",
-        "py": "yk",
-        "code": "330784"
+      "code": "LCX",
+      "quanpin": "liancheng",
+      "name": "连城",
+      "duanpin": "lc"
     },
     {
-        "cityName": "右玉县",
-        "pinYin": "youyuxian",
-        "py": "yyx",
-        "code": "140623"
+      "code": "999",
+      "quanpin": "quanguo",
+      "name": "全国",
+      "duanpin": "qg"
     },
     {
-        "cityName": "禹城",
-        "pinYin": "yucheng",
-        "py": "yc",
-        "code": "371482"
+      "code": "OHE",
+      "quanpin": "mohe",
+      "name": "漠河",
+      "duanpin": "mh"
     },
     {
-        "cityName": "玉环县",
-        "pinYin": "yuhuanxian",
-        "py": "yhx",
-        "code": "331021"
+      "code": "LZY",
+      "quanpin": "linzhi",
+      "name": "林芝",
+      "duanpin": "lz"
     },
     {
-        "cityName": "玉门",
-        "pinYin": "yumen",
-        "py": "ym",
-        "code": "620981"
+      "code": "KJI",
+      "quanpin": "kanasi",
+      "name": "喀纳斯",
+      "duanpin": "kns"
     },
     {
-        "cityName": "余姚",
-        "pinYin": "yuyao",
-        "py": "yy",
-        "code": "330281"
+      "code": "NBS",
+      "quanpin": "changbaishan",
+      "name": "长白山",
+      "duanpin": "cbs"
     },
     {
-        "cityName": "禹州",
-        "pinYin": "yuzhou",
-        "py": "yz",
-        "code": "411081"
+      "code": "AEB",
+      "quanpin": "baise",
+      "name": "百色",
+      "duanpin": "bs"
     },
     {
-        "cityName": "郑州",
-        "pinYin": "zhengzhou",
-        "py": "zz",
-        "code": "410100"
+      "code": "THQ",
+      "quanpin": "tianshui",
+      "name": "天水",
+      "duanpin": "ts"
     },
     {
-        "cityName": "珠海",
-        "pinYin": "zhuhai",
-        "py": "zh",
-        "code": "440400"
+      "code": "LLB",
+      "quanpin": "libo",
+      "name": "荔波",
+      "duanpin": "lb"
     },
     {
-        "cityName": "舟山",
-        "pinYin": "zhoushan",
-        "py": "zs",
-        "code": "330900"
+      "code": "HZH",
+      "quanpin": "liping",
+      "name": "黎平",
+      "duanpin": "lp"
     },
     {
-        "cityName": "张家界",
-        "pinYin": "zhangjiajie",
-        "py": "zjj",
-        "code": "430800"
+      "code": "TCZ",
+      "quanpin": "techong",
+      "name": "腾冲",
+      "duanpin": "tc"
     },
     {
-        "cityName": "中山",
-        "pinYin": "zhongshan",
-        "py": "ds",
-        "code": "442000"
+      "code": "ZHY",
+      "quanpin": "zhongwei",
+      "name": "中卫",
+      "duanpin": "zw"
     },
     {
-        "cityName": "漳州",
-        "pinYin": "zhangzhou",
-        "py": "zz",
-        "code": "350600"
+      "code": "NLT",
+      "quanpin": "nalati",
+      "name": "那拉提",
+      "duanpin": "nlt"
     },
     {
-        "cityName": "湛江",
-        "pinYin": "zhanjiang",
-        "py": "zj",
-        "code": "440800"
+      "code": "KGT",
+      "quanpin": "kangding",
+      "name": "康定",
+      "duanpin": "kd"
     },
     {
-        "cityName": "镇江",
-        "pinYin": "zhenjiang",
-        "py": "zj",
-        "code": "321100"
+      "code": "DQA",
+      "quanpin": "daqing",
+      "name": "大庆",
+      "duanpin": "dq"
     },
     {
-        "cityName": "淄博",
-        "pinYin": "zibo",
-        "py": "zb",
-        "code": "370300"
+      "code": "YUS",
+      "quanpin": "yushu",
+      "name": "玉树",
+      "duanpin": "ys"
     },
     {
-        "cityName": "肇庆",
-        "pinYin": "zhaoqing",
-        "py": "zq",
-        "code": "441200"
+      "code": "JXA",
+      "quanpin": "jixi",
+      "name": "鸡西",
+      "duanpin": "jx"
     },
     {
-        "cityName": "株洲",
-        "pinYin": "zhuzhou",
-        "py": "zz",
-        "code": "430200"
+      "code": "FUO",
+      "quanpin": "foushan",
+      "name": "佛山",
+      "duanpin": "fs"
     },
     {
-        "cityName": "遵义",
-        "pinYin": "zunyi",
-        "py": "zy",
-        "code": "520300"
+      "code": "ERL",
+      "quanpin": "erlianhaote",
+      "name": "二连浩特",
+      "duanpin": "elht"
     },
     {
-        "cityName": "张家口",
-        "pinYin": "zhangjiakou",
-        "py": "zjk",
-        "code": "130700"
+      "code": "AOG",
+      "quanpin": "anshan",
+      "name": "鞍山",
+      "duanpin": "as"
     },
     {
-        "cityName": "枣庄",
-        "pinYin": "zaozhuang",
-        "py": "zz",
-        "code": "370400"
+      "code": "GYU",
+      "quanpin": "guyuanliupanshan",
+      "name": "固原六盘山",
+      "duanpin": "gylps"
     },
     {
-        "cityName": "驻马店",
-        "pinYin": "zhumadian",
-        "py": "zmd",
-        "code": "411700"
+      "code": "LDS",
+      "quanpin": "yichunlindu",
+      "name": "伊春林都",
+      "duanpin": "ycld"
     },
     {
-        "cityName": "周口",
-        "pinYin": "zhoukou",
-        "py": "zk",
-        "code": "411600"
+      "code": "TVS",
+      "quanpin": "tangshan",
+      "name": "唐山",
+      "duanpin": "ts"
     },
     {
-        "cityName": "张掖",
-        "pinYin": "zhangye",
-        "py": "zy",
-        "code": "620700"
+      "code": "HIA",
+      "quanpin": "huaian",
+      "name": "淮安",
+      "duanpin": "ha"
     },
     {
-        "cityName": "自贡",
-        "pinYin": "zigong",
-        "py": "zg",
-        "code": "510300"
+      "code": "JIQ",
+      "quanpin": "chongqingzhoubai",
+      "name": "重庆舟白",
+      "duanpin": "cqzb"
     },
     {
-        "cityName": "中卫",
-        "pinYin": "zhongwei",
-        "py": "zw",
-        "code": "640500"
+      "code": "BPL",
+      "quanpin": "xinjiangbole",
+      "name": "新疆博乐",
+      "duanpin": "xjbl"
     },
     {
-        "cityName": "昭通",
-        "pinYin": "zhaotong",
-        "py": "zt",
-        "code": "530600"
+      "code": "RKZ",
+      "quanpin": "rikaze",
+      "name": "日喀则",
+      "duanpin": "rkz"
     },
     {
-        "cityName": "资阳",
-        "pinYin": "ziyang",
-        "py": "zy",
-        "code": "512000"
+      "code": "NGQ",
+      "quanpin": "ali",
+      "name": "阿里",
+      "duanpin": "al"
     },
     {
-        "cityName": "彰化县",
-        "pinYin": "zhanghuaxian",
-        "py": "zhx",
-        "code": "711700"
+      "code": "JIC",
+      "quanpin": "jinchang",
+      "name": "金昌",
+      "duanpin": "jc"
     },
     {
-        "cityName": "中沙群岛的岛礁及其海域",
-        "pinYin": "zhongshaqundaodidaojiaojiqihaiyu",
-        "py": "zsqdddjjqhy",
-        "code": "469039"
+      "code": "AVA",
+      "quanpin": "anshun",
+      "name": "安顺",
+      "duanpin": "as"
     },
     {
-        "cityName": "扎兰屯",
-        "pinYin": "zalantun",
-        "py": "zlt",
-        "code": "150783"
+      "code": "YZY",
+      "quanpin": "zhangye",
+      "name": "张掖",
+      "duanpin": "zy"
     },
     {
-        "cityName": "增城",
-        "pinYin": "zengcheng",
-        "py": "zc",
-        "code": "440183"
+      "code": "RLK",
+      "quanpin": "bayannaoer",
+      "name": "巴彦淖尔",
+      "duanpin": "byne"
     },
     {
-        "cityName": "曾厝垵",
-        "pinYin": "zengcuoan",
-        "py": "zca",
-        "code": "100042"
+      "code": "YIE",
+      "quanpin": "baershan",
+      "name": "阿尔山",
+      "duanpin": "bes"
     },
     {
-        "cityName": "张家港",
-        "pinYin": "zhangjiagang",
-        "py": "zjg",
-        "code": "320582"
+      "code": "YTY",
+      "quanpin": "yangzhou",
+      "name": "扬州",
+      "duanpin": "yz"
     },
     {
-        "cityName": "漳平",
-        "pinYin": "zhangping",
-        "py": "zp",
-        "code": "350881"
+      "code": "JGD",
+      "quanpin": "jiagedaqi",
+      "name": "加格达奇",
+      "duanpin": "jgdq"
     },
     {
-        "cityName": "赵县",
-        "pinYin": "zhaoxian",
-        "py": "zx",
-        "code": "130133"
+      "code": "ZQZ",
+      "quanpin": "zhangjiakoujichang",
+      "name": "张家口机场",
+      "duanpin": "zjkjc"
     },
     {
-        "cityName": "招远",
-        "pinYin": "zhaoyuan",
-        "py": "zy",
-        "code": "370685"
+      "code": "YIC",
+      "quanpin": "yichun",
+      "name": "宜春",
+      "duanpin": "yc"
     },
     {
-        "cityName": "镇宁布依族苗族自治县",
-        "pinYin": "zhenningbuyizumiaozuzizhixian",
-        "py": "znbyzmzzzx",
-        "code": "520423"
+      "code": "TLQ",
+      "quanpin": "tulufan",
+      "name": "吐鲁番",
+      "duanpin": "tlf"
     },
     {
-        "cityName": "枝江",
-        "pinYin": "zhijiang",
-        "py": "zj",
-        "code": "420583"
+      "code": "BFJ",
+      "quanpin": "bijie",
+      "name": "毕节",
+      "duanpin": "bj"
     },
     {
-        "cityName": "芷江",
-        "pinYin": "zhijiangdongzuzizhixian",
-        "py": "zjdzzzx",
-        "code": "431228"
+      "code": "JUH",
+      "quanpin": "chizhoujiuhuashanjichan",
+      "name": "池州九华山机场",
+      "duanpin": "czjhsjc"
     },
     {
-        "cityName": "周庄",
-        "pinYin": "zhouzhuang",
-        "py": "zz",
-        "code": "100002"
+      "code": "DCY",
+      "quanpin": "daochengyading",
+      "name": "稻城亚丁",
+      "duanpin": "dcyd"
     },
     {
-        "cityName": "诸暨",
-        "pinYin": "zhuji",
-        "py": "zj",
-        "code": "330681"
+      "code": "GXH",
+      "quanpin": "xiahe",
+      "name": "夏河",
+      "duanpin": "xh"
     },
     {
-        "cityName": "朱家尖",
-        "pinYin": "zhujiajian",
-        "py": "zjj",
-        "code": "100043"
+      "code": "KJH",
+      "quanpin": "kailihuangpingjichang",
+      "name": "凯里黄平机场",
+      "duanpin": "klhpjc"
     },
     {
-        "cityName": "涿州",
-        "pinYin": "zhuozhou",
-        "py": "zz",
-        "code": "130681"
+      "code": "AXF",
+      "quanpin": "alashanzuoqi",
+      "name": "阿拉善左旗",
+      "duanpin": "alszq"
     },
     {
-        "cityName": "邹城",
-        "pinYin": "zoucheng",
-        "py": "zc",
-        "code": "370883"
+      "code": "RHT",
+      "quanpin": "alashanyouqi",
+      "name": "阿拉善右旗",
+      "duanpin": "alsyq"
     },
     {
-        "cityName": "遵化",
-        "pinYin": "zunhua",
-        "py": "zh",
-        "code": "130281"
+      "code": "EJN",
+      "quanpin": "ejinaqi",
+      "name": "额济纳旗",
+      "duanpin": "ejnq"
     }]
+  }
 }
