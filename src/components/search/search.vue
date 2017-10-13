@@ -54,10 +54,12 @@
                         <div class="text data">{{currentDate}}</div>
                         <div class="week">今天</div>
                     </div>
-                    <div class="type-choose cell-inner">
+                    <div class="type-choose cell-inner" @click="showPicker(0)" ref="select0">
                         <div class="gray-tit">舱位选择</div>
-                        <div class="text">经济舱</div>
+                        <div class="text"></div>
                     </div>
+                    <picker @select="handleSelect(0,arguments)" :selected-index="selectedIndex[0]"
+              ref="picker0" ></picker>
                     <div class="search-btn">
                         <button class="submit" @click="toSearch">开始搜索</button>
                     </div>
@@ -111,17 +113,23 @@
     import pageCalendar from 'base/page-calendar/index';
     import ListView from 'base/listview/listview';
     import SearchBar from 'base/searchbar/searchbar';
+    import Picker from 'base/picker/picker';
     import City from 'common/js/City';
     import {getCityList} from 'api/api';
     // import {ERR_OK} from 'api/config';
     const HOT_NAME = '热门';
+    let data1 = [
+        {text: '经济舱', value: 1},
+        {text: '头等舱', value: 2}
+    ];
     export default {
         components: {
             slider,
             Tab,
             pageCalendar,
             ListView,
-            SearchBar
+            SearchBar,
+            Picker
         },
         data: () => ({
             banners: [
@@ -157,9 +165,19 @@
             ],
             cities: [],
             showCityList: false,
-            value: ''
+            value: '',
+            data: [[data1]],
+            selectedIndex: [[0], [1, 0], [0, 1, 2], [0, 0, 0]]
         }),
         methods: {
+            showPicker(index) {
+                let picker = this.$refs['picker' + index];
+
+                picker.show();
+            },
+            handleSelect(index, arg) {
+                console.log(arg);
+            },
             wxcPageCalendarDateSelected (e) {
                 this.selectedDate = e.date;
                 this.currentDate = e.date;
@@ -263,6 +281,9 @@
         },
         created() {
             this._getCityList();
+        },
+        mounted() {
+            this.$refs.picker0.setData([data1]);
         }
     };
 </script>

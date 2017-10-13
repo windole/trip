@@ -1,20 +1,5 @@
 <template>
-    <div class="music-list">
-        <div class="back" @click="back">
-            <i class="icon-back"></i>
-        </div>
-        <h1 class="title" v-html="title"></h1>
-        <!-- 动态设置这里的背景图片 -->
-        <div class="bg-image" :style="bgStyle" ref="bgImage">
-            <div class="play-wrapper">
-                <div class="play" v-show="songs.length > 0" ref="playBtn">
-                    <i class="icon-play"></i>
-                    <span class="text">随机播放全部</span>
-                </div>
-            </div>
-            <div class="filter" ref="filter"></div>
-        </div>
-        <div class="bg-layer" ref="layer"></div>
+    <div class="airlines-list">
         <scroll :data="songs"
             class="list"
             ref="scroll"
@@ -22,7 +7,7 @@
             :listen-scroll="listenScroll"
             @scroll="handleScroll"
         >
-            <div class="song-list-wrapper">
+            <div class="airlines-list-wrapper">
                 <song-list :songs="songs" @select="handleSelectMusic"></song-list>
             </div>
             <div class="loading-container" v-show="!songs.length"></div>
@@ -47,25 +32,6 @@
                 scrollY: 0
             };
         },
-        props: {
-            songs: {
-                type: Array,
-                default: []
-            },
-            title: {
-                type: String,
-                default: ''
-            },
-            bgImage: {
-                type: String,
-                default: ''
-            }
-        },
-        computed: {
-            bgStyle() {
-                return `background-image: url(${this.bgImage})`;
-            }
-        },
         components: {
             SongList,
             Scroll,
@@ -79,26 +45,9 @@
             this.haveSetBgImage = false;
             this.lastY = 0;
         },
-        mounted() {
-            const {scroll, bgImage} = this.$refs;
-            const clientHeight = bgImage.clientHeight;
-            this.clientHeight = clientHeight;
-            // layer往上走最大的距离，如果比这个大就取这个，这是一个负数
-            this.maxScrollHeight = -clientHeight + PRESERVE_HEIGHT;
-            // 每个手机的宽度是不同的，宽度的70%也是不同的，
-            // 所以要等DOM加载之后动态设置
-            scroll.$el.style.top = `${clientHeight}px`;
-        },
         methods: {
             handleScroll(pos) {
                 this.scrollY = pos.y;
-            },
-            _setLayerStyle(y) {
-                this.layer = this.layer || this.$refs.layer;
-                this.layer.style[transform] = `translate3d(0, ${y}px, 0)`;
-            },
-            back() {
-                this.$router.back();
             },
             handleSelectMusic(song, index) {
                 // console.log(song, index);
@@ -110,38 +59,6 @@
             ...mapActions([
                 'selectPlay'
             ])
-        },
-        watch: {
-            scrollY(newY) {
-                let translateY = Math.max(this.maxScrollHeight, newY);
-                let zIndex = 0;
-                let scale = 1;
-                let blur = 0;
-                const percent = Math.abs(newY / this.clientHeight);
-                this.bgImageDom = this.bgImageDom || this.$refs.bgImage;
-                this.filter = this.filter || this.$refs.filter;
-                this.playBtn = this.playBtn || this.$refs.playBtn;
-                this._setLayerStyle(translateY);
-                if (newY > 0) {
-                    scale = 1 + percent;
-                    zIndex = 10;
-                } else {
-                    blur = Math.min(20 * percent, 20);
-                }
-                if (newY < this.maxScrollHeight) {
-                    zIndex = 10;
-                    this.bgImageDom.style['padding-top'] = 0;
-                    this.bgImageDom.style['height'] = `${PRESERVE_HEIGHT}px`;
-                    this.playBtn.style['display'] = 'none';
-                } else {
-                    this.bgImageDom.style['padding-top'] = '70%';
-                    this.bgImageDom.style['height'] = 0;
-                    this.playBtn.style['display'] = 'block';
-                }
-                this.bgImageDom.style.zIndex = zIndex;
-                this.bgImageDom.style[transform] = `scale(${scale})`;
-                this.filter.style[backdrop] = `blur(${blur}px)`;
-            }
         }
     };
 </script>
@@ -150,7 +67,7 @@
     @import "../../common/stylus/variable"
     @import "../../common/stylus/mixin"
 
-    .music-list
+    .airlines-list
         position: fixed
         z-index: 100
         top: 0
@@ -227,7 +144,7 @@
             bottom: 0
             width: 100%
             background: $color-background
-            .song-list-wrapper
+            .airlines-list-wrapper
                 padding: 20px 30px
             .loading-container
                 position: absolute
