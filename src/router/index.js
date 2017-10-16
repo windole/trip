@@ -5,6 +5,9 @@ import Fight from 'components/fight/fight';
 import Reserve from 'components/reserve/reserve';
 import Order from 'components/order/order';
 import FightSearch from 'components/fightSearch/fightSearch';
+import AddPg from 'components/addPg/addPg';
+import ToAdd from 'components/toAdd/toAdd';
+import ToEd from 'components/toEd/toEd';
 
 Vue.use(Router);
 
@@ -34,7 +37,22 @@ export default new Router({
         {
             path: '/order',
             component: Order
+        },
+        {
+            path: '/addPg',
+            component: AddPg,
+            children: [
+                {
+                    path: 'toAdd',
+                    component: ToAdd
+                },
+                {
+                    path: 'toEd',
+                    component: ToEd
+                }
+            ]
         }
+
     ],
     mode: 'history'
 });

@@ -14,7 +14,7 @@
         <slot></slot>
       </div>
       <div class="mask-bottom"
-           :style="{ width: width + 'px' }"
+           :style="{ width: width + '%' }"
            @click="closeIconClicked"
            v-if="showClose">
         <img :src="closeIcon"
@@ -65,7 +65,7 @@
             },
             width: {
                 type: [String, Number],
-                default: 351
+                default: 90
             },
             show: {
                 type: Boolean,
@@ -133,16 +133,16 @@
                 const _deviceHeight = deviceHeight || 667;
                 const pageHeight = _deviceHeight / deviceWidth * 375;
                 return {
-                    width: width + 'px',
+                    width: width + '%',
                     height: newHeight + 'px',
-                    left: (375 - width) / 2 + 'px',
+                    left: (100 - width) / 2 + '%',
                     top: (pageHeight - height) / 2 + 'px',
                     opacity: hasAnimation ? opacity : 1
                 };
             },
             contentStyle () {
                 return {
-                    width: this.width + 'px',
+                    width: '100%',
                     backgroundColor: this.maskBgColor,
                     height: this.height + 'px',
                     borderRadius: this.borderRadius + 'px'

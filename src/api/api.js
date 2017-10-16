@@ -15,3 +15,12 @@ export function getAirLines() {
         return Promise.resolve(res.data);
     });
 };
+
+export function getUserInfoLines() {
+    const url = 'static/pg.json';
+
+    return axios.get(url).then((res) => {
+        return Promise.resolve(res.data);
+    });
+};
+

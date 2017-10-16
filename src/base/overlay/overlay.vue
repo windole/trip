@@ -12,7 +12,7 @@
 
 <style scoped>
   .wxc-overlay {
-    width: 750px;
+    width: 100%;
     position: fixed;
     left: 0;
     top: 0;

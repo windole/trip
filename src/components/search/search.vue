@@ -56,7 +56,7 @@
                     </div>
                     <div class="type-choose cell-inner" @click="showPicker(0)" ref="select0">
                         <div class="gray-tit">舱位选择</div>
-                        <div class="text"></div>
+                        <div class="text">{{selectedTypeText[0]}}</div>
                     </div>
                     <picker @select="handleSelect(0,arguments)" :selected-index="selectedIndex[0]"
               ref="picker0" ></picker>
@@ -167,16 +167,16 @@
             showCityList: false,
             value: '',
             data: [[data1]],
-            selectedIndex: [[0], [1, 0], [0, 1, 2], [0, 0, 0]]
+            selectedIndex: [[0], [1, 0], [0, 1, 2], [0, 0, 0]],
+            selectedTypeText: ''
         }),
         methods: {
             showPicker(index) {
                 let picker = this.$refs['picker' + index];
-
                 picker.show();
             },
             handleSelect(index, arg) {
-                console.log(arg);
+                this.selectedTypeText = arg[2];
             },
             wxcPageCalendarDateSelected (e) {
                 this.selectedDate = e.date;
@@ -193,7 +193,8 @@
             _getCityList() {
                 getCityList()
                     .then(response => {
-                        this.cities = this._normalizeCity(response.stations.station);
+                        var data = JSON.parse(response.data);
+                        this.cities = this._normalizeCity(data.air_stations_list_response.stations.station);
                     })
                     .catch(e => {
                         console.log(e);
@@ -288,7 +289,7 @@
     };
 </script>
 
-<style lang="stylus" rel="stylesheet/stylus">
+<style lang="stylus" rel="stylesheet/stylus" scoped>
     @import '~common/stylus/index';
     @import "~common/stylus/mixin";
     .search

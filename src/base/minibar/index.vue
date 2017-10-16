@@ -1,9 +1,10 @@
 <template>
   <div class="fuyou-ct wxc-minibar" :style="{ backgroundColor: backgroundColor }" v-if="show">
     <div class="left fuyou-ct" @click="leftButtonClicked">
-      <img :src="leftButton" class="left-button"></img>
+      <p class="left-text" v-if="leftText" :style="{ color: textColor }">{{leftText}}</p>
+      <img :src="leftButton" v-if="!leftText" class="left-button"></img>
     </div>
-    <p class="fuyou-text fuyou-el middle-title" :style="{ color: textColor }">{{title}}</p>
+    <p class="fuyou-text fuyou-el middle-title">{{title}}</p>
     <div class="right" @click="rightButtonClicked">
       <p class="right-text" v-if="rightText" :style="{ color: textColor }">{{rightText}}</p>
       <img :src="rightButton" class="right-button" v-if="rightButton"></img>
@@ -20,6 +21,7 @@
     justify-content: space-between
     align-items: center
     background-color: #009ff0
+    flex-direction: row
     z-index: 1
     .left
       width: 45px
@@ -27,9 +29,15 @@
         width: 11px
         height: 18px
         margin-left: 20px
+      .left-text
+        width: 40px
+        margin-left: 10px
+        font-size: 14px
+        text-align: right
+        color: #fff
     .middle-title
-      font-size: 15px
-      color: #ffffff
+      font-size: 17px
+      color: #000
       height: 18px
       line-height: 17px
       text-align: center
@@ -60,6 +68,10 @@
           leftButton: {
               type: String,
               default: icon.iconArrow
+          },
+          leftText: {
+              type: String,
+              default: ''
           },
           textColor: {
               type: String,

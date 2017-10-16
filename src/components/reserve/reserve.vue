@@ -35,7 +35,7 @@
                                 <div class="airline-left-item price">{{seat.parPrice}}</div>
                                 <div class="airline-left-item info">{{seat.discount * 10}}折{{seat.seatMsg}}</div>                
                             </div>                    
-                            <div class="order-btn" aria-hidden="true">                       
+                            <div class="order-btn" aria-hidden="true" @click="toOrder">                       
                                 <div class="text">订</div>                    
                             </div>                                    
                         </div>                                                                 
@@ -61,11 +61,14 @@
             }, 10);
         },
         methods: {
+            toOrder() {
+                this.$router.push('./order');
+            }
         }
     };
 </script>
 
-<style lang="stylus" rel="stylesheet/stylus">
+<style lang="stylus" rel="stylesheet/stylus" scoped>
 @import '~common/stylus/index';
 @import '~common/stylus/variable';
 @import "~common/stylus/mixin";

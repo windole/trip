@@ -1,0 +1,40 @@
+{
+  "data":
+  {
+    "customNo": "18616994052",
+    "userInfo": [
+    {
+      "userNo": 1,
+      "passagerType": "1",
+      "isSelf": "1",
+      "name": "金三",
+      "idType": "1",
+      "idNo": "341685964585466523",
+      "phone": "13444444444",
+      "nationality": "中国"
+    },
+    {
+      "userNo": 2,
+      "passagerType": "1",
+      "isSelf": "0",
+      "name": "金儿",
+      "idType": "1",
+      "idNo": "341685964585466524",
+      "phone": "13444444444",
+      "nationality": "中国"
+    },
+    {
+      "userNo": 3,
+      "passagerType": "1",
+      "isSelf": "0",
+      "name": "金宝宝",
+      "idType": "1",
+      "idNo": "341685964585466524",
+      "phone": "13444444444",
+      "nationality": "中国"
+    }
+    ]
+  },
+  "rcode": "0000",
+  "desc": ""
+}
