@@ -15,15 +15,35 @@
             </slider>
         </div>
         <tab></tab>
-        <div class="city-list" v-show="showCityList">
+        <div class="city-list" v-show="showCityList && chooseTo">
             <search-bar ref="wxc-searchbar"
                     theme="yellow"
-                    v-on:searchbarCancelClick="searchbarCancelClick"
-                    v-on:searchbarInputOninput="searchbarInputOninput"
-                    v-on:searchbarCloseClick="searchbarCloseClick"
-                    v-on:searchbarInputOnfocus="searchbarInputOnfocus"
-                    v-on:searchbarInputOnblur="searchbarInputOnblur"></search-bar>
-            <list-view @select="selectCity" :data="cities" ref="list"></list-view>   
+                    v-on:searchbarInputOnInput="searchbarInputOnInput"></search-bar>
+            <div class="city-list-wrapper">
+                <list-view @select="selectCity" :data="cities" ref="list"></list-view> 
+                <ul class="search-city-list" v-show="searchCityValue.length>0">
+                    <li v-for="item in searchCityList" class="list-group-item"  @click="selectCity(item)">                       
+                        <span class="name">{{item.name}}</span>
+                        <span class="code">{{item.code}}</span>
+                    </li>
+                </ul>     
+            </div>
+        </div>
+
+        <div class="city-list" v-show="showCityList && chooseFrom">
+            <search-bar ref="wxc-searchbar"
+                    theme="yellow"
+                    v-on:searchbarInputOnInput="searchbarInputOnInput"
+                    ></search-bar>
+            <div class="city-list-wrapper">
+                <list-view @select="selectFromCity" :data="cities" ref="list"></list-view> 
+                <ul class="search-city-list" v-show="searchCityValue.length>0">
+                    <li v-for="item in searchCityList" class="list-group-item" @click="selectFromCity(item)">                       
+                        <span class="name">{{item.name}}</span>
+                        <span class="code">{{item.code}}</span>
+                    </li>
+                </ul>     
+            </div>
         </div>
 
         <page-calendar :date-range="dateRange"
@@ -41,18 +61,18 @@
                     <div class="city-wrapper">
                         <div class="from-city cell-inner" @click="showCity">
                             <div class="gray-tit">出发城市</div>
-                            <div class="text">上海</div>
+                            <div class="text" ref="toCity">{{toCity.name}}</div>
                         </div>
-                        <div class="to-city cell-inner" @click="showCity">
+                        <div class="to-city cell-inner" @click="showFromCity">
                             <div class="gray-tit">到达城市</div>
-                            <div class="text">北京</div>
+                            <div class="text" ref="fromCity">{{fromCity.name}}</div>
                         </div>
                         <div class="trans"></div>
                     </div>
                     <div class="date-wrapper cell-inner" @click="showCalendar">
                         <div class="gray-tit">出发日期</div>
                         <div class="text data">{{currentDate}}</div>
-                        <div class="week">今天</div>
+                        <div class="week">{{departureWeek}}</div>
                     </div>
                     <div class="type-choose cell-inner" @click="showPicker(0)" ref="select0">
                         <div class="gray-tit">舱位选择</div>
@@ -116,6 +136,9 @@
     import Picker from 'base/picker/picker';
     import City from 'common/js/City';
     import {getCityList} from 'api/api';
+    import {formatDate} from 'common/js/date';
+    import {mapMutations} from 'vuex';
+    import * as types from 'store/mutation-type';
     // import {ERR_OK} from 'api/config';
     const HOT_NAME = '热门';
     let data1 = [
@@ -144,8 +167,8 @@
                     'id': 12439
                 }
             ],
-            currentDate: '2017-10-13',
-            selectedDate: ['2017-10-13', '2017-10-18'],
+            currentDate: '',
+            selectedDate: ['2017-10-13'],
             isRange: true,
             calendarTitle: '选择日期',
             dateRange: ['2017-10-10', '2018-10-10'],
@@ -154,23 +177,39 @@
                 title: '日期选择'
             },
             descList: [
-                { date: '2017-06-23', value: '￥200' },
-                { date: '2017-06-24', value: '￥200' },
-                { date: '2017-06-25', value: '￥200' },
-                { date: '2017-06-26', value: '￥200' },
-                { date: '2017-06-27', value: '￥222' },
-                { date: '2017-06-28', value: '￥341' },
-                { date: '2017-06-29', value: '￥230' },
-                { date: '2017-06-30', value: '￥2000' }
+                // { date: '2017-06-23', value: '￥200' },
+                // { date: '2017-06-24', value: '￥200' },
+                // { date: '2017-06-25', value: '￥200' },
+                // { date: '2017-06-26', value: '￥200' },
+                // { date: '2017-06-27', value: '￥222' },
+                // { date: '2017-06-28', value: '￥341' },
+                // { date: '2017-06-29', value: '￥230' },
+                // { date: '2017-06-30', value: '￥2000' }
             ],
             cities: [],
+            allCitiesList: [], // 原始所有飞机城市列表
             showCityList: false,
-            value: '',
+            chooseTo: false,
+            chooseFrom: false,
+            searchCityValue: '', // 查询关键字
             data: [[data1]],
             selectedIndex: [[0], [1, 0], [0, 1, 2], [0, 0, 0]],
-            selectedTypeText: ''
+            selectedTypeText: '',
+            toCity: {},
+            fromCity: {},
+            departureData: new Date()
         }),
+        filters: {
+            formatDate (time) {
+                let date = new Date(time);
+                return formatDate(date, 'yyyy-MM-dd');
+            }
+        },
         methods: {
+            formatDate (time) {
+                let date = new Date(time);
+                return formatDate(date, 'yyyy-MM-dd');
+            },
             showPicker(index) {
                 let picker = this.$refs['picker' + index];
                 picker.show();
@@ -180,7 +219,8 @@
             },
             wxcPageCalendarDateSelected (e) {
                 this.selectedDate = e.date;
-                this.currentDate = e.date;
+                this.currentDate = e.date[0];
+                this.setDepartureData = e.date[0];
             },
             wxcPageCalendarBackClicked () {
             },
@@ -194,6 +234,7 @@
                 getCityList()
                     .then(response => {
                         var data = JSON.parse(response.data);
+                        this.allCitiesList = data.air_stations_list_response.stations.station;
                         this.cities = this._normalizeCity(data.air_stations_list_response.stations.station);
                     })
                     .catch(e => {
@@ -246,42 +287,74 @@
                 return hot.concat(other);
             },
             selectCity(city) {
+                this.showCityList = false;
+                this.chooseTo = false;
+                this.toCity = city;
+                this.setToCity(city);
+            },
+            selectFromCity(city) {
                 console.log(city);
                 this.showCityList = false;
+                this.chooseFrom = false;
+                this.fromCity = city;
+                this.setFromCity(city);
             },
             showCity() {
+                if (this.allCitiesList.length === 0) {
+                    this._getCityList();
+                }
+                this.chooseTo = true;
                 this.showCityList = true;
             },
-            setValue () {
-                this.$refs['wxc-searchbar'].setValue('点击了手动设置输入框内容的开关');
+            showFromCity() {
+                if (this.allCitiesList.length === 0) {
+                    this._getCityList();
+                }
+                this.chooseFrom = true;
+                this.showCityList = true;
             },
-            searchbarInputOnfocus () {
-                console.log({ 'message': 'onfocus', 'duration': 1 });
-            },
-            searchbarInputOnblur () {
-                console.log({ 'message': 'onbulr', 'duration': 1 });
-            },
-            searchbarCloseClick () {
-                console.log({ 'message': 'close.click', 'duration': 1 });
-            },
-            searchbarInputOninput (e) {
-                this.value = e.value;
-            },
-            searchbarCancelClick () {
-                console.log({ 'message': 'cancel.click', 'duration': 1 });
-            },
-            searchbarInputDisabledOnclick () {
-                console.log({ 'message': 'input.onclick', 'duration': 1 });
-            },
-            searchbarDepChooseClick () {
-                console.log({ 'message': 'dep.choose.click', 'duration': 1 });
+            searchbarInputOnInput (e) {
+                this.searchCityValue = e.value;
+                console.log(e.value);
             },
             toSearch() {
                 this.$router.push('/fight');
+            },
+            ...mapMutations({
+                setToCity: types.SET_TO_CITY,
+                setFromCity: types.SET_FROM_CITY,
+                setDepartureData: types.SET_DEPARTURE_DATA
+            })
+        },
+        computed: {
+            searchCityList: function () {
+                var filterKey = this.searchCityValue && this.searchCityValue.toLowerCase();
+                if (filterKey) {
+                    var data = this.allCitiesList.filter(function (row) {
+                        return Object.keys(row).some(function (key) {
+                            return String(row[key]).toLowerCase().indexOf(filterKey) > -1;
+                        });
+                    });
+                    console.log(data);
+                    return data;
+                }
+            },
+            departureWeek: function () {
+                var currentDate = this.currentDate;
+                var weekArr = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'];
+                if (currentDate === this.formatDate(new Date())) {
+                    return '今天';
+                } else {
+                    return weekArr[new Date(currentDate).getDay()];
+                }
             }
         },
         created() {
-            this._getCityList();
+            // this._getCityList();
+            this.currentDate = this.formatDate(new Date());
+            this.selectedDate[0] = this.formatDate(new Date());
+            this.dateRange[0] = this.formatDate(new Date());
+            this.setDepartureData(this.formatDate(new Date()));
         },
         mounted() {
             this.$refs.picker0.setData([data1]);
@@ -296,10 +369,43 @@
         height: 100vh
         .city-list
             position: fixed
-            height: 100%
-            width: 100%
             top: 0
+            bottom: 0
+            right: 0
+            left: 0
             z-index: 100
+            .city-list-wrapper
+                position: absolute
+                top: 42px
+                bottom: 0
+                left: 0
+                right: 0
+                .search-city-list
+                    position: absolute
+                    top: 0
+                    bottom: 0
+                    left: 0
+                    right: 0
+                    z-index: 101
+                    background-color: #fff
+                    overflow-y: auto
+                    .list-group-item
+                        display: flex
+                        align-items: center
+                        padding: 0 12px 0 12px
+                        background: $color-background-d
+                        border-bottom: 1px solid rgb(224, 224, 224);
+                        height: 46px;
+                        .avatar
+                            width: 50px
+                            height: 50px
+                            border-radius: 50%
+                        .name
+                            margin-left: 5px
+                            font-size: $font-size-medium
+                        .code
+                            margin-left: 10px
+                            font-size: $font-size-small
         .main-bg
             .fightSearch
                 height: 100%
@@ -319,6 +425,11 @@
                             font-size: 15px
                             color: $color-text-d
                             margin-right: 38px
+                        .week
+                            font-size: 12px
+                            color: #ccc
+                            margin-left: 5px
+                            margin-top: 5px
                     .search-btn
                         padding: 20px 0
                         .submit

@@ -10,7 +10,7 @@
             <li class="today J_today J_cheapCalendar" @click="showCalendar">
                 <div class="today-box">
                     <div class="today-box-left">
-                        <div class="date">2017-12-06 周三</div>
+                        <div class="date">{{departureData}} {{departureWeek}}</div>
                     </div>
                     <div class="down">
                         <img width="30" height="30" title="" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABOCAMAAACAE2F0AAAA8FBMVEX////9+/r+/v79/Pfh4eH+/fzynCDynB31oir0oCj0oCPylRL0pzTynBjymBX73av78+r51qD3xXb97dDylhX0oyb87tz3ul35yX3znSLylA78+vf9+/XymhzymBr8+PL97ND74bf0qTf4vWD2uFrypCz87tv1rED0qTv0pjH8+vT60ZH3wWn2r0T9/fr88OH77dX96sz747z5x3f5zYX5zIL4xG/1sEr89u375cH3sk399+v99ef637L73bD61Z360pr3t1X3tVDwjQfpiQf51qT3vmXyoyvylxL76tP858b626j5z4v3wXL77tb78eeKMzs4AAADS0lEQVRYw+2YeXOaQBjGH6DLcijGVE0AQUFR8L6PxFiT5j7a7/9tukTb+o8GaGfSw9+MA8/O8PN9Z1dcwIE/kg8H4UH4vwl58CHs5HveDPDJhYTjyLYwzGz4fVsOGyXcKyDlT5kuwK3pAIuLmy9sOEzrWmO23Ghp0gpbl2Xv9OOjpBUKDZRcKlYAU3jNJvByL6dqaAhxKiTga+Ozab3tNTFzbesKGHrter0dMHVL1ZUylgGL7duBCRJBaKJ0GlDbotdjnPuWdQmcXIuUip/rwCSny2VkP9uWnVaqBZgRhAKOfOpJ+pawek3TaXodCrW1MK1LnnhXRjGCsIOjFJXu/DN39b3lsXs1nV65LaBlhC1f+NM6+0qpDCGCkGNCi9adDooo+XY4KeTHwn5RdbeAIvj5GVXE6EKqVTkwzKHo3mz/Up5S+uksPCHHWiyhekJKs4bQ6GWcriCUNghC18l8YcOlEjlV88rHyEJRreANxkYcIbUvC4VagX16PXbY8DPXaoWJpsQQpqUIiHGEniyKurgTXRfzEo0htLw8fQPlLk6FVPGP9zNsi/p7zrKYOwF47CPeOqS5KiEcWSMUi0WOxSJjE03CFrYSt0KC3fBhhYmEBI2+4wxqQHfuOI/nMPsDZ/CQXGii12b3wgkw0nNW4KDQttK00sEwsbAvUs84A1qGpGg3eJBsT20nFwroW3lfmwK39ykvl0VZ1/10ncNx4grLsqF+vgReDNWwn9ALWJwmr7CDxahSvc0CF62TyrCM82cWVyRJhRzP2LFqEs3y+r/89wl3QUISCR8/NZtPCxxlms3VHOizeNMFSV7hRDVUaYB+yjDUCnCqqfd5B1xCYRWoqoFsX2BOlVQuXNhqIKkZFH9BeJ/aCN21MLUWJm/ZMAyZtRywI4tD1TBEB2Zy4fx5NPrUxSI7Gj8PgMcmi0knhd1g2TU74RkJbrAcYbBLydaRfwWEJGiZYxvfHQimGbdlOn3AXroVK+ruq4OvgS0HrVV2HxNX1uVoFQo4d9lWxMpp+7BkSZSibYlNzC51OQK634u0aSfgnCvR1rT0PjTbdpszcNEefMz+cpl5g+VysCDg3+nhkYRr7Q02j2b/2CuCg/Ag/GuFB36Rb669dbaRcSblAAAAAElFTkSuQmCC">
@@ -90,35 +90,46 @@
     import {getAirLines} from 'api/api';
     import Scroll from 'base/scroll/scroll';
     import Loading from 'base/loading/loading';
+    import {formatDate} from 'common/js/date';
     import {ERR_OK} from 'api/config';
+    import {mapGetters} from 'vuex';
     export default {
         components: {
             pageCalendar,
             Scroll,
             Loading
         },
-        data: () => ({
-            currentDate: '2017-10-13',
-            selectedDate: ['2017-10-13', '2017-10-18'],
-            isRange: true,
-            calendarTitle: '选择日期',
-            dateRange: ['2017-10-10', '2018-10-10'],
-            selectedNote: ['出发', '到达', '往返'],
-            minibarCfg: {
-                title: '日期选择'
-            },
-            descList: [
-                { date: '2017-06-23', value: '￥200' },
-                { date: '2017-06-24', value: '￥200' },
-                { date: '2017-06-25', value: '￥200' },
-                { date: '2017-06-26', value: '￥200' },
-                { date: '2017-06-27', value: '￥222' },
-                { date: '2017-06-28', value: '￥341' },
-                { date: '2017-06-29', value: '￥230' },
-                { date: '2017-06-30', value: '￥2000' }
-            ],
-            citylines: []
-        }),
+        data: function () {
+            var sortOrders = {};
+            var columnsArr = ['price', 'time'];
+            columnsArr.forEach(function (key) {
+                sortOrders[key] = 1;
+            });
+            return {
+                currentDate: '2017-10-13',
+                selectedDate: ['2017-10-13'],
+                isRange: true,
+                calendarTitle: '选择日期',
+                dateRange: ['2017-10-10', '2018-10-10'],
+                selectedNote: ['出发', '到达', '往返'],
+                minibarCfg: {
+                    title: '日期选择'
+                },
+                descList: [
+                    // { date: '2017-06-23', value: '￥200' },
+                    // { date: '2017-06-24', value: '￥200' },
+                    // { date: '2017-06-25', value: '￥200' },
+                    // { date: '2017-06-26', value: '￥200' },
+                    // { date: '2017-06-27', value: '￥222' },
+                    // { date: '2017-06-28', value: '￥341' },
+                    // { date: '2017-06-29', value: '￥230' },
+                    // { date: '2017-06-30', value: '￥2000' }
+                ],
+                citylines: [],
+                sortKey: '',
+                sortOrders: sortOrders
+            };
+        },
         methods: {
             wxcPageCalendarDateSelected (e) {
                 this.selectedDate = e.date;
@@ -150,7 +161,29 @@
             },
             chooseSeats() {
                 this.$router.push('/reserve');
+            },
+            formatDate (time) {
+                let date = new Date(time);
+                return formatDate(date, 'yyyy-MM-dd');
+                // Date curDate = new Date();
+                // var preDate = new Date(curDate.getTime() - 24*60*60*1000); //前一天
+                // var nextDate = new Date(curDate.getTime() + 24*60*60*1000); //后一天
             }
+        },
+        computed: {
+            departureWeek: function () {
+                var currentDate = this.departureData;
+                console.log(currentDate);
+                var weekArr = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'];
+                if (currentDate === this.formatDate(new Date())) {
+                    return '今天';
+                } else {
+                    return weekArr[new Date(currentDate).getDay()];
+                }
+            },
+            ...mapGetters([
+                'departureData'
+            ])
         },
         created() {
             this._getAirLines();

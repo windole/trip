@@ -1,18 +1,11 @@
-import {playMode} from 'common/js/config';
 const state = {
-    singer: {},
-    // 音乐是否正在播放
-    playing: false,
-    // 音乐播放器全屏
-    fullScreen: false,
-    // 播放列表
-    playList: [],
-    // 顺序列表
-    sequenceList: [],
-    // 播放模式
-    mode: playMode.sequence,
-    // 当前播放音乐的索引，根据playList[currentPlayingIndex]得到当前音乐
-    currentPlayingIndex: -1
+    departure: '', // 出发类型
+    toCity: {}, // 出发城市
+    toFrom: {}, // 目的城市
+    departureData: '', // 出发日期
+    airlines: {}, // 总体航线
+    aliline: {}, // 所选航线
+    airseat: {} // 所选座位
 };
 
 export default state;

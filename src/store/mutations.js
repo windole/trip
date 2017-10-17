@@ -1,26 +1,26 @@
 import * as types from './mutation-type';
 
 const mutations = {
-    [types.SET_SINGER](state, singer) {
-        state.singer = singer;
+    [types.SET_DEPARTURE](state, departure) {
+        state.departure = departure;
     },
-    [types.SET_PLAYING_STATE](state, flag) {
-        state.playing = flag;
+    [types.SET_TO_CITY](state, toCity) {
+        state.toCity = toCity;
     },
-    [types.SET_FULL_SCREEN](state, flag) {
-        state.fullScreen = flag;
+    [types.SET_FROM_CITY](state, toFrom) {
+        state.toFrom = toFrom;
     },
-    [types.SET_PLAYLIST](state, list) {
-        state.playList = list;
+    [types.SET_DEPARTURE_DATA](state, departureData) {
+        state.departureData = departureData;
     },
-    [types.SET_SEQUENCE_LIST](state, list) {
-        state.sequenceList = list;
+    [types.SET_AIRLINES](state, airlines) {
+        state.airlines = airlines;
     },
-    [types.SET_PLAY_MODE](state, mode) {
-        state.mode = mode;
+    [types.SET_AIRLINE](state, aliline) {
+        state.aliline = aliline;
     },
-    [types.SET_CURRENT_INDEX](state, index) {
-        state.currentPlayingIndex = index;
+    [types.SET_AIRSEAT](state, airseat) {
+        state.airseat = airseat;
     }
 };
 

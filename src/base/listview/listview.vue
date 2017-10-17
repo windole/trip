@@ -2,17 +2,16 @@
     <scroll class="listview"
         :data="data"
         ref="scroll"
-        :listenScroll="true"
+        :listenScroll="listenScroll"
         @scroll="handleScroll"
-        :probeType="3"
+        :probeType="probeType"
     >
         <!-- 注意这里在scroll下只有第一个是可以scroll的 -->
         <ul>
-            <li class="list-group" v-for="group in data" ref="left">
+            <li class="list-group" :class="{hot: group.title==='热门'}" v-for="group in data" ref="left">
                 <h2 class="list-group-title">{{group.title}}</h2>
                 <ul>
-                    <li class="list-group-item" v-for="item in group.items" @click="selectItem(item)">
-                        
+                    <li class="list-group-item" v-for="item in group.items" @click="selectItem(item)">                       
                         <span class="name">{{item.name}}</span>
                         <span class="code">{{item.code}}</span>
                     </li>
@@ -95,6 +94,7 @@
             this.touch = {};
             this.listHeight = [];
             this.probeType = 3;
+            this.listenScroll = true;
         },
         methods: {
             onShortcutTouchStart(e) {
@@ -102,7 +102,7 @@
                 if (index == null) {
                     return;
                 }
-                // console.log(index);
+                console.log(index);
                 // 转成数字
                 index -= 0;
                 this.touch.startY = e.touches[0].pageY;
@@ -127,6 +127,7 @@
                 this.touch = {};
             },
             _scrollToElement(index) {
+                console.log(index);
                 if (index == null) {
                     return;
                 }
@@ -147,16 +148,27 @@
                 const {left} = this.$refs;
                 let height = 0;
                 this.listHeight.push(height);
+                var _this = this;
+                if (!left) {
+                    setTimeout(() => {
+                        _this._calculate();
+                    }, 20);
+                    return;
+                }
                 left.forEach(item => {
                     const currentHeight = item.clientHeight;
                     height += currentHeight;
                     this.listHeight.push(height);
                 });
-                // console.log(this.listHeight);
             },
             selectItem(item) {
                 this.$emit('select', item);
             }
+        },
+        mounted() {
+            setTimeout(() => {
+                this._calculate();
+            }, 20);
         },
         watch: {
             // 每次当data发生变化时，都重新计算一下每一块的高度
@@ -211,6 +223,36 @@
         background: $color-background
         .list-group
             padding-bottom: 0
+            &.hot
+                ul
+                    display: flex
+                    flex-direction: row
+                    flex-wrap: wrap
+                    padding-left: 9px
+                    padding-top: 10px
+                    .list-group-item
+                        width: 73px
+                        height: 32px
+                        border: 1px solid rgb(224, 224, 224)
+                        margin-right: 9px
+                        flex-direction: column
+                        align-items: center
+                        justify-content: center
+                        background-color: rgb(255, 255, 255)
+                        -webkit-box-orient: horizontal
+                        -webkit-box-direction: normal
+                        -webkit-box-align: center
+                        -webkit-box-pack: center
+                        margin: 0 9px 9px 0
+                        .name
+                            font-size: 12px
+                            margin-left: 0
+                        .code
+                            margin-top: 1px
+                            margin-left: 0
+                            color: rgb(153, 153, 153)
+                            font-size: 10px
+                            text-align: center
             .list-group-title
                 border-bottom: 1px solid rgba(32, 35, 37, 0.15)
                 height: 30px

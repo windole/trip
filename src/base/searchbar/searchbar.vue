@@ -1,16 +1,15 @@
 <template>
   <div>
-    <div :class="['wxc-search-bar','wxc-search-bar-'+theme]"
-         v-if="mod==='default'">
+    <div :class="['wxc-search-bar','wxc-search-bar-'+theme]">
       <input @blur="onBlur"
              @focus="onFocus"
              @input="onInput"
              @return="onSubmit"
              :autofocus="autofocus"
              :disabled="disabled"
-             :value="value"
+             v-model="value"
              ref="search-input"
-             :type="inputType"
+             type="text"
              :placeholder="placeholder"
              :style="{ width: needShowCancel ? '80%' : '93%' }"
              :class="['search-bar-input','search-bar-input-'+theme]"/>
@@ -25,31 +24,7 @@
              :src="closeIcon"></img>
       <p :class="['search-bar-button','search-bar-button-'+theme]"
             v-if="needShowCancel"
-            @click="cancelClicked">取消 </p>
-    </div>
-    <div :class="['wxc-search-bar','wxc-search-bar-'+theme]"
-         v-if="mod==='hasDep'">
-      <input @blur="onBlur"
-             @focus="onFocus"
-             @input="onInput"
-             @return="onSubmit"
-             :disabled="disabled"
-             :autofocus="autofocus"
-             :value="value"
-             :type="inputType"
-             :placeholder="placeholder"
-             :class="['search-bar-input','input-has-dep','search-bar-input-'+theme]"/>
-      <div v-if="disabled"
-           @click="inputDisabledClicked"
-           class="disabled-input has-dep-disabled"></div>
-      <div :class="['bar-dep','.bar-dep-'+theme]"
-           @click="depClicked">
-        <text class="dep-text">{{depName}}</text>
-        <image :src="arrowIcon"
-               class="dep-arrow"></image>
-      </div>
-      <image class="search-bar-icon icon-has-dep"
-             :src="inputIcon"></image>
+            @click="cancelClicked">取消</p>
     </div>
   </div>
 </template>
@@ -102,7 +77,7 @@
     position: absolute;
     width: 15px;
     height: 15px;
-    right: 60px;
+    right: 70px;
     top: 14px;
   }
 
@@ -193,14 +168,6 @@
               type: Boolean,
               default: false
           },
-          inputType: {
-              type: String,
-              default: 'text'
-          },
-          mod: {
-              type: String,
-              default: 'default'
-          },
           autofocus: {
               type: Boolean,
               default: false
@@ -248,7 +215,7 @@
               setTimeout(() => {
                   self.showCancel = false;
                   self.detectShowClose();
-                  self.$emit('searchbarInputOnblur', { value: self.value });
+                  self.$emit('searchbarInputOnBlur', { value: self.value });
               }, 10);
           },
           autoBlur () {
@@ -257,41 +224,43 @@
           onFocus () {
               this.showCancel = true;
               this.detectShowClose();
-              this.$emit('searchbarInputOnfocus', { value: this.value });
+              this.$emit('searchbarInputOnFocus', { value: this.value });
           },
           closeClicked () {
               this.value = '';
               this.showCancel && (this.showCancel = false);
               this.showClose && (this.showClose = false);
-              this.$emit('searchbarCloseClick', { value: this.value });
-              this.$emit('searchbarInputOninput', { value: this.value });
+              this.$emit('searchbarCloseClicked', { value: this.value });
+              this.$emit('searchbarInputOnInput', { value: this.value });
           },
           onInput (e) {
-              this.value = e.value;
+              // this.value = e.value;
+              console.log(this.value);
               this.showCancel = true;
               this.detectShowClose();
-              this.$emit('searchbarInputOninput', { value: this.value });
+              this.$emit('searchbarInputOnInput', { value: this.value });
           },
           onSubmit (e) {
               this.onBlur();
-              this.value = e.value;
+              // this.value = e.value;
+              // console.log(e.value);
               this.showCancel = true;
               this.detectShowClose();
-              this.$emit('searchbarInputOnReturn', { value: this.value });
+              this.$emit('searchbarInputReturned', { value: this.value });
           },
           cancelClicked () {
               this.showCancel && (this.showCancel = false);
               this.showClose && (this.showClose = false);
-              this.$emit('searchbarCancelClick', { value: this.value });
+              this.$emit('searchbarCancelClicked', { value: this.value });
           },
           detectShowClose () {
               this.showClose = (this.value.length > 0) && this.showCancel;
           },
           depClicked () {
-              this.$emit('searchbarDepChooseClick', {});
+              this.$emit('searchbarDepChooseClicked', {});
           },
           inputDisabledClicked () {
-              this.$emit('searchbarInputDisabledOnclick', {});
+              this.$emit('searchbarInputDisabledClicked', {});
           },
           setValue (value) {
               this.value = value;

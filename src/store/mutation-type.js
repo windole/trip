@@ -1,13 +1,13 @@
-export const SET_SINGER = 'SET_SINGER';
+export const SET_DEPARTURE = 'SET_DEPARTURE';
 
-export const SET_PLAYING_STATE = 'SET_PLAYING_STATE';
+export const SET_TO_CITY = 'SET_TO_CITY';
 
-export const SET_FULL_SCREEN = 'SET_FULL_SCREEN';
+export const SET_FROM_CITY = 'SET_FROM_CITY';
 
-export const SET_PLAYLIST = 'SET_PLAYLIST';
+export const SET_DEPARTURE_DATA = 'SET_DEPARTURE_DATA';
 
-export const SET_SEQUENCE_LIST = 'SET_SEQUENCE_LIST';
+export const SET_AIRLINES = 'SET_AIRLINES';
 
-export const SET_PLAY_MODE = 'SET_PLAY_MODE';
+export const SET_AIRLINE = 'SET_AIRLINE';
 
-export const SET_CURRENT_INDEX = 'SET_CURRENT_INDEX';
+export const SET_AIRSEAT = 'SET_AIRSEAT';

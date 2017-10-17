@@ -1,16 +1,16 @@
-export const singer = state => state.singer;
+export const departure = state => state.departure;
 
-export const playing = state => state.playing;
+export const toCity = state => state.toCity;
 
-export const fullScreen = state => state.fullScreen;
+export const toFrom = state => state.toFrom;
 
-export const playList = state => state.playList;
+export const departureData = state => state.departureData;
 
-export const sequenceList = state => state.sequenceList;
+export const airlines = state => state.airlines;
 
-export const mode = state => state.mode;
+export const aliline = state => state.aliline;
 
-export const currentPlayingIndex = state => state.currentPlayingIndex;
+export const airseat = state => state.airseat;
 
 export const currentSong = (state) => {
     return state.playList[state.currentPlayingIndex] || {};
