@@ -4,12 +4,12 @@
             <!-- 航班信息 -->
             <div class="cell order-info">
               <div class="cell-item border-bottom-1px">
-                  <p class="text-bold">12-06 周三 07:15  经济舱</p>
-                  <p class="lower">虹桥机场T2 - 天河机场T3</p>
+                  <p class="text-bold">{{departureData}} {{departureWeek}} {{airline.depTime}}  {{airseat.seatMsg}}</p>
+                  <p class="lower">{{airline.orgCity}} - {{airline.dstCity}}</p>
               </div>
               <div class="cell-item border-bottom-1px">
-                  <p class="upper">成人票￥320</p>
-                  <p class="gray">机建燃油￥50+￥0</p>
+                  <p class="upper">成人票￥{{airseat.settlePrice}}</p>
+                  <p class="gray">机建燃油￥{{airline.adultAirportTax}}+￥{{airline.adultFuelTax}}</p>
               </div>
             </div>
             <!-- 乘机人 -->
@@ -18,7 +18,7 @@
                 <div class="tit"><h3>请选择乘机人</h3><small><span>已选择:</span>{{choosePgArr.length}}<span>人</span></small></div>
                 <div class="content">
                     <mul-chooser :selections="userInfoList"
-                  @on-change="onParamChange($event)" @on-add="toAddPg">
+                  @on-change="onParamChange($event)" :type="chooserType" @on-add="toAddPg">
                   </mul-chooser>
                 </div>
               </div>
@@ -46,7 +46,7 @@
 
             <div class="money-profile border-top-1px">
               <div class="info-area">
-                <div class="price"><strong>370</strong><span class="gray">(共<span>{{choosePgArr.length}}</span>人)</span></div>
+                <div class="price"><strong>{{oneAllPrice * choosePgArr.length}}</strong><span class="gray">(共<span>{{choosePgArr.length}}</span>人)</span></div>
                 <div class="text" @click="openNoAnimationMask">退改签说明</div>
               </div>
               <div class="submit" @click="showBoard = true">
@@ -86,6 +86,8 @@
     import {KeyBoard} from 'vue-ydui/dist/lib.px/keyboard';
     import {getUserInfoLines} from 'api/api';
     import {ERR_OK} from 'api/config';
+    import {formatDate} from 'common/js/date';
+    import {mapGetters} from 'vuex';
     export default {
         data () {
             return {
@@ -97,7 +99,8 @@
                 hasAnimation: true,
                 userInfoList: [],
                 choosePgArr: [],
-                showBoard: true
+                showBoard: false,
+                chooserType: 0
             };
         },
         components: {
@@ -106,6 +109,10 @@
             KeyBoard
         },
         methods: {
+            formatDate (time) {
+                let date = new Date(time);
+                return formatDate(date, 'yyyy-MM-dd');
+            },
             openMask (e) {
                 this.show = true;
                 this.hasAnimation = true;
@@ -118,7 +125,7 @@
                 this.hasAnimation = false;
             },
             onParamChange (val) {
-                this.choosePgArr = val;
+                this.choosePgArr.splice(0, 1, val);
                 console.log(this.choosePgArr);
             },
             toAddPg () {
@@ -145,6 +152,25 @@
                     this.$dialog.loading.close();
                 }, 2000);
             }
+        },
+        computed: {
+            departureWeek: function () {
+                var currentDate = this.departureData;
+                var weekArr = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'];
+                if (currentDate === this.formatDate(new Date())) {
+                    return '今天';
+                } else {
+                    return weekArr[new Date(currentDate).getDay()];
+                }
+            },
+            oneAllPrice: function () {
+                return this.airseat.parPrice + this.airline.adultAirportTax + this.airline.adultFuelTax;
+            },
+            ...mapGetters([
+                'airline',
+                'airseat',
+                'departureData'
+            ])
         },
         created() {
             this._getUserInfoLines();

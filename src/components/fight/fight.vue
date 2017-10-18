@@ -1,10 +1,10 @@
 <template>
     <div class="fight">       
         <ul class="list-date">
-            <li class="yesterday J_yesterday a">
+            <li class="yesterday J_yesterday a" :class="prevCls">
                 <div class="iconfont"></div>
                 <div class="content">
-                    <div role="link">前一天</div>
+                    <div role="link" @click="prevDay">前一天</div>
                 </div>
             </li>
             <li class="today J_today J_cheapCalendar" @click="showCalendar">
@@ -20,14 +20,14 @@
             </li>
             <li class="tomorrow J_tomorrow a">
                 <div class="content">
-                    <div aria-label="点击选择后一天" role="link">后一天</div>
+                    <div role="link" @click="nextDay">后一天</div>
                 </div>
                 <div class="iconfont"></div>
             </li>
         </ul>
         <scroll :data="citylines" class="main-wrapper">
             <ul class="flight-list-wrapper">
-                <li class="flight-list-item" v-for="cityline in citylines" @click="chooseSeats">
+                <li class="flight-list-item" v-for="cityline in fliterFightList" @click="chooseSeats(cityline)">
                     <a class="flight-item flight-item-ow" href="javascript:void(0);">                  
                         <div class="core-info-wrapper">                   
                             <!--左侧区域-->                   
@@ -40,14 +40,14 @@
                                     <div class="airline-icon">                                                         
                                     </div>                           
                                     <div class="airline-airport">                               
-                                        <div class="dep">{{cityline.arriTime}}</div>                               
+                                        <div class="dep">{{cityline.arriTime}}<em v-show="cityline.depTime > cityline.arriTime">+1天</em></div>                               
                                         <div class="arr">{{cityline.dstCityName}}</div>                           
                                     </div>                       
                                 </div>                   
                             </div>                    
                             <div class="airline-price" aria-hidden="true">                       
                                 <div class="price">                                                            
-                                    <div class="price-info">310</div>                                                                               
+                                    <div class="price-info">{{cityline.price}}</div>                                                                               
                                     <div></div>                        
                                 </div>                    
                             </div>                                    
@@ -65,11 +65,15 @@
             </div>
         </scroll>
         <ul class="list-bottombar">
-            <li class="J_sort price-filter filter_current filter-down">
-                <div class="text">价格低到高<span class="icon"></span></div>
+            <li class="J_sort price-filter" @click="sortBy('price')" :class="[sortOrders['price'] > 0 ? 'filter-down' : 'filter-up', { filter_current : sortKey == 'price'}]">
+                <div class="text" v-if="sortKey !== 'price'">价格排序</div>
+                <div class="text" v-if="sortOrders['price'] > 0">价格低到高<span class="icon"></span></div>
+                <div class="text" v-else>价格高到低<span class="icon"></span></div>
             </li>
-            <li class="J_sort J_time_filter time-filter">
-                <div class="text">时间排序<span class="icon"></span></div>
+            <li class="J_sort J_time_filter time-filter" @click="sortBy('depTime')"  :class="[sortOrders['depTime'] > 0 ? 'filter-down' : 'filter-up', { filter_current : sortKey == 'depTime'}]">
+                <div class="text" v-if="sortKey !== 'depTime'">时间排序</div>
+                <div class="text" v-if="sortOrders['depTime'] > 0">时间早到晚<span class="icon"></span></div>
+                <div class="text" v-else>时间晚到早<span class="icon"></span></div>
             </li>
         </ul>
 
@@ -92,7 +96,8 @@
     import Loading from 'base/loading/loading';
     import {formatDate} from 'common/js/date';
     import {ERR_OK} from 'api/config';
-    import {mapGetters} from 'vuex';
+    import {mapGetters, mapMutations} from 'vuex';
+    import * as types from 'store/mutation-type';
     export default {
         components: {
             pageCalendar,
@@ -101,7 +106,7 @@
         },
         data: function () {
             var sortOrders = {};
-            var columnsArr = ['price', 'time'];
+            var columnsArr = ['price', 'depTime'];
             columnsArr.forEach(function (key) {
                 sortOrders[key] = 1;
             });
@@ -115,25 +120,17 @@
                 minibarCfg: {
                     title: '日期选择'
                 },
-                descList: [
-                    // { date: '2017-06-23', value: '￥200' },
-                    // { date: '2017-06-24', value: '￥200' },
-                    // { date: '2017-06-25', value: '￥200' },
-                    // { date: '2017-06-26', value: '￥200' },
-                    // { date: '2017-06-27', value: '￥222' },
-                    // { date: '2017-06-28', value: '￥341' },
-                    // { date: '2017-06-29', value: '￥230' },
-                    // { date: '2017-06-30', value: '￥2000' }
-                ],
+                descList: [],
                 citylines: [],
-                sortKey: '',
+                sortKey: 'price',
                 sortOrders: sortOrders
             };
         },
         methods: {
             wxcPageCalendarDateSelected (e) {
                 this.selectedDate = e.date;
-                this.currentDate = e.date;
+                this.currentDate = e.date[0];
+                this.setDepartureData(e.date[0]);
             },
             wxcPageCalendarBackClicked () {
             },
@@ -159,18 +156,60 @@
                 let code = flightCompanyCode;
                 return `ne-flag-${code}`;
             },
-            chooseSeats() {
+            chooseSeats(cityline) {
+                this.setAirline(cityline);
                 this.$router.push('/reserve');
             },
             formatDate (time) {
                 let date = new Date(time);
                 return formatDate(date, 'yyyy-MM-dd');
-                // Date curDate = new Date();
-                // var preDate = new Date(curDate.getTime() - 24*60*60*1000); //前一天
-                // var nextDate = new Date(curDate.getTime() + 24*60*60*1000); //后一天
-            }
+            },
+            prevDay () {
+                var curDate = new Date(this.departureData);
+                if (this.departureData === this.formatDate(new Date())) {
+                    return;
+                }
+                var preDate = new Date(curDate.getTime() - 24 * 60 * 60 * 1000);
+                setTimeout(() => {
+                    this.setDepartureData(this.formatDate(preDate));
+                }, 20);
+            },
+            nextDay () {
+                var curDate = new Date(this.departureData);
+                var nextDate = new Date(curDate.getTime() + 24 * 60 * 60 * 1000);
+                console.log(nextDate);
+                setTimeout(() => {
+                    this.setDepartureData(this.formatDate(nextDate));
+                }, 20);
+            },
+            sortBy: function (key) {
+                this.sortKey = key;
+                this.sortOrders[key] = this.sortOrders[key] * -1;
+            },
+            ...mapMutations({
+                setAirline: types.SET_AIRLINE,
+                setDepartureData: types.SET_DEPARTURE_DATA
+            })
         },
         computed: {
+            prevCls: function () {
+                return {
+                    'disable': this.departureData === this.formatDate(new Date())
+                };
+            },
+            fliterFightList: function () {
+                var sortKey = this.sortKey;
+                var order = this.sortOrders[sortKey] || 1;
+                if (sortKey) {
+                    var data = this.citylines.slice().sort(function (a, b) {
+                        a = a[sortKey];
+                        b = b[sortKey];
+                        return (a === b ? 0 : a > b ? 1 : -1) * order;
+                    });
+                    console.log(data);
+                    return data;
+                }
+            },
             departureWeek: function () {
                 var currentDate = this.departureData;
                 console.log(currentDate);
@@ -187,6 +226,9 @@
         },
         created() {
             this._getAirLines();
+            this.currentDate = this.departureData;
+            this.selectedDate[0] = this.departureData;
+            this.dateRange[0] = this.formatDate(new Date());
         }
     };
 </script>
@@ -272,7 +314,9 @@
             .iconfont
                 background-size: 6px 11px
                 right: 11px
-                transform: rotate(180deg)               
+                transform: rotate(180deg) 
+        .disable
+            color: $color-middle-gray       
     .main-wrapper
         height: calc(100% - 86px)
         top: 0
@@ -282,54 +326,67 @@
         -webkit-box-flex: 1
         position: relative
         .flight-list-wrapper
-                padding: 0 5px
-                .flight-list-item
-                    margin:5px 0
-                    background-color: $color-background-d
-                    border-radius: 2px
-                    padding: 15px 15px 8px 8px
-                    line-height: 20px
-                    text-shadow: #fff 0 1px 0
+            padding: 0 5px
+            .flight-list-item
+                margin:5px 0
+                background-color: $color-background-d
+                border-radius: 2px
+                padding: 15px 15px 8px 8px
+                line-height: 20px
+                text-shadow: #fff 0 1px 0
+                position: relative
+                &:active
+                    background-color: #faf4e0
+                .core-info-wrapper
+                    display: -webkit-box
                     position: relative
-                    .core-info-wrapper
-                        display: -webkit-box
-                        position: relative
-                        .airline-left
-                            -webkit-box-flex: 1
-                            .airline-bd
-                                display: -webkit-box
-                                position: relative
-                                .airline-time
-                                    height: 20px
-                                .airline-icon
-                                    width: 60px
-                                    text-align: center
-                                    margin: 0 25px
-                                    color: #949595
-                                    font-size: 10px
-                                    bg-image('to-line')
-                                    background-repeat: no-repeat
-                                    background-position: center 40%
-                                    background-size: contain    
-                        .airline-price
-                            text-align: right
-                            -webkit-box-flex: 1
-                            font-size: 13px
-                            color: #7d7e7f
-                            -webkit-box-pack: start
-                            -webkit-box-orient: vertical
+                    .airline-left
+                        -webkit-box-flex: 1
+                        .airline-bd
                             display: -webkit-box
-                            overflow: hidden
-                            width: 150px
-                            .price
-                                font-size: 20px
-                                color: $color-sub-theme
-                                display: -webkit-box
-                                -webkit-box-pack: end
-                                -webkit-box-orient: vertical
-                    .airline-activity-wrapper
-                        .airline-hd
-                            font-size: $font-size-small-s
+                            position: relative
+                            .airline-time
+                                height: 20px
+                            .airline-icon
+                                width: 60px
+                                text-align: center
+                                margin: 0 25px
+                                color: #949595
+                                font-size: 10px
+                                bg-image('to-line')
+                                background-repeat: no-repeat
+                                background-position: center 40%
+                                background-size: contain  
+                            .airline-airport
+                                position: relative
+                                em
+                                    font-size: 9px
+                                    display: inline-block
+                                    margin-top: -5px
+                                    margin-left: 3px
+                                    font-weight: 400
+                                    position: absolute
+                                    font-style: normal
+                                    width: 30px 
+                    .airline-price
+                        text-align: right
+                        -webkit-box-flex: 1
+                        font-size: 13px
+                        color: #7d7e7f
+                        -webkit-box-pack: start
+                        -webkit-box-orient: vertical
+                        display: -webkit-box
+                        overflow: hidden
+                        width: 150px
+                        .price
+                            font-size: 20px
+                            color: $color-sub-theme
+                            display: -webkit-box
+                            -webkit-box-pack: end
+                            -webkit-box-orient: vertical
+                .airline-activity-wrapper
+                    .airline-hd
+                        font-size: $font-size-small-s
     .list-bottombar
         display: -webkit-box
         position: fixed
@@ -350,16 +407,16 @@
             &.filter_current
                 background: $color-background-d
                 color: $color-theme-d
-            .icon
-                display: inline-block
-                background-repeat: no-repeat
-                width: 5px
-                height: 9px
-                bg-image('filter-down')
-                background-size: 5px 9px
-                margin-left: 10px
-            &.filter-up
                 .icon
-                    transform: rotate(180deg)
+                    display: inline-block
+                    background-repeat: no-repeat
+                    width: 5px
+                    height: 9px
+                    bg-image('filter-down')
+                    background-size: 5px 9px
+                    margin-left: 10px
+                &.filter-up
+                    .icon
+                        transform: rotate(180deg)
                         
 </style>

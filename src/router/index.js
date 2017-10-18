@@ -8,11 +8,13 @@ import FightSearch from 'components/fightSearch/fightSearch';
 import AddPg from 'components/addPg/addPg';
 import ToAdd from 'components/toAdd/toAdd';
 import ToEd from 'components/toEd/toEd';
+import OrderList from 'components/order-list/order-list';
+import OrderDetail from 'components/order-detail/order-detail';
 
 Vue.use(Router);
 
 export default new Router({
-    base: __dirname,
+    base: '/appshop',
     routes: [
         {
             path: '/',
@@ -49,6 +51,16 @@ export default new Router({
                 {
                     path: 'toEd',
                     component: ToEd
+                }
+            ]
+        },
+        {
+            path: '/order-list',
+            component: OrderList,
+            children: [
+                {
+                    path: 'order-detail',
+                    component: OrderDetail
                 }
             ]
         }

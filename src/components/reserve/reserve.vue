@@ -2,7 +2,7 @@
     <div class="reserve">
         <div class="flight-info-wrapper" >
             <div class="container" >
-                <div class="upper">12月06日 周三</div>
+                <div class="upper">{{departureData}} {{departureWeek}}</div>
                 <div class="middle" >
                     <div class="left">
                         <p class="name">{{lineInfo.orgCityName}}</p>
@@ -12,11 +12,11 @@
                     <div class="center">
                         <p class="stop"></p>
                         <p class="icon"></p>
-                        <p class="consume">约2小时5分</p>
+                        <p class="consume">约{{totalTime[0]}}小时{{totalTime[1]}}分</p>
                     </div>
                     <div class="right">
                         <p class="name">{{lineInfo.dstCityName}}</p>
-                        <p class="time"><span>{{lineInfo.arriTime}}</span></p>
+                        <p class="time"><span>{{lineInfo.arriTime}}</span><em v-show="lineInfo.depTime > lineInfo.arriTime">+1天</em></p>
                         <p class="airport">{{lineInfo.dstCity}}</p>
                     </div>
                 </div>
@@ -27,7 +27,7 @@
         </div>
         <div class="main-wrapper">
             <ul class="seat-list-wrapper">
-                <li class="seat-list-item" v-for="seat in lineInfo.airSeats.airSeat">
+                <li class="seat-list-item" v-for="seat in airSeats">
                     <a class="seat-item seat-item-ow" href="javascript:void(0);">                  
                         <div class="core-info-wrapper">                   
                             <!--左侧区域-->                   
@@ -35,7 +35,7 @@
                                 <div class="airline-left-item price">{{seat.parPrice}}</div>
                                 <div class="airline-left-item info">{{seat.discount * 10}}折{{seat.seatMsg}}</div>                
                             </div>                    
-                            <div class="order-btn" aria-hidden="true" @click="toOrder">                       
+                            <div class="order-btn" aria-hidden="true" @click="toOrder(seat)">                       
                                 <div class="text">订</div>                    
                             </div>                                    
                         </div>                                                                 
@@ -47,23 +47,61 @@
 </template>
 
 <script type="text/ecmascript-6">
-    import lineInfo from '../../../static/airline.json';
+    import {formatDate} from 'common/js/date';
+    import {mapGetters, mapMutations} from 'vuex';
+    import * as types from 'store/mutation-type';
     export default {
         data() {
             return {
-                lineInfo: []
+                lineInfo: {},
+                airSeats: []
             };
         },
         created() {
             setTimeout(() => {
-                this.lineInfo = lineInfo;
+                this.lineInfo = this.airline;
+                this.airSeats = this.airline.airSeats.airSeat;
                 console.log(this.lineInfo);
+                console.log(this.totalTime);
             }, 10);
         },
         methods: {
-            toOrder() {
+            formatDate (time) {
+                let date = new Date(time);
+                return formatDate(date, 'yyyy-MM-dd');
+            },
+            toOrder(seat) {
+                this.setAirSeat(seat);
                 this.$router.push('./order');
-            }
+            },
+            ...mapMutations({
+                setAirSeat: types.SET_AIRSEAT
+            })
+        },
+        computed: {
+            departureWeek: function () {
+                var currentDate = this.departureData;
+                var weekArr = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'];
+                if (currentDate === this.formatDate(new Date())) {
+                    return '今天';
+                } else {
+                    return weekArr[new Date(currentDate).getDay()];
+                }
+            },
+            totalTime: function () {
+                var timeArr = [];
+                var depTime = this.airline.depTime.split(':');
+                var arriTime = this.airline.arriTime.split(':');
+                var allMin = (arriTime[0] - depTime[0]) * 60 + (arriTime[1] - depTime[1]);
+                allMin = allMin < 0 ? allMin + 24 * 60 : allMin;
+                timeArr.push(parseInt(allMin / 60));
+                timeArr.push(allMin % 60);
+                return timeArr;
+            },
+            ...mapGetters([
+                'airline',
+                'departureData'
+            ])
         }
     };
 </script>
@@ -109,6 +147,16 @@
                     margin-top: 4px
                     position: relative
                     font-family: Helvetica
+                    position: relative
+                    em
+                        font-size: 9px
+                        display: inline-block
+                        margin-top: -5px
+                        margin-left: 3px
+                        font-weight: 400
+                        position: absolute
+                        font-style: normal
+                        width: 30px 
                 .airport
                     font-size: 12px
                     margin-top: 5px

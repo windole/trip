@@ -1,7 +1,7 @@
 ﻿<template>
     <div class="addPg">
         <div class="add-header">
-            <div class="left-txt"></div>
+            <div class="left-txt" @click="back()"></div>
             <h3 @click="goToAddPg">新增乘机人</h3>
             <div class="right"></div>
         </div>
@@ -34,6 +34,9 @@
             };
         },
         methods: {
+            back() {
+                this.$router.back();
+            },
             goToAddPg() {
                 this.$router.push('/addPg/toAdd');
             },

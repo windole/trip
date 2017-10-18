@@ -6,9 +6,7 @@ export const toFrom = state => state.toFrom;
 
 export const departureData = state => state.departureData;
 
-export const airlines = state => state.airlines;
-
-export const aliline = state => state.aliline;
+export const airline = state => state.airline;
 
 export const airseat = state => state.airseat;
 

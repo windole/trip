@@ -1,11 +1,20 @@
 <template>
     <div class="chooser-component">
-        <ul class="chooser-list">
+        <ul class="chooser-list" v-if="type == 1">
           <li
           v-for="(item, index) in selections"
           @click="toggleSelection(index)"
           :title="item.name"
           :class="{active: checkActive(index)}"
+          >{{ item.name }}</li>
+          <li class="add" @click="addHandle">&nbsp;&nbsp;&nbsp;&nbsp;新增</li>
+        </ul>
+        <ul class="chooser-list" v-if="type == 0">
+          <li
+          v-for="(item, index) in selections"
+          @click="chosenSelection(index)"
+          :title="item.name"
+          :class="{active:index === nowIndex}"
           >{{ item.name }}</li>
           <li class="add" @click="addHandle">&nbsp;&nbsp;&nbsp;&nbsp;新增</li>
         </ul>
@@ -24,11 +33,16 @@ export default {
                 idNo: '',
                 phone: ''
             }]
+        },
+        type: {
+            type: Number,
+            default: 1
         }
     },
     data () {
         return {
-            nowIndexes: [0]
+            nowIndexes: [],
+            nowIndex: -1
         };
     },
     methods: {
@@ -47,6 +61,10 @@ export default {
         },
         checkActive (index) {
             return this.nowIndexes.indexOf(index) !== -1;
+        },
+        chosenSelection (index) {
+            this.nowIndex = index;
+            this.$emit('on-change', this.selections[index]);
         },
         addHandle () {
             this.$emit('on-add');

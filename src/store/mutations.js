@@ -13,11 +13,8 @@ const mutations = {
     [types.SET_DEPARTURE_DATA](state, departureData) {
         state.departureData = departureData;
     },
-    [types.SET_AIRLINES](state, airlines) {
-        state.airlines = airlines;
-    },
-    [types.SET_AIRLINE](state, aliline) {
-        state.aliline = aliline;
+    [types.SET_AIRLINE](state, airline) {
+        state.airline = airline;
     },
     [types.SET_AIRSEAT](state, airseat) {
         state.airseat = airseat;

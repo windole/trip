@@ -20,7 +20,7 @@
                     theme="yellow"
                     v-on:searchbarInputOnInput="searchbarInputOnInput"></search-bar>
             <div class="city-list-wrapper">
-                <list-view @select="selectCity" :data="cities" ref="list"></list-view> 
+                <list-view @select="selectCity" :data="cities" ref="tocitylist"></list-view> 
                 <ul class="search-city-list" v-show="searchCityValue.length>0">
                     <li v-for="item in searchCityList" class="list-group-item"  @click="selectCity(item)">                       
                         <span class="name">{{item.name}}</span>
@@ -36,7 +36,7 @@
                     v-on:searchbarInputOnInput="searchbarInputOnInput"
                     ></search-bar>
             <div class="city-list-wrapper">
-                <list-view @select="selectFromCity" :data="cities" ref="list"></list-view> 
+                <list-view @select="selectFromCity" :data="cities" ref="fromcitylist"></list-view> 
                 <ul class="search-city-list" v-show="searchCityValue.length>0">
                     <li v-for="item in searchCityList" class="list-group-item" @click="selectFromCity(item)">                       
                         <span class="name">{{item.name}}</span>
@@ -92,7 +92,7 @@
                                 <p class="title">首页</p>
                             </div>
                         </li>
-                        <li class="item">
+                        <li class="item" @click="toOrderList">
                             <div>
                                 <i class="icon icon-order" ></i>
                                 <p class="title">订单·退票</p>
@@ -220,7 +220,7 @@
             wxcPageCalendarDateSelected (e) {
                 this.selectedDate = e.date;
                 this.currentDate = e.date[0];
-                this.setDepartureData = e.date[0];
+                this.setDepartureData(e.date[0]);
             },
             wxcPageCalendarBackClicked () {
             },
@@ -303,6 +303,7 @@
                 if (this.allCitiesList.length === 0) {
                     this._getCityList();
                 }
+                this.$refs.tocitylist.scrollTo(0, 0);
                 this.chooseTo = true;
                 this.showCityList = true;
             },
@@ -310,6 +311,7 @@
                 if (this.allCitiesList.length === 0) {
                     this._getCityList();
                 }
+                this.$refs.fromcitylist.scrollTo(0, 0);
                 this.chooseFrom = true;
                 this.showCityList = true;
             },
@@ -319,6 +321,9 @@
             },
             toSearch() {
                 this.$router.push('/fight');
+            },
+            toOrderList() {
+                this.$router.push('/order-list');
             },
             ...mapMutations({
                 setToCity: types.SET_TO_CITY,
