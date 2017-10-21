@@ -5,17 +5,17 @@
             <div class="cell order-info">
               <div class="cell-item border-bottom-1px">
                   <p class="text-bold">{{departureData}} {{departureWeek}} {{airline.depTime}}  {{airseat.seatMsg}}</p>
-                  <p class="lower">{{airline.orgCity}} - {{airline.dstCity}}</p>
+                  <p class="lower">{{airline.orgStationName}} - {{airline.dstStationName}}</p>
               </div>
               <div class="cell-item border-bottom-1px">
-                  <p class="upper">成人票￥{{airseat.settlePrice}}</p>
+                  <p class="upper">成人票￥{{airseat.parPrice}}</p>
                   <p class="gray">机建燃油￥{{airline.adultAirportTax}}+￥{{airline.adultFuelTax}}</p>
               </div>
             </div>
             <!-- 乘机人 -->
             <div class="pg-group">
               <div class="choose-pg">
-                <div class="tit"><h3>请选择乘机人</h3><small><span>已选择:</span>{{choosePgArr.length}}<span>人</span></small></div>
+                <div class="tit"><h3>请选择乘机人</h3><small><span>已选择:</span>{{choosePgArr.length}}<span>人</span></small><span class="refresh" @click="refresh">刷新</span></div>
                 <div class="content">
                     <mul-chooser :selections="userInfoList"
                   @on-change="onParamChange($event)" :type="chooserType" @on-add="toAddPg">
@@ -27,13 +27,13 @@
                   <div class="cell-indent border-bottom-1px border-top-1px">
                     <label for="">联系人</label>
                     <div class="cell-input">
-                      <input type="text" placeholder="联系人姓名" class="contact-input" >
+                      <input type="text" v-model="contactName" placeholder="联系人姓名" class="contact-input" >
                     </div>
                   </div>
                   <div class="cell-indent">
                     <label for="">手机号码</label>
                     <div class="cell-input">
-                      <input type="tel" placeholder="联系人手机号" class="contact-input" >
+                      <input type="tel" v-model="contactTel" placeholder="联系人手机号" class="contact-input" >
                     </div>
                   </div>
                 </div>
@@ -41,7 +41,7 @@
             </div>
 
             <div class="list-wrapper">
-              
+
             </div>
 
             <div class="money-profile border-top-1px">
@@ -49,11 +49,11 @@
                 <div class="price"><strong>{{oneAllPrice * choosePgArr.length}}</strong><span class="gray">(共<span>{{choosePgArr.length}}</span>人)</span></div>
                 <div class="text" @click="openNoAnimationMask">退改签说明</div>
               </div>
-              <div class="submit" @click="showBoard = true">
+              <div class="submit" :class="{disabled : choosePgArr.length <= 0}" @click="toPay">
                 <span>去付款</span>
               </div>
             </div>
-             <key-board v-model="showBoard" title="" :callback="done1" ref="keyboardDemo1"></key-board>
+             <key-board v-model="showBoard" title="" :callback="FligthPay" ref="keyboard"></key-board>
             <wxc-mask height="440"
                       width="90"
                       overlay-opacity="0.6"
@@ -72,7 +72,57 @@
                 </div>
                 <div class="content-text">
                   <div class="content-text-tit">退改签说明</div>
-                  <div class="content-table"></div>
+                  <div class="content-table">
+                    <div class="content-table-tr">
+                      <div class="content-table-th">
+                        <span>舱位</span>
+                      </div>
+                      <div class="content-table-td">
+                        <div class="td-item"><span>{{airseat.seatMsg}}({{airseat.seatCode}})</span></div>
+                      </div>
+                    </div>
+                    <div class="content-table-tr">
+                      <div class="content-table-th">
+                        <span>票面价</span>
+                      </div>
+                      <div class="content-table-td">
+                        <div class="td-item"><span>￥{{airseat.parPrice}}元(不含税)</span></div>
+                      </div>
+                    </div>
+                    <div class="content-table-tr">
+                      <div class="content-table-th">
+                        <span>退票费</span>
+                      </div>
+                      <div class="content-table-td">
+                        <div class="td-item">
+                          <img src="https://gw.alicdn.com/tps/TB1OibcPFXXXXbxaXXXXXXXXXXX-24-24.png">
+                          <span>起飞前{{airseat.refundTimePoint}}小时前</span>
+                          <span>{{airseat.refundPercentBefore}}%</span>
+                        </div>
+                        <div class="td-item">
+                          <img src="https://gw.alicdn.com/tps/TB1OibcPFXXXXbxaXXXXXXXXXXX-24-24.png">
+                          <span>起飞前{{airseat.refundTimePoint}}小时后</span>
+                          <span>{{airseat.refundPercentAfter}}%</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="content-table-tr">
+                      <div class="content-table-th">
+                        <span>签转</span>
+                      </div>
+                      <div class="content-table-td">
+                        <div class="td-item"><span>不可签转</span></div>
+                      </div>
+                    </div>
+                    <div class="content-table-tr">
+                      <div class="content-table-th">
+                        <span>特殊说明</span>
+                      </div>
+                      <div class="content-table-td">
+                        <div class="td-item"><span>{{airseat.refundStipulate}}</span></div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </wxc-mask>
@@ -84,7 +134,7 @@
     import WxcMask from 'base/mask/mask.vue';
     import MulChooser from 'base/multiplyChooser/multiplyChooser.vue';
     import {KeyBoard} from 'vue-ydui/dist/lib.px/keyboard';
-    import {getUserInfoLines} from 'api/api';
+    import {getUserInfoLines, airTicketsFligthPay, getAirTicketFee} from 'api/api';
     import {ERR_OK} from 'api/config';
     import {formatDate} from 'common/js/date';
     import {mapGetters} from 'vuex';
@@ -100,7 +150,11 @@
                 userInfoList: [],
                 choosePgArr: [],
                 showBoard: false,
-                chooserType: 0
+                chooserType: 0,
+                contactName: '',
+                contactTel: '',
+                passagers: '',
+                serviceFee: ''
             };
         },
         components: {
@@ -127,30 +181,104 @@
             onParamChange (val) {
                 this.choosePgArr.splice(0, 1, val);
                 console.log(this.choosePgArr);
+                this.passagers = this.choosePgArr[0].name + ',' + this.choosePgArr[0].phone + ',' + this.choosePgArr[0].idNo;
             },
             toAddPg () {
                 this.$router.push('addPg');
             },
+            toPay() {
+                var contactName = this.contactName;
+                var contactTel = this.contactTel;
+                if (contactName === '') {
+                    this.$dialog.toast({
+                        mes: '请填入联系人姓名',
+                        timeout: 1500
+                    });
+                    return;
+                }
+                if (contactTel === '') {
+                    this.$dialog.toast({
+                        mes: '请填入联系人电话',
+                        timeout: 1500
+                    });
+                    return;
+                }
+                if (!(/^1[34578]\d{9}$/.test(contactTel))) {
+                    this.$dialog.toast({
+                        mes: '请填入正确的电话',
+                        timeout: 1500
+                    });
+                    return;
+                }
+                this.showBoard = true;
+            },
             _getUserInfoLines() {
                 getUserInfoLines()
-                    .then(response => {
-                        if (response.rcode === ERR_OK) {
-                            this.userInfoList = response.data.userInfo;
-                        };
+                    .then((res) => {
+                        if (res.messageCode === ERR_OK) {
+                            this.userInfoList = res.data;
+                            console.log(res);
+                        } else {
+                            this.$dialog.toast({
+                                mes: res.message,
+                                timeout: 1500
+                            });
+                        }
                     })
                     .catch(e => {
                         console.log(e);
                     });
             },
-            done1(val) {
-                console.log('输入的密码是：' + val);
-                this.$dialog.loading.open('验证支付密码');
-
+            _getAirTicketFee() {
+                getAirTicketFee()
+                    .then((res) => {
+                        console.log(res);
+                        if (res.msgCode === ERR_OK) {
+                            this.serviceFee = res.data;
+                        }
+                    })
+                    .catch(e => {
+                        console.log(e);
+                    });
+            },
+            refresh() {
+                this._getUserInfoLines();
+            },
+            FligthPay(val) {
+                this.$dialog.loading.open('支付中');
+                var seatCode = this.airline.seatCode;
+                var passagers = this.passagers;
+                var contactName = this.contactName;
+                var contactTel = this.contactTel;
+                var departureDate = this.departureData;
+                var departure = this.airline.dstCity;
+                var destination = this.airline.orgCity;
+                var companyCode = this.airline.flightCompanyCode;
+                var flightNo = this.airline.flightNo;
+                var amount = this.oneAllPrice;
+                var serviceFee = this.serviceFee;
+                var tradePassword = val;
                 /* 模拟异步验证密码 */
-                setTimeout(() => {
-                    this.$refs.keyboardDemo1.$emit('ydui.keyboard.error', '对不起，您的支付密码不正确，请重新输入。');
-                    this.$dialog.loading.close();
-                }, 2000);
+                airTicketsFligthPay(seatCode, passagers, contactName, contactTel, departureDate, departure, destination, companyCode, flightNo, amount, serviceFee, tradePassword)
+                  .then((res) => {
+                      this.$dialog.loading.close();
+                      if (res.messageCode === ERR_OK) {
+                          this.$dialog.toast({
+                              mes: '支付成功',
+                              timeout: 1500,
+                              icon: 'success'
+                          });
+                          this.showBoard = false;
+                      } else {
+                          this.$dialog.toast({
+                              mes: res.message,
+                              timeout: 1500
+                          });
+                      }
+                  })
+                  .catch(e => {
+                      console.log(e);
+                  });
             }
         },
         computed: {
@@ -164,7 +292,7 @@
                 }
             },
             oneAllPrice: function () {
-                return this.airseat.parPrice + this.airline.adultAirportTax + this.airline.adultFuelTax;
+                return this.airseat.parPrice + this.airline.adultAirportTax + this.airline.adultFuelTax + Number(this.serviceFee);
             },
             ...mapGetters([
                 'airline',
@@ -174,6 +302,7 @@
         },
         created() {
             this._getUserInfoLines();
+            this._getAirTicketFee();
         }
     };
 </script>
@@ -223,6 +352,10 @@
                   small
                     font-size: $font-size-small-s
                     margin-left: 9px
+                  .refresh
+                        float: right
+                        margin-right: 10px
+                        font-size: 13px
                 .content
                   margin-bottom: 10px
               .content-group
@@ -280,6 +413,36 @@
                     color: #666
                     font-size: 13px
                     line-height: 18px
+                    .content-table-tr
+                      position: relative
+                      display: flex
+                      border: 1px solid #ccc
+                      border-bottom: 0
+                      &:last-child
+                        border-bottom: 1px solid #ccc
+                      .content-table-th
+                        padding: 10px 12px
+                        width: 64px
+                        box-sizing: border-box
+                        position: relative
+                        display: flex
+                        align-items: center
+                        border-right: 1px solid #ccc
+                      .content-table-td
+                          flex: 1
+                          padding: 10px 12px
+                          .td-item
+                            display: flex
+                            -webkit-box-align: center
+                            align-items: cente
+                            margin-bottom: 6px
+                            &:last-child
+                              margin-bottom: 0
+                            img
+                              width: 12px
+                              height: 12px
+                              margin-right: 6px
+                              vertical-align: middle
             .money-profile
               position: fixed
               bottom: 0
@@ -341,5 +504,8 @@
                 font-size: 20px
                 font-weight: 500
                 text-align: center
-                  
+              .disabled
+                background-color:#e0e0e0
+                color: #b4b4b4
+
 </style>

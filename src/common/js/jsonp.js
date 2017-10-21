@@ -5,6 +5,7 @@ export default function jsonp(url, data, options) {
     return new Promise((resolve, reject) => {
         originalJsonp(url, options, (err, data) => {
             if (err) {
+                console.log(data);
                 return reject(err);
             }
             return resolve(data);

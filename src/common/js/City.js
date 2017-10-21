@@ -1,8 +1,10 @@
 export default class City {
-    constructor(code, quanpin, name, duanpin) {
-        this.code = code;
-        this.quanpin = quanpin;
-        this.name = name;
-        this.duanpin = duanpin;
+    constructor(id, ownCity, stationCode, stationQuanPing, stationName, stationDuanPing) {
+        this.id = id;
+        this.ownCity = ownCity;
+        this.stationCode = stationCode;
+        this.stationQuanPing = stationQuanPing;
+        this.stationName = stationName;
+        this.stationDuanPing = stationDuanPing;
     }
 };

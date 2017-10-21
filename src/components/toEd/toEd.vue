@@ -4,7 +4,7 @@
                    background-color="#fff"
                    text-color="#00b0ff"
                    v-on:minibarLeftButtonClick="back"
-                   v-on:minibarRightButtonClicked="minibarRightButtonClick"
+                   v-on:minibarRightButtonClick="update"
                    right-text="完成"
                    left-text="返回"
                    class="minibar"></minibar>
@@ -13,25 +13,35 @@
               <div class="cell-indent border-bottom-1px border-top-1px">
                 <label for="">姓名</label>
                 <div class="cell-input">
-                  <input type="text" placeholder="联系人姓名" class="contact-input" >
+                  <input type="text" v-model="name" placeholder="联系人姓名" class="contact-input" >
                 </div>
               </div>
-              <div class="cell-indent">
+              <div class="cell-indent" @click="showPicker(0)" ref="select0">
                 <label for="">证件类型</label>
                 <div class="cell-input">
-                  身份证
+                  {{getIdType}}
                 </div>
               </div>
+              <picker @select="handleSelect(0,arguments)" :selected-index="selectedIndex[0]"
+              ref="picker0" ></picker>
               <div class="cell-indent border-bottom-1px border-top-1px">
                 <label for="">证件号码</label>
                 <div class="cell-input">
-                  <input type="text" placeholder="证件号码" class="contact-input" >
+                  <input type="text" v-model="idNo" placeholder="证件号码" class="contact-input" >
                 </div>
               </div>
+              <div class="cell-indent" @click="showPicker(1)" ref="select1">
+                <label for="">是否本人</label>
+                <div class="cell-input">
+                    {{getIsSelf}}
+                </div>
+              </div>
+              <picker @select="handleSelect1(0,arguments)" :selected-index="selectedIndex[0]"
+              ref="picker1" ></picker>
               <div class="cell-indent border-bottom-1px border-top-1px">
                 <label for="">大陆手机</label>
                 <div class="cell-input">
-                  <input type="text" placeholder="选填,用于接收航变信息" class="contact-input" >
+                  <input type="text" v-model="phone" placeholder="用于接收航变信息" class="contact-input" >
                 </div>
               </div>
             </div>
@@ -42,21 +52,128 @@
 
 <script type="text/ecmascript-6">
     import minibar from 'base/minibar/index';
+    import Picker from 'base/picker/picker';
+    import {updateUserInfo} from 'api/api';
+    import {ERR_OK, idTypeArr, isSelfArr} from 'api/config';
+    import {mapGetters} from 'vuex';
+    let data0 = [
+        {text: '身份证', value: 0}
+    ];
+    let data1 = [
+        {text: '否', value: 0},
+        {text: '是', value: 1}
+    ];
+
     export default {
         components: {
-            minibar
+            minibar,
+            Picker
         },
         data() {
             return {
+                data: [[data0]],
+                selectedIndex: [[0], [1, 0], [0, 1, 2], [0, 0, 0]],
+                idType: 0,
+                isSelf: 0,
+                name: '',
+                idNo: '',
+                phone: '',
+                nationality: '中国'
             };
         },
         methods: {
             back () {
                 this.$router.back();
             },
-            minibarRightButtonClick () {
-                alert({ 'message': 'click rightButton!', 'duration': 1 });
+            update () {
+                this._addUserInfo();
+            },
+            _addUserInfo() {
+                var isSelf = this.isSelf;
+                var name = this.name;
+                var idType = this.idType;
+                var idNo = this.idNo;
+                var phone = this.phone;
+                if (name === '') {
+                    this.$dialog.toast({
+                        mes: '请填入姓名',
+                        timeout: 1500
+                    });
+                    return;
+                }
+                if (idNo === '') {
+                    this.$dialog.toast({
+                        mes: '请填入证件号码',
+                        timeout: 1500
+                    });
+                    return;
+                }
+                if (phone === '') {
+                    this.$dialog.toast({
+                        mes: '请填入联系人电话',
+                        timeout: 1500
+                    });
+                    return;
+                }
+                if (!(/^1[34578]\d{9}$/.test(phone))) {
+                    this.$dialog.toast({
+                        mes: '请填入正确的电话',
+                        timeout: 1500
+                    });
+                    return;
+                }
+                this.$dialog.loading.open('');
+                updateUserInfo(1, isSelf, name, idType, idNo, phone, this.nationality, 1)
+                  .then((res) => {
+                      this.$dialog.loading.close();
+                      this.$dialog.toast({
+                          mes: res.message,
+                          timeout: 1500
+                      });
+                      if (res.messageCode === ERR_OK) {
+                          setTimeout(() => {
+                              this.$router.back();
+                          }, 1000);
+                      }
+                  })
+                  .catch(e => {
+                      console.log(e);
+                  });
+            },
+            showPicker(index) {
+                let picker = this.$refs['picker' + index];
+                picker.show();
+            },
+            handleSelect(index, arg) {
+                this.idType = arg[1][0];
+                console.log(this.idType);
+            },
+            handleSelect1(index, arg) {
+                this.isSelf = arg[1][0];
+                console.log(this.isSelf);
             }
+        },
+        mounted() {
+            this.$refs.picker0.setData([data0]);
+            this.$refs.picker1.setData([data1]);
+        },
+        computed: {
+            getIsSelf() {
+                return isSelfArr[this.isSelf];
+            },
+            getIdType() {
+                return idTypeArr[this.idType];
+            },
+            ...mapGetters([
+                'updateUserInfo'
+            ])
+        },
+        created() {
+            this.name = this.updateUserInfo.name;
+            this.idNo = this.updateUserInfo.idNo;
+            this.phone = this.updateUserInfo.phone;
+            this.isSelf = this.updateUserInfo.isSelf;
+            this.idType = this.updateUserInfo.idType;
         }
     };
 </script>

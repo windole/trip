@@ -6,15 +6,15 @@
             <div class="right"></div>
         </div>
         <ul class="user-list">
-            <li class="user-list-item border-bottom-1px">
+            <li class="user-list-item border-bottom-1px" v-for="(user, index) in userInfoList">
                 <div class="left-checkbox">
-                    <input type="checkbox" class="checkbox" checked="">
+                    <input type="checkbox" class="checkbox" >
                 </div>
                 <div class="main-content">
-                    <h4 class="name">金狗</h4>
-                    <p class="idCard">身份证<span>1165151651561651651</span></p>
+                    <h4 class="name">{{user.name}}</h4>
+                    <p class="idCard">身份证<span>{{user.idNo}}</span></p>
                 </div>
-                <div class="right-ed" @click="goToEdPg()"></div>
+                <div class="right-ed" @click="goToEdPg(user)"></div>
             </li>
         </ul>
         <keep-alive>
@@ -25,8 +25,10 @@
 </template>
 
 <script type="text/ecmascript-6">
-    // import City from 'common/js/City';
-    // import {getCityList} from 'api/api';
+    import {getUserInfoLines} from 'api/api';
+    import {ERR_OK} from 'api/config';
+    import {mapMutations} from 'vuex';
+    import * as types from 'store/mutation-type';
     export default {
         data() {
             return {
@@ -41,8 +43,31 @@
                 this.$router.push('/addPg/toAdd');
             },
             goToEdPg(item) {
+                this.setUpdateUserInfo(item);
                 this.$router.push('/addPg/toEd');
-            }
+            },
+            _getUserInfoLines() {
+                getUserInfoLines()
+                    .then((res) => {
+                        if (res.messageCode === ERR_OK) {
+                            this.userInfoList = res.data;
+                        } else {
+                            this.$dialog.toast({
+                                mes: res.message,
+                                timeout: 1500
+                            });
+                        }
+                    })
+                    .catch(e => {
+                        console.log(e);
+                    });
+            },
+            ...mapMutations({
+                setUpdateUserInfo: types.SET_UPDATE_USER_INFO
+            })
+        },
+        created() {
+            this._getUserInfoLines();
         }
     };
 </script>

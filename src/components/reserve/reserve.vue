@@ -5,9 +5,9 @@
                 <div class="upper">{{departureData}} {{departureWeek}}</div>
                 <div class="middle" >
                     <div class="left">
-                        <p class="name">{{lineInfo.orgCityName}}</p>
-                        <p class="time">{{lineInfo.depTime}}</p>
-                        <p class="airport">{{lineInfo.orgCity}}</p>
+                        <p class="name">{{airline.orgCityName}}</p>
+                        <p class="time">{{airline.depTime}}</p>
+                        <p class="airport">{{airline.orgStationName}}</p>
                     </div>
                     <div class="center">
                         <p class="stop"></p>
@@ -15,30 +15,30 @@
                         <p class="consume">约{{totalTime[0]}}小时{{totalTime[1]}}分</p>
                     </div>
                     <div class="right">
-                        <p class="name">{{lineInfo.dstCityName}}</p>
-                        <p class="time"><span>{{lineInfo.arriTime}}</span><em v-show="lineInfo.depTime > lineInfo.arriTime">+1天</em></p>
-                        <p class="airport">{{lineInfo.dstCity}}</p>
+                        <p class="name">{{airline.dstCityName}}</p>
+                        <p class="time"><span>{{airline.arriTime}}</span><em v-show="airline.depTime > airline.arriTime">+1天</em></p>
+                        <p class="airport">{{airline.dstStationName}}</p>
                     </div>
                 </div>
                 <div class="lower">
-                    <p class="detail"><span>{{lineInfo.flightCompanyName}}{{lineInfo.flightNo}}</span><span>机型{{lineInfo.planeType}}</span><span>机建费 {{lineInfo.adultFuelTax}}</span><span>燃油费 {{lineInfo.adultAirportTax}}</span></p>
+                    <p class="detail"><span>{{airline.flightCompanyName}}{{airline.flightNo}}</span><span>机型{{airline.planeType}}</span><span>机建费 {{airline.adultFuelTax}}</span><span>燃油费 {{airline.adultAirportTax}}</span></p>
                 </div>
             </div>
         </div>
         <div class="main-wrapper">
             <ul class="seat-list-wrapper">
-                <li class="seat-list-item" v-for="seat in airSeats">
-                    <a class="seat-item seat-item-ow" href="javascript:void(0);">                  
-                        <div class="core-info-wrapper">                   
-                            <!--左侧区域-->                   
-                            <div class="airline-left" aria-hidden="true">                       
+                <li class="seat-list-item" v-for="seat in airline.airSeats.airSeat">
+                    <a class="seat-item seat-item-ow" href="javascript:void(0);">
+                        <div class="core-info-wrapper">
+                            <!--左侧区域-->
+                            <div class="airline-left" aria-hidden="true">
                                 <div class="airline-left-item price">{{seat.parPrice}}</div>
-                                <div class="airline-left-item info">{{seat.discount * 10}}折{{seat.seatMsg}}</div>                
-                            </div>                    
-                            <div class="order-btn" aria-hidden="true" @click="toOrder(seat)">                       
-                                <div class="text">订</div>                    
-                            </div>                                    
-                        </div>                                                                 
+                                <div class="airline-left-item info"><span v-show="seat.discount<1">{{(seat.discount * 10).toFixed(1)}}折</span>{{seat.seatMsg}}</div>
+                            </div>
+                            <div class="order-btn" aria-hidden="true" @click="toOrder(seat)">
+                                <div class="text">订</div>
+                            </div>
+                        </div>
                     </a>
                 </li>
             </ul>
@@ -51,20 +51,6 @@
     import {mapGetters, mapMutations} from 'vuex';
     import * as types from 'store/mutation-type';
     export default {
-        data() {
-            return {
-                lineInfo: {},
-                airSeats: []
-            };
-        },
-        created() {
-            setTimeout(() => {
-                this.lineInfo = this.airline;
-                this.airSeats = this.airline.airSeats.airSeat;
-                console.log(this.lineInfo);
-                console.log(this.totalTime);
-            }, 10);
-        },
         methods: {
             formatDate (time) {
                 let date = new Date(time);
@@ -156,14 +142,14 @@
                         font-weight: 400
                         position: absolute
                         font-style: normal
-                        width: 30px 
+                        width: 30px
                 .airport
                     font-size: 12px
                     margin-top: 5px
                 .icon
                     height: 48px
                     background-repeat: no-repeat
-                    background-position: center 28px 
+                    background-position: center 28px
                     background-size: 90px 5px
                     background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIwAAAAJBAMAAAASk9lmAAAAGFBMVEUAAAAgIyUfIyUgIyUgIyUgIyUgIyUfIiUY7QHQAAAABnRSTlMAFdTvxqn/hM20AAAAO0lEQVQoz2OgGLA6MlADsCQJUMMYRjVFqjhHaNg6Jw0JlKGwcYEydG56WjIDWLQsHSqWTtgghDIESAYAPYs605r2LG4AAAAASUVORK5CYII=')
             .lower
@@ -218,7 +204,7 @@
                             background-color: $color-sub-theme-l
                             color: #fff
                             font-size: $font-size-small
-                            
-                        
-        
+
+
+
 </style>

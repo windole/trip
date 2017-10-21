@@ -6,6 +6,7 @@ import state from './state';
 import mutations from './mutations';
 // 在控制台下打印日志
 import createLogger from 'vuex/dist/logger';
+import createPersistedState from 'vuex-persistedstate';
 
 Vue.use(Vuex);
 
@@ -19,5 +20,5 @@ export default new Vuex.Store({
     mutations,
     // 不能直接修改state，否则报错
     strict: debug,
-    plugins: debug ? [createLogger()] : []
+    plugins: debug ? [createLogger(), createPersistedState()] : [createPersistedState()]
 });

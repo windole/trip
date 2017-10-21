@@ -9,3 +9,5 @@ export const SET_DEPARTURE_DATA = 'SET_DEPARTURE_DATA';
 export const SET_AIRLINE = 'SET_AIRLINE';
 
 export const SET_AIRSEAT = 'SET_AIRSEAT';
+
+export const SET_UPDATE_USER_INFO = 'SET_UPDATE_USER_INFO';

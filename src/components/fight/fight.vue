@@ -1,5 +1,5 @@
 <template>
-    <div class="fight">       
+    <div class="fight">
         <ul class="list-date">
             <li class="yesterday J_yesterday a" :class="prevCls">
                 <div class="iconfont"></div>
@@ -14,7 +14,7 @@
                     </div>
                     <div class="down">
                         <img width="30" height="30" title="" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABOCAMAAACAE2F0AAAA8FBMVEX////9+/r+/v79/Pfh4eH+/fzynCDynB31oir0oCj0oCPylRL0pzTynBjymBX73av78+r51qD3xXb97dDylhX0oyb87tz3ul35yX3znSLylA78+vf9+/XymhzymBr8+PL97ND74bf0qTf4vWD2uFrypCz87tv1rED0qTv0pjH8+vT60ZH3wWn2r0T9/fr88OH77dX96sz747z5x3f5zYX5zIL4xG/1sEr89u375cH3sk399+v99ef637L73bD61Z360pr3t1X3tVDwjQfpiQf51qT3vmXyoyvylxL76tP858b626j5z4v3wXL77tb78eeKMzs4AAADS0lEQVRYw+2YeXOaQBjGH6DLcijGVE0AQUFR8L6PxFiT5j7a7/9tukTb+o8GaGfSw9+MA8/O8PN9Z1dcwIE/kg8H4UH4vwl58CHs5HveDPDJhYTjyLYwzGz4fVsOGyXcKyDlT5kuwK3pAIuLmy9sOEzrWmO23Ghp0gpbl2Xv9OOjpBUKDZRcKlYAU3jNJvByL6dqaAhxKiTga+Ozab3tNTFzbesKGHrter0dMHVL1ZUylgGL7duBCRJBaKJ0GlDbotdjnPuWdQmcXIuUip/rwCSny2VkP9uWnVaqBZgRhAKOfOpJ+pawek3TaXodCrW1MK1LnnhXRjGCsIOjFJXu/DN39b3lsXs1nV65LaBlhC1f+NM6+0qpDCGCkGNCi9adDooo+XY4KeTHwn5RdbeAIvj5GVXE6EKqVTkwzKHo3mz/Up5S+uksPCHHWiyhekJKs4bQ6GWcriCUNghC18l8YcOlEjlV88rHyEJRreANxkYcIbUvC4VagX16PXbY8DPXaoWJpsQQpqUIiHGEniyKurgTXRfzEo0htLw8fQPlLk6FVPGP9zNsi/p7zrKYOwF47CPeOqS5KiEcWSMUi0WOxSJjE03CFrYSt0KC3fBhhYmEBI2+4wxqQHfuOI/nMPsDZ/CQXGii12b3wgkw0nNW4KDQttK00sEwsbAvUs84A1qGpGg3eJBsT20nFwroW3lfmwK39ykvl0VZ1/10ncNx4grLsqF+vgReDNWwn9ALWJwmr7CDxahSvc0CF62TyrCM82cWVyRJhRzP2LFqEs3y+r/89wl3QUISCR8/NZtPCxxlms3VHOizeNMFSV7hRDVUaYB+yjDUCnCqqfd5B1xCYRWoqoFsX2BOlVQuXNhqIKkZFH9BeJ/aCN21MLUWJm/ZMAyZtRywI4tD1TBEB2Zy4fx5NPrUxSI7Gj8PgMcmi0knhd1g2TU74RkJbrAcYbBLydaRfwWEJGiZYxvfHQimGbdlOn3AXroVK+ruq4OvgS0HrVV2HxNX1uVoFQo4d9lWxMpp+7BkSZSibYlNzC51OQK634u0aSfgnCvR1rT0PjTbdpszcNEefMz+cpl5g+VysCDg3+nhkYRr7Q02j2b/2CuCg/Ag/GuFB36Rb669dbaRcSblAAAAAElFTkSuQmCC">
-                        
+
                     </div>
                 </div>
             </li>
@@ -28,40 +28,40 @@
         <scroll :data="citylines" class="main-wrapper">
             <ul class="flight-list-wrapper">
                 <li class="flight-list-item" v-for="cityline in fliterFightList" @click="chooseSeats(cityline)">
-                    <a class="flight-item flight-item-ow" href="javascript:void(0);">                  
-                        <div class="core-info-wrapper">                   
-                            <!--左侧区域-->                   
-                            <div class="airline-left" aria-hidden="true">                       
-                                <div class="airline-bd">                           
-                                    <div class="airline-time">                               
-                                        <div class="dep">{{cityline.depTime}}</div>                               
-                                        <div class="arr">{{cityline.orgCityName}}</div>                           
-                                    </div>                           
-                                    <div class="airline-icon">                                                         
-                                    </div>                           
-                                    <div class="airline-airport">                               
-                                        <div class="dep">{{cityline.arriTime}}<em v-show="cityline.depTime > cityline.arriTime">+1天</em></div>                               
-                                        <div class="arr">{{cityline.dstCityName}}</div>                           
-                                    </div>                       
-                                </div>                   
-                            </div>                    
-                            <div class="airline-price" aria-hidden="true">                       
-                                <div class="price">                                                            
-                                    <div class="price-info">{{cityline.price}}</div>                                                                               
-                                    <div></div>                        
-                                </div>                    
-                            </div>                                    
-                        </div>                                    
-                        <div class="airline-activity-wrapper clearfix">                     
-                            <div class="airline-hd fl">                         
-                                <span :class="addAirCla(cityline.flightCompanyCode)"><i class="flag-icon"></i></span>东航MU2504 | 空客319(中)                     
-                            </div>                                                            
-                        </div>                              
+                    <a class="flight-item flight-item-ow" href="javascript:void(0);">
+                        <div class="core-info-wrapper">
+                            <!--左侧区域-->
+                            <div class="airline-left" aria-hidden="true">
+                                <div class="airline-bd">
+                                    <div class="airline-time">
+                                        <div class="dep">{{cityline.depTime}}</div>
+                                        <div class="arr">{{cityline.orgStationName.replace('机场', '').replace('国际', '')}}</div>
+                                    </div>
+                                    <div class="airline-icon">
+                                    </div>
+                                    <div class="airline-airport">
+                                        <div class="dep">{{cityline.arriTime}}<em v-show="cityline.depTime > cityline.arriTime">+1天</em></div>
+                                        <div class="arr">{{cityline.dstStationName.replace('机场', '').replace('国际', '')}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="airline-price" aria-hidden="true">
+                                <div class="price">
+                                    <div class="price-info">{{cityline.price}}</div>
+                                    <div></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="airline-activity-wrapper clearfix">
+                            <div class="airline-hd fl">
+                                <span :class="addAirCla(cityline.flightCompanyCode)"><i class="flag-icon"></i></span>{{cityline.flightCompanyName}}{{cityline.flightNo}} | 机型:{{cityline.planeType}}
+                            </div>
+                        </div>
                     </a>
                 </li>
             </ul>
             <div class="loading-container" v-show="!citylines.length">
-                <loading></loading>
+                <loading title='正在查询中'></loading>
             </div>
         </scroll>
         <ul class="list-bottombar">
@@ -131,6 +131,7 @@
                 this.selectedDate = e.date;
                 this.currentDate = e.date[0];
                 this.setDepartureData(e.date[0]);
+                this._getAirLines();
             },
             wxcPageCalendarBackClicked () {
             },
@@ -141,11 +142,13 @@
                 }, 10);
             },
             _getAirLines() {
-                getAirLines()
+                this.citylines = [];
+                getAirLines(this.fromCity.stationCode, this.toCity.stationCode, this.departureData)
                     .then(response => {
-                        if (response.rcode === ERR_OK) {
-                            this.citylines = response.data.airlines_list_response.airlines.airline;
-                            console.log(this.citylines);
+                        if (response.msgCode === ERR_OK) {
+                            // this.citylines = response.data.airlines_list_response.airlines.airline;
+                            this.citylines = response.data;
+                            console.log(response);
                         }
                     })
                     .catch(e => {
@@ -172,6 +175,7 @@
                 var preDate = new Date(curDate.getTime() - 24 * 60 * 60 * 1000);
                 setTimeout(() => {
                     this.setDepartureData(this.formatDate(preDate));
+                    this._getAirLines();
                 }, 20);
             },
             nextDay () {
@@ -180,6 +184,7 @@
                 console.log(nextDate);
                 setTimeout(() => {
                     this.setDepartureData(this.formatDate(nextDate));
+                    this._getAirLines();
                 }, 20);
             },
             sortBy: function (key) {
@@ -221,14 +226,16 @@
                 }
             },
             ...mapGetters([
-                'departureData'
+                'departureData',
+                'fromCity',
+                'toCity'
             ])
         },
         created() {
-            this._getAirLines();
             this.currentDate = this.departureData;
             this.selectedDate[0] = this.departureData;
             this.dateRange[0] = this.formatDate(new Date());
+            this._getAirLines();
         }
     };
 </script>
@@ -285,7 +292,7 @@
             -webkit-box-flex: 1
             font-weight: 700
             height: 100%
-        .today 
+        .today
             -webkit-box-flex: 1
             display: block
             min-width: 126px
@@ -314,9 +321,9 @@
             .iconfont
                 background-size: 6px 11px
                 right: 11px
-                transform: rotate(180deg) 
+                transform: rotate(180deg)
         .disable
-            color: $color-middle-gray       
+            color: $color-middle-gray
     .main-wrapper
         height: calc(100% - 86px)
         top: 0
@@ -356,7 +363,7 @@
                                 bg-image('to-line')
                                 background-repeat: no-repeat
                                 background-position: center 40%
-                                background-size: contain  
+                                background-size: contain
                             .airline-airport
                                 position: relative
                                 em
@@ -367,7 +374,7 @@
                                     font-weight: 400
                                     position: absolute
                                     font-style: normal
-                                    width: 30px 
+                                    width: 30px
                     .airline-price
                         text-align: right
                         -webkit-box-flex: 1
@@ -418,5 +425,5 @@
                 &.filter-up
                     .icon
                         transform: rotate(180deg)
-                        
+
 </style>

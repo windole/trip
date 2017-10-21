@@ -18,6 +18,7 @@
 <style scoped lang="stylus" rel="stylesheet/stylus" scoped>
     @import "../../common/stylus/variable"
     .loading
+        padding-top: 10%
         width: 100%
         text-align: center
         .desc

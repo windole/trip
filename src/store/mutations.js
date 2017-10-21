@@ -7,8 +7,8 @@ const mutations = {
     [types.SET_TO_CITY](state, toCity) {
         state.toCity = toCity;
     },
-    [types.SET_FROM_CITY](state, toFrom) {
-        state.toFrom = toFrom;
+    [types.SET_FROM_CITY](state, fromCity) {
+        state.fromCity = fromCity;
     },
     [types.SET_DEPARTURE_DATA](state, departureData) {
         state.departureData = departureData;
@@ -18,6 +18,9 @@ const mutations = {
     },
     [types.SET_AIRSEAT](state, airseat) {
         state.airseat = airseat;
+    },
+    [types.SET_UPDATE_USER_INFO](state, info) {
+        state.updateUserInfo = info;
     }
 };
 

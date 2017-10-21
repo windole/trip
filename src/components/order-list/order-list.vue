@@ -1,22 +1,25 @@
 <template>
-    <div class="order-list">       
-        <scroll :data="orderList" class="main-wrapper">
+    <div class="order-list">
+        <scroll class="main-wrapper"
+                :data="orderList"
+                ref="orderListScroll"
+        >
             <ul class="order-list-wrapper">
-                <li class="order-list-item" v-for="order in orderList" @click="toOrderDetail">
-                    <div class="list-item">                 
-                        <div class="sec sec-left">                                                               
-                            <div class="flight-title">{{order.title}}</div>                                          
-                            <div class="from-to">{{regAirCode(order.trainNo)}}{{order.trainNo}}</div>                                      
-                        </div>                 
-                        <div class="sec sec-right">                     
-                            <div class="order-price">{{order.totalPayCash}}</div>                     
-                            <div class="order-status  ">{{order.stateName}}</div>                 
-                        </div>             
+                <li class="order-list-item" v-for="order in orderList" @click="toOrderDetail(order)">
+                    <div class="list-item">
+                        <div class="sec sec-left">
+                            <div class="flight-title">{{order.startStation}}-{{order.recevieStation}}</div>
+                            <div class="from-to">{{regAirCode(order.trainNo)}}{{order.trainNo}}</div>
+                        </div>
+                        <div class="sec sec-right">
+                            <div class="order-price">{{order.totalAmount}}</div>
+                            <div class="order-status  ">{{order.stateName}}</div>
+                        </div>
                     </div>
                     <i class="access-icon"></i>
                 </li>
             </ul>
-            <div class="loading-container" v-show="orderList.length < 0">
+            <div class="loading-container" v-show="orderList.length == 0 && hasMore">
                 <loading></loading>
             </div>
         </scroll>
@@ -30,8 +33,7 @@
     import Loading from 'base/loading/loading';
     import {ERR_OK} from 'api/config';
     import aircode from '../../../static/aircode.json';
-    // import {mapGetters, mapMutations} from 'vuex';
-    // import * as types from 'store/mutation-type';
+    import {formatDate} from 'common/js/date.js';
     export default {
         components: {
             Scroll,
@@ -40,30 +42,36 @@
         data: function () {
             return {
                 orderList: [],
-                aircode: {}
+                aircode: {},
+                hasMore: true
             };
         },
         methods: {
             _getOrderList() {
-                getOrderList()
+                getOrderList(this.formatDate(new Date()))
                     .then(response => {
-                        if (response.rcode === ERR_OK) {
+                        if (response.messageCode === ERR_OK) {
                             console.log(response);
-                            this.orderList = response.data.air_orders_list_response.ticketTrades.ticketTrade;
-                            console.log(this.orderList);
+                            this.orderList = response.data;
+                            this.hasMore = false;
                         }
                     })
                     .catch(e => {
                         console.log(e);
                     });
             },
+            formatDate (time) {
+                let date = new Date(time);
+                return formatDate(date, 'yyyy-MM-dd hh:mm:ss');
+            },
             regAirCode(code) {
-                console.log('code:' + code);
                 var codeName = code.substr(0, 2);
                 return this.aircode[codeName];
             },
-            toOrderDetail() {
-                this.$router.push('/order-list/order-detail');
+            toOrderDetail(order) {
+                this.$router.push({
+                    path: `/order-list/${order.orderNoFlx}`
+                });
             }
         },
         created() {
@@ -97,7 +105,7 @@
                     background-color: #faf4e0
                 .list-item
                     display: -webkit-box
-                    position: relative  
+                    position: relative
                     -webkit-box-pack: justify
                     -webkit-box-orient: horizontal
                     .sec-left
@@ -121,8 +129,8 @@
                         .order-status
                             font-size: 11px
                             opacity: .6
-                            padding-top: 5px  
-                .access-icon  
+                            padding-top: 5px
+                .access-icon
                     background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAAXCAYAAADQpsWBAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAADoSURBVHjalNAxbsIwFMbxPw/GShwEyQPCUi3BTBd2ECOwcQ8O0AMUJBjYmNqKAxAgE1l6jh4AwuJUbkhw/KbnT/rZ1lc7nC8NoAOcjVY3KowAWyACNlGc1Kuint2HwLoKFGAA/IZAMVqdgH4IFIBQKNkSAsU9WPjmg5K/xWh19EEp+rMP1tI0La02ipNX4Bto2mgLjJ4iC+fAuxO1xAO6wMKJlsCPeMAX8GKjFTA1WqUSACZGq2the1Gc9J6BB2TBpwOWefAPlYBpHvyhEAAgoSB7aeeADx/I0N4BMx/I0BhoF7VUNvcBAPIHe63pCtBUAAAAAElFTkSuQmCC') no-repeat
                     background-size: 6px 12px
                     width: 6px
@@ -130,5 +138,5 @@
                     position: absolute
                     top: 50%
                     right: 15px
-                    margin-top: -6px        
+                    margin-top: -6px
 </style>

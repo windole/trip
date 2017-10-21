@@ -20,29 +20,29 @@
                     theme="yellow"
                     v-on:searchbarInputOnInput="searchbarInputOnInput"></search-bar>
             <div class="city-list-wrapper">
-                <list-view @select="selectCity" :data="cities" ref="tocitylist"></list-view> 
+                <list-view @select="selectCity" :data="cities" ref="tocitylist"></list-view>
                 <ul class="search-city-list" v-show="searchCityValue.length>0">
-                    <li v-for="item in searchCityList" class="list-group-item"  @click="selectCity(item)">                       
-                        <span class="name">{{item.name}}</span>
-                        <span class="code">{{item.code}}</span>
+                    <li v-for="item in searchCityList" class="list-group-item"  @click="selectCity(item)">
+                        <span class="name">{{item.stationName}}</span>
+                        <span class="code">{{item.statinCode}}</span>
                     </li>
-                </ul>     
+                </ul>
             </div>
         </div>
 
         <div class="city-list" v-show="showCityList && chooseFrom">
-            <search-bar ref="wxc-searchbar"
+            <search-bar ref="wxc-searchbar2"
                     theme="yellow"
                     v-on:searchbarInputOnInput="searchbarInputOnInput"
                     ></search-bar>
             <div class="city-list-wrapper">
-                <list-view @select="selectFromCity" :data="cities" ref="fromcitylist"></list-view> 
+                <list-view @select="selectFromCity" :data="cities" ref="fromcitylist"></list-view>
                 <ul class="search-city-list" v-show="searchCityValue.length>0">
-                    <li v-for="item in searchCityList" class="list-group-item" @click="selectFromCity(item)">                       
-                        <span class="name">{{item.name}}</span>
-                        <span class="code">{{item.code}}</span>
+                    <li v-for="item in searchCityList" class="list-group-item" @click="selectFromCity(item)">
+                        <span class="name">{{item.stationName}}</span>
+                        <span class="code">{{item.stationCode}}</span>
                     </li>
-                </ul>     
+                </ul>
             </div>
         </div>
 
@@ -59,15 +59,15 @@
             <div class="fightSearch">
                 <div class="tabview-panel horizontal-padding">
                     <div class="city-wrapper">
-                        <div class="from-city cell-inner" @click="showCity">
-                            <div class="gray-tit">出发城市</div>
-                            <div class="text" ref="toCity">{{toCity.name}}</div>
-                        </div>
                         <div class="to-city cell-inner" @click="showFromCity">
-                            <div class="gray-tit">到达城市</div>
-                            <div class="text" ref="fromCity">{{fromCity.name}}</div>
+                            <div class="gray-tit">出发城市</div>
+                            <div class="text" ref="fromCity">{{fromCity.stationName}}</div>
                         </div>
-                        <div class="trans"></div>
+                        <div class="from-city cell-inner" @click="showCity">
+                            <div class="gray-tit">到达城市</div>
+                            <div class="text" ref="toCity">{{toCity.stationName}}</div>
+                        </div>
+                        <div class="trans" @click="transCity"></div>
                     </div>
                     <div class="date-wrapper cell-inner" @click="showCalendar">
                         <div class="gray-tit">出发日期</div>
@@ -139,7 +139,7 @@
     import {formatDate} from 'common/js/date';
     import {mapMutations} from 'vuex';
     import * as types from 'store/mutation-type';
-    // import {ERR_OK} from 'api/config';
+    import {ERR_OK} from 'api/config';
     const HOT_NAME = '热门';
     let data1 = [
         {text: '经济舱', value: 1},
@@ -195,8 +195,8 @@
             data: [[data1]],
             selectedIndex: [[0], [1, 0], [0, 1, 2], [0, 0, 0]],
             selectedTypeText: '',
-            toCity: {},
-            fromCity: {},
+            toCity: {'ownCity': '上海', 'stationCode': 'SHA', 'stationName': '上海虹桥国际机场'},
+            fromCity: {'ownCity': '北京', 'stationCode': 'PEK', 'stationName': '北京首都国际机场'},
             departureData: new Date()
         }),
         filters: {
@@ -233,15 +233,19 @@
             _getCityList() {
                 getCityList()
                     .then(response => {
-                        var data = JSON.parse(response.data);
-                        this.allCitiesList = data.air_stations_list_response.stations.station;
-                        this.cities = this._normalizeCity(data.air_stations_list_response.stations.station);
+                        if (response.messageCode === ERR_OK) {
+                            var data = response.data;
+                            this.allCitiesList = data;
+                            this.cities = this._normalizeCity(data);
+                            console.log(this.cities);
+                        }
                     })
                     .catch(e => {
                         console.log(e);
                     });
             },
             _normalizeCity(list) {
+                console.log(list);
                 let map = {
                     hot: {
                         title: HOT_NAME,
@@ -249,12 +253,12 @@
                     }
                 };
                 list.forEach((item, index) => {
-                    const cityInfo = new City(item.code, item.quanpin, item.name, item.duanpin);
+                    const cityInfo = new City(item.id, item.ownCity, item.stationCode, item.stationQuanPing, item.stationName.replace('国际机场', ''), item.stationDuanPing);
                     let HotCityArr = ['北京', '上海', '杭州', '广州', '深圳', '成都', '重庆', '厦门', '大连', '昆明', '武汉', '西安', '天津', '南京', '长沙'];
-                    if (HotCityArr.indexOf(item.name) >= 0) {
+                    if (HotCityArr.indexOf(item.ownCity) >= 0) {
                         map.hot.items.push(cityInfo);
                     }
-                    const key = item.duanpin.slice(0, 1).toUpperCase();
+                    const key = item.stationDuanPing.slice(0, 1).toUpperCase();
                     if (!map[key]) {
                         map[key] = {
                             title: key,
@@ -303,7 +307,6 @@
                 if (this.allCitiesList.length === 0) {
                     this._getCityList();
                 }
-                this.$refs.tocitylist.scrollTo(0, 0);
                 this.chooseTo = true;
                 this.showCityList = true;
             },
@@ -311,7 +314,6 @@
                 if (this.allCitiesList.length === 0) {
                     this._getCityList();
                 }
-                this.$refs.fromcitylist.scrollTo(0, 0);
                 this.chooseFrom = true;
                 this.showCityList = true;
             },
@@ -320,10 +322,18 @@
                 console.log(e.value);
             },
             toSearch() {
+                this.setFromCity(this.fromCity);
+                this.setToCity(this.toCity);
+                this.setDepartureData(this.currentDate);
                 this.$router.push('/fight');
             },
             toOrderList() {
                 this.$router.push('/order-list');
+            },
+            transCity() {
+                var temp = this.toCity;
+                this.toCity = this.fromCity;
+                this.fromCity = temp;
             },
             ...mapMutations({
                 setToCity: types.SET_TO_CITY,
@@ -419,6 +429,17 @@
                     background-color: $color-background-d
                     &.horizontal-padding
                         padding: 0 15px
+                    .city-wrapper
+                        position: relative
+                        .trans
+                            position: absolute
+                            right: 0
+                            top: 25%
+                            height: 50px
+                            width: 50px
+                            background: #fff url('./trans.png') 50% no-repeat;
+                            background-size: 27px
+                            transform: rotate(90deg)
                     .cell-inner
                         height:50px
                         line-height: 50px
@@ -465,23 +486,23 @@
                         position: relative
                         display: flex
                         align-items: center
-                        justify-content: space-around 
+                        justify-content: space-around
                         .item
                             text-align: center
                             position: relative
-                            flex: 1  
+                            flex: 1
                             .icon
                                 display: inline-block
                                 width: 22px
                                 height: 22px
                                 background: no-repeat 50%
-                                background-size: contain 
+                                background-size: contain
                                 &.icon-index
-                                    bg-image('icon-index') 
+                                    bg-image('icon-index')
                                 &.icon-order
                                     bg-image('icon-order')
                                 &.icon-help
-                                    bg-image('icon-help')            
+                                    bg-image('icon-help')
             .trainSearch
                 display: none
     .slide-enter-active, .slide-leave-active

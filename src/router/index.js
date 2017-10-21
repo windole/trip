@@ -59,7 +59,7 @@ export default new Router({
             component: OrderList,
             children: [
                 {
-                    path: 'order-detail',
+                    path: ':orderNo',
                     component: OrderDetail
                 }
             ]

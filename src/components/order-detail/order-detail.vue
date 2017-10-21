@@ -1,15 +1,15 @@
 <template>
-    <div class="order-detail">       
+    <div class="order-detail">
         <div class="order-status border-bottom-1px">
-            <div class="list-item">                 
-                <div class="sec sec-left">                                                               
-                    <div class="flight-title">订票成功</div>                                          
-                    <div class="fight-orderNo">订单号 1515151561515</div>                                      
-                </div>                 
-                <div class="sec sec-right">                     
-                    <div class="order-price">500</div>                     
-                    <div class="order-btn">我要退票</div>                 
-                </div>             
+            <div class="list-item">
+                <div class="sec sec-left">
+                    <div class="flight-title">订票成功</div>
+                    <div class="fight-orderNo">订单号 {{orderDetail.childOrderNo}}</div>
+                </div>
+                <div class="sec sec-right">
+                    <div class="order-price">300</div>
+                    <div class="order-btn" @click="refundFightTicket">我要退票</div>
+                </div>
             </div>
         </div>
 
@@ -17,26 +17,26 @@
             <div class="title">航班信息</div>
             <div class="main">
                 <div class="container">
-                    <div class="upper">10月10日 周二</div>
+                    <div class="upper">{{orderDetail.startTime.split(' ')[0]}} {{departureWeek}}</div>
                     <div class="middle" >
                         <div class="left">
-                            <p class="name">上海</p>
-                            <p class="time">20:55</p>
-                            <p class="airport">浦东机场T2</p>
+                            <p class="name">{{orderDetail.startStation}}</p>
+                            <p class="time">{{orderDetail.startTime.split(' ')[1]}}</p>
+                            <p class="airport">{{orderDetail.startStation}}机场</p>
                         </div>
                         <div class="center">
                             <p class="stop"></p>
                             <p class="icon"></p>
-                            <p class="consume">约2小时45分</p>
+                            <p class="consume">约{{totalTime[0]}}小时{{totalTime[1]}}分</p>
                         </div>
                         <div class="right">
-                            <p class="name">北京</p>
-                            <p class="time"><span>00:15</span><em>+1天</em></p>
-                            <p class="airport">首都机场</p>
+                            <p class="name">{{orderDetail.recevieStation}}</p>
+                            <p class="time"><span>{{orderDetail.recevieTime.split(' ')[1]}}</span><em v-show="orderDetail.startTime > orderDetail.recevieTime">+1天</em></p>
+                            <p class="airport">{{orderDetail.recevieStation}}机场</p>
                         </div>
                     </div>
                     <div class="lower">
-                        <p class="detail"><span>U435345</span><span>机型125</span></p>
+                        <p class="detail"><span>{{regAirCode(orderDetail.trainNo)}}</span><span>{{orderDetail.trainNo}}</span></p>
                     </div>
                 </div>
             </div>
@@ -49,26 +49,109 @@
             <div class="cell-item">
                 <div class="index-label">乘机人</div>
                 <div class="index-list">
-                    <p>彭锦</p>
-                    <p class="mg6">身份证 4****************5</p>
+                    <p>{{orderDetail.passengerName}}</p>
+                    <p class="mg6">身份证 {{orderDetail.idcardNo}}</p>
                 </div>
             </div>
             <div class="cell-item">
                 <div class="index-label">联系人</div>
                 <div class="index-list">
-                    <p>彭锦</p>
-                    <p class="mg6">155****2882</p>
+                    <p>{{orderDetail.contactName}}</p>
+                    <p class="mg6">{{orderDetail.contactTel}}</p>
                 </div>
             </div>
         </div>
 
         <div class="back-btn">
-            <button class="submit">继续订票</button>
+            <button class="submit" @click="toHome">继续订票</button>
         </div>
     </div>
 </template>
 
 <script type="text/ecmascript-6">
+import {getAirTicketDetail, airRefundTicket} from 'api/api';
+import aircode from '../../../static/aircode.json';
+import {formatDate} from 'common/js/date.js';
+import {ERR_OK} from 'api/config';
+export default {
+    data() {
+        return {
+            orderNoFlx: '',
+            orderDetail: {}
+        };
+    },
+    methods: {
+        refundFightTicket() {
+            this.$dialog.confirm({
+                title: '请确认是否需要退票',
+                mes: '',
+                opts: () => {
+                    this._airRefundTicket();
+                }
+            });
+        },
+        _airRefundTicket() {
+            airRefundTicket()
+                .then((res) => {
+                    if (res.messageCode === ERR_OK) {
+                        this.$dialog.alert({mes: res.message});
+                    }
+                    this.$dialog.alert({mes: 'aaaa'});
+                })
+                .catch(e => {
+                    console.log(e);
+                });
+        },
+        regAirCode(code) {
+            var codeName = code.substr(0, 2);
+            return aircode[codeName];
+        },
+        formatDate (time) {
+            let date = new Date(time);
+            return formatDate(date, 'yyyy-MM-dd');
+        },
+        toHome() {
+            this.$router.push('/');
+        },
+        _getAirTicketDetail() {
+            getAirTicketDetail(this.orderNoFlx)
+                .then((res) => {
+                    if (res.messageCode === ERR_OK) {
+                        console.log(res);
+                        this.orderDetail = res.data[0];
+                    }
+                })
+                .catch(e => {
+                    console.log(e);
+                });
+        }
+    },
+    computed: {
+        departureWeek: function () {
+            var currentDate = this.orderDetail.startTime.split(' ')[0];
+            var weekArr = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'];
+            if (currentDate === this.formatDate(new Date())) {
+                return '今天';
+            } else {
+                return weekArr[new Date(currentDate).getDay()];
+            }
+        },
+        totalTime: function () {
+            var timeArr = [];
+            var depTime = this.orderDetail.startTime.split(' ')[1].split(':');
+            var arriTime = this.orderDetail.recevieTime.split(' ')[1].split(':');
+            var allMin = (arriTime[0] - depTime[0]) * 60 + (arriTime[1] - depTime[1]);
+            allMin = allMin < 0 ? allMin + 24 * 60 : allMin;
+            timeArr.push(parseInt(allMin / 60));
+            timeArr.push(allMin % 60);
+            return timeArr;
+        }
+    },
+    created() {
+        this.orderNoFlx = this.$route.params.orderNo;
+        this._getAirTicketDetail();
+    }
+};
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
@@ -114,7 +197,7 @@
                     height: 33px
                     line-height: 33px
                     background-color: $color-sub-theme-l
-                    text-align:center  
+                    text-align:center
                     color: #fff
                     border-radius: 2px
     .flight-info-wrapper
@@ -169,14 +252,14 @@
                             font-weight: 400
                             position: absolute
                             font-style: normal
-                            width: 30px 
+                            width: 30px
                     .airport
                         font-size: 12px
                         margin-top: 5px
                     .icon
                         height: 48px
                         background-repeat: no-repeat
-                        background-position: center 28px 
+                        background-position: center 28px
                         background-size: 90px 5px
                         background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIwAAAAJBAMAAAASk9lmAAAAGFBMVEUAAAAgIyUfIyUgIyUgIyUgIyUgIyUfIiUY7QHQAAAABnRSTlMAFdTvxqn/hM20AAAAO0lEQVQoz2OgGLA6MlADsCQJUMMYRjVFqjhHaNg6Jw0JlKGwcYEydG56WjIDWLQsHSqWTtgghDIESAYAPYs605r2LG4AAAAASUVORK5CYII=')
                 .lower
@@ -230,5 +313,5 @@
             line-height: 42px
             color: #fff
             font-size: 18px
-        
+
 </style>

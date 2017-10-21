@@ -12,8 +12,8 @@
                 <h2 class="list-group-title">{{group.title}}</h2>
                 <ul>
                     <li class="list-group-item" v-for="item in group.items" @click="selectItem(item)">                       
-                        <span class="name">{{item.name}}</span>
-                        <span class="code">{{item.code}}</span>
+                        <span class="name">{{item.stationName}}</span>
+                        <span class="code">{{item.stationCode}}</span>
                     </li>
                 </ul>
             </li>
@@ -120,7 +120,7 @@
                 if (currentIndex < 0 || currentIndex >= this.shortcutListLength) {
                     return;
                 }
-                // console.log(delta, currentIndex);
+                console.log(delta, currentIndex);
                 this._scrollToElement(currentIndex);
             },
             onShortcutTouchEnd(e) {
