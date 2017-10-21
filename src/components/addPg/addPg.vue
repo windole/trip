@@ -17,9 +17,9 @@
                 <div class="right-ed" @click="goToEdPg(user)"></div>
             </li>
         </ul>
-        <keep-alive>
+        <transition :name="transitionName">
             <router-view></router-view>
-        </keep-alive>
+        </transition>
     </div>
 
 </template>
@@ -32,7 +32,8 @@
     export default {
         data() {
             return {
-                userInfoList: []
+                userInfoList: [],
+                transitionName: 'slide-right'
             };
         },
         methods: {
@@ -68,6 +69,13 @@
         },
         created() {
             this._getUserInfoLines();
+        },
+        watch: {
+            '$route' (to, from) {
+                const toDepth = to.path.split('/').length;
+                const fromDepth = from.path.split('/').length;
+                this.transitionName = toDepth < fromDepth ? 'slide-right' : 'slide-left';
+            }
         }
     };
 </script>
@@ -151,5 +159,5 @@
                     background-repeat: no-repeat
                     background-size: contain
                     margin-top: 6px
-            
+
 </style>

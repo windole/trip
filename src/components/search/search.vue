@@ -77,16 +77,6 @@
 <script type="text/ecmascript-6">
     import slider from 'base/slider/slider';
     import Tab from 'components/tab/tab';
-    // import pageCalendar from 'base/page-calendar/index';
-    // import ListView from 'base/listview/listview';
-    // import SearchBar from 'base/searchbar/searchbar';
-    // import Picker from 'base/picker/picker';
-    // import City from 'common/js/City';
-    // import {getCityList} from 'api/api';
-    // import {formatDate} from 'common/js/date';
-    // import {mapMutations} from 'vuex';
-    // import * as types from 'store/mutation-type';
-    // import {ERR_OK} from 'api/config';
     export default {
         components: {
             slider,

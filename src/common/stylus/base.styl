@@ -7,17 +7,17 @@ body, html
     -webkit-tap-highlight-color: transparent
     background: $color-background
     height: 100%
- 
-.clearfix:after 
+
+.clearfix:after
     content:''
     display:block
     clear:both
 
-.clearfix 
+.clearfix
     zoom:1
-    
+
 .fl
-    float: left  
+    float: left
 
 .fr
     float: right
@@ -97,7 +97,7 @@ body, html
     &:before
       height: 300%
       transform: scale(.333) translateZ(0)
-     
+
 .fuyou-ct
     box-sizing: border-box
     display: flex
@@ -124,7 +124,7 @@ body, html
     border: 0 solid black
     margin: 0
     padding: 0
-    min-width: 0 
+    min-width: 0
 
 .fuyou-text
     display: -webkit-box
@@ -142,6 +142,16 @@ body, html
     display: inline-block
     margin: 0 1px 1px 0
     vertical-align: middle
+
+.slide-left-enter, .slide-right-leave-active
+    opacity: 0
+    -webkit-transform: translate(100%, 0)
+    transform: translate(100%, 0)
+
+.slide-left-leave-active, .slide-right-enter
+    opacity: 0
+    -webkit-transform: translate(-100%, 0)
+    transform: translate(-100%, 0)
 
 .ne-flag-3U .flag-icon
     background-position: 0 0
@@ -329,7 +339,7 @@ body, html
 .ne-flag-LT .flag-icon
     background-position: 0 -1209px
     background-size: 16px
-    
+
 .dep
     color:#202325
     font-size: 20px

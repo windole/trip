@@ -150,7 +150,7 @@
                             this.citylines = response.data;
                             console.log(response);
                         } else {
-                            this.$dialog.alert({msg: response.msg});
+                            this.$dialog.alert({mes: response.msg});
                         }
                     })
                     .catch(e => {
