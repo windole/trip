@@ -5,6 +5,7 @@ import Fight from 'components/fight/fight';
 import Reserve from 'components/reserve/reserve';
 import Order from 'components/order/order';
 import FightSearch from 'components/fightSearch/fightSearch';
+import TrainSearch from 'components/trainSearch/trainSearch';
 import AddPg from 'components/addPg/addPg';
 import ToAdd from 'components/toAdd/toAdd';
 import ToEd from 'components/toEd/toEd';
@@ -18,11 +19,21 @@ export default new Router({
     routes: [
         {
             path: '/',
-            redirect: '/search'
+            redirect: '/search/fightSearch'
         },
         {
             path: '/search',
-            component: Search
+            component: Search,
+            children: [
+                {
+                    path: 'fightSearch',
+                    component: FightSearch
+                },
+                {
+                    path: 'trainSearch',
+                    component: TrainSearch
+                }
+            ]
         },
         {
             path: '/fight',

@@ -40,7 +40,6 @@
                            v-on:wxcPageCalendarBackClicked="wxcPageCalendarBackClicked"
                            v-on:wxcPageCalendarDateSelected="wxcPageCalendarDateSelected"
                            ref="wxcPageCalendar"></page-calendar>
-
         <div class="tabview-panel horizontal-padding">
             <div class="city-wrapper">
                 <div class="to-city cell-inner" @click="showFromCity">
@@ -157,6 +156,8 @@
                             this.allCitiesList = data;
                             this.cities = this._normalizeCity(data);
                             console.log(this.cities);
+                        } else {
+                            this.$dialog.alert({msg: response.message});
                         }
                     })
                     .catch(e => {
@@ -217,6 +218,8 @@
             },
             selectFromCity(city) {
                 console.log(city);
+                this.$refs['wxc-searchbar'].setValue('');
+                this.$refs['wxc-searchbar2'].setValue('');
                 this.showCityList = false;
                 this.chooseFrom = false;
                 this.fromCity = city;
@@ -245,9 +248,6 @@
                 this.setToCity(this.toCity);
                 this.setDepartureData(this.currentDate);
                 this.$router.push('/fight');
-            },
-            toOrderList() {
-                this.$router.push('/order-list');
             },
             transCity() {
                 var temp = this.toCity;
@@ -383,4 +383,9 @@
                     line-height: 42px
                     color: #fff
                     font-size: 18px
+
+    .slide-enter-active, .slide-leave-active
+        transition: all .3s
+    .slide-enter, .slide-leave-to
+        transform: translate3d(100%, 0, 0)
 </style>

@@ -25,12 +25,17 @@ export default {
             this.currentTab = 'train';
             let x = 230;
             this.$refs.tabviewIndicator.style[transform] = `translate3d(${x}px, 0, 0)`;
+            this.$router.push('/search/trainSearch');
         },
         chooseFight() {
             this.currentTab = 'fight';
             let x = 45;
             this.$refs.tabviewIndicator.style[transform] = `translate3d(${x}px, 0, 0)`;
+            this.$router.push('/search/fightSearch');
         }
+    },
+    created() {
+        this.chooseFight();
     }
 };
 </script>

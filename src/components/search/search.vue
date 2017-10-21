@@ -15,48 +15,8 @@
             </slider>
         </div>
         <tab></tab>
-        <div class="city-list" v-show="showCityList && chooseTo">
-            <search-bar ref="wxc-searchbar"
-                    theme="yellow"
-                    v-on:searchbarInputOnInput="searchbarInputOnInput"></search-bar>
-            <div class="city-list-wrapper">
-                <list-view @select="selectCity" :data="cities" ref="tocitylist"></list-view>
-                <ul class="search-city-list" v-show="searchCityValue.length>0">
-                    <li v-for="item in searchCityList" class="list-group-item"  @click="selectCity(item)">
-                        <span class="name">{{item.stationName}}</span>
-                        <span class="code">{{item.statinCode}}</span>
-                    </li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="city-list" v-show="showCityList && chooseFrom">
-            <search-bar ref="wxc-searchbar2"
-                    theme="yellow"
-                    v-on:searchbarInputOnInput="searchbarInputOnInput"
-                    ></search-bar>
-            <div class="city-list-wrapper">
-                <list-view @select="selectFromCity" :data="cities" ref="fromcitylist"></list-view>
-                <ul class="search-city-list" v-show="searchCityValue.length>0">
-                    <li v-for="item in searchCityList" class="list-group-item" @click="selectFromCity(item)">
-                        <span class="name">{{item.stationName}}</span>
-                        <span class="code">{{item.stationCode}}</span>
-                    </li>
-                </ul>
-            </div>
-        </div>
-
-        <page-calendar :date-range="dateRange"
-                           :selected-date="selectedDate"
-                           :selected-note="selectedNote"
-                           :is-range="isRange"
-                           :minibar-cfg="minibarCfg"
-                           :desc-list="descList"
-                           v-on:wxcPageCalendarBackClicked="wxcPageCalendarBackClicked"
-                           v-on:wxcPageCalendarDateSelected="wxcPageCalendarDateSelected"
-                           ref="wxcPageCalendar"></page-calendar>
         <div class="main-bg">
-            <div class="fightSearch">
+            <!-- <div class="fightSearch">
                 <div class="tabview-panel horizontal-padding">
                     <div class="city-wrapper">
                         <div class="to-city cell-inner" @click="showFromCity">
@@ -84,75 +44,53 @@
                         <button class="submit" @click="toSearch">开始搜索</button>
                     </div>
                 </div>
-                <section class="bottom-menu-wrapper">
-                    <ul class="list">
-                        <li class="item">
-                            <div>
-                                <i class="icon icon-index" ></i>
-                                <p class="title">首页</p>
-                            </div>
-                        </li>
-                        <li class="item" @click="toOrderList">
-                            <div>
-                                <i class="icon icon-order" ></i>
-                                <p class="title">订单·退票</p>
-                            </div>
-                        </li>
-                        <li class="item">
-                            <div>
-                                <i class="icon icon-help" ></i>
-                                <p class="title">我的客服</p>
-                            </div>
-                        </li>
-                    </ul>
-                </section>
-            </div>
-            <div class="trainSearch">
-                <div class="btn"
-                     @click="showCalendar">
-                  <p class="btn-txt">单程日历</p>
-                </div>
-
-                 <div class="btn btn-margin yellow"
-                     @click="showCity">
-                  <p class="btn-txt">城11111市</p>
-                </div>
-
-                <div class="panel">
-                  <p v-if="currentDate"
-                        class="text">当前日期: {{currentDate}}</p>
-                </div>
-            </div>
+            </div> -->
+            <keep-alive>
+                <router-view></router-view>
+            </keep-alive>
         </div>
+        <section class="bottom-menu-wrapper">
+            <ul class="list">
+                <li class="item">
+                    <div>
+                        <i class="icon icon-index" ></i>
+                        <p class="title">首页</p>
+                    </div>
+                </li>
+                <li class="item" @click="toOrderList">
+                    <div>
+                        <i class="icon icon-order" ></i>
+                        <p class="title">订单·退票</p>
+                    </div>
+                </li>
+                <li class="item">
+                    <div>
+                        <i class="icon icon-help" ></i>
+                        <p class="title">我的客服</p>
+                    </div>
+                </li>
+            </ul>
+        </section>
     </div>
 </template>
 
 <script type="text/ecmascript-6">
     import slider from 'base/slider/slider';
     import Tab from 'components/tab/tab';
-    import pageCalendar from 'base/page-calendar/index';
-    import ListView from 'base/listview/listview';
-    import SearchBar from 'base/searchbar/searchbar';
-    import Picker from 'base/picker/picker';
-    import City from 'common/js/City';
-    import {getCityList} from 'api/api';
-    import {formatDate} from 'common/js/date';
-    import {mapMutations} from 'vuex';
-    import * as types from 'store/mutation-type';
-    import {ERR_OK} from 'api/config';
-    const HOT_NAME = '热门';
-    let data1 = [
-        {text: '经济舱', value: 1},
-        {text: '头等舱', value: 2}
-    ];
+    // import pageCalendar from 'base/page-calendar/index';
+    // import ListView from 'base/listview/listview';
+    // import SearchBar from 'base/searchbar/searchbar';
+    // import Picker from 'base/picker/picker';
+    // import City from 'common/js/City';
+    // import {getCityList} from 'api/api';
+    // import {formatDate} from 'common/js/date';
+    // import {mapMutations} from 'vuex';
+    // import * as types from 'store/mutation-type';
+    // import {ERR_OK} from 'api/config';
     export default {
         components: {
             slider,
-            Tab,
-            pageCalendar,
-            ListView,
-            SearchBar,
-            Picker
+            Tab
         },
         data: () => ({
             banners: [
@@ -166,213 +104,12 @@
                     'picUrl': 'http://y.gtimg.cn/music/photo_new/T003R720x288M000000gcRyz0Z3ZcI.jpg',
                     'id': 12439
                 }
-            ],
-            currentDate: '',
-            selectedDate: ['2017-10-13'],
-            isRange: true,
-            calendarTitle: '选择日期',
-            dateRange: ['2017-10-10', '2018-10-10'],
-            selectedNote: ['出发', '到达', '往返'],
-            minibarCfg: {
-                title: '日期选择'
-            },
-            descList: [
-                // { date: '2017-06-23', value: '￥200' },
-                // { date: '2017-06-24', value: '￥200' },
-                // { date: '2017-06-25', value: '￥200' },
-                // { date: '2017-06-26', value: '￥200' },
-                // { date: '2017-06-27', value: '￥222' },
-                // { date: '2017-06-28', value: '￥341' },
-                // { date: '2017-06-29', value: '￥230' },
-                // { date: '2017-06-30', value: '￥2000' }
-            ],
-            cities: [],
-            allCitiesList: [], // 原始所有飞机城市列表
-            showCityList: false,
-            chooseTo: false,
-            chooseFrom: false,
-            searchCityValue: '', // 查询关键字
-            data: [[data1]],
-            selectedIndex: [[0], [1, 0], [0, 1, 2], [0, 0, 0]],
-            selectedTypeText: '',
-            toCity: {'ownCity': '上海', 'stationCode': 'SHA', 'stationName': '上海虹桥国际机场'},
-            fromCity: {'ownCity': '北京', 'stationCode': 'PEK', 'stationName': '北京首都国际机场'},
-            departureData: new Date()
+            ]
         }),
-        filters: {
-            formatDate (time) {
-                let date = new Date(time);
-                return formatDate(date, 'yyyy-MM-dd');
-            }
-        },
         methods: {
-            formatDate (time) {
-                let date = new Date(time);
-                return formatDate(date, 'yyyy-MM-dd');
-            },
-            showPicker(index) {
-                let picker = this.$refs['picker' + index];
-                picker.show();
-            },
-            handleSelect(index, arg) {
-                this.selectedTypeText = arg[2];
-            },
-            wxcPageCalendarDateSelected (e) {
-                this.selectedDate = e.date;
-                this.currentDate = e.date[0];
-                this.setDepartureData(e.date[0]);
-            },
-            wxcPageCalendarBackClicked () {
-            },
-            showCalendar () {
-                this.isRange = false;
-                setTimeout(() => {
-                    this.$refs['wxcPageCalendar'].show();
-                }, 10);
-            },
-            _getCityList() {
-                getCityList()
-                    .then(response => {
-                        if (response.messageCode === ERR_OK) {
-                            var data = response.data;
-                            this.allCitiesList = data;
-                            this.cities = this._normalizeCity(data);
-                            console.log(this.cities);
-                        }
-                    })
-                    .catch(e => {
-                        console.log(e);
-                    });
-            },
-            _normalizeCity(list) {
-                console.log(list);
-                let map = {
-                    hot: {
-                        title: HOT_NAME,
-                        items: []
-                    }
-                };
-                list.forEach((item, index) => {
-                    const cityInfo = new City(item.id, item.ownCity, item.stationCode, item.stationQuanPing, item.stationName.replace('国际机场', ''), item.stationDuanPing);
-                    let HotCityArr = ['北京', '上海', '杭州', '广州', '深圳', '成都', '重庆', '厦门', '大连', '昆明', '武汉', '西安', '天津', '南京', '长沙'];
-                    if (HotCityArr.indexOf(item.ownCity) >= 0) {
-                        map.hot.items.push(cityInfo);
-                    }
-                    const key = item.stationDuanPing.slice(0, 1).toUpperCase();
-                    if (!map[key]) {
-                        map[key] = {
-                            title: key,
-                            items: []
-                        };
-                    }
-                    map[key].items.push(cityInfo);
-                });
-                // 按照一定的顺序排一下
-                let hot = [];
-                let other = [];
-                const keys = Object.keys(map);
-                keys.forEach(key => {
-                    const {title, items} = map[key];
-                    if (/[A-Za-z]/.test(title)) {
-                        other.push({
-                            title,
-                            items
-                        });
-                    } else if (title === HOT_NAME) {
-                        hot.push({
-                            items,
-                            title
-                        });
-                    }
-                });
-                other.sort((a, b) => {
-                    return a.title.charCodeAt(0) - b.title.charCodeAt(0);
-                });
-                return hot.concat(other);
-            },
-            selectCity(city) {
-                this.showCityList = false;
-                this.chooseTo = false;
-                this.toCity = city;
-                this.setToCity(city);
-            },
-            selectFromCity(city) {
-                console.log(city);
-                this.showCityList = false;
-                this.chooseFrom = false;
-                this.fromCity = city;
-                this.setFromCity(city);
-            },
-            showCity() {
-                if (this.allCitiesList.length === 0) {
-                    this._getCityList();
-                }
-                this.chooseTo = true;
-                this.showCityList = true;
-            },
-            showFromCity() {
-                if (this.allCitiesList.length === 0) {
-                    this._getCityList();
-                }
-                this.chooseFrom = true;
-                this.showCityList = true;
-            },
-            searchbarInputOnInput (e) {
-                this.searchCityValue = e.value;
-                console.log(e.value);
-            },
-            toSearch() {
-                this.setFromCity(this.fromCity);
-                this.setToCity(this.toCity);
-                this.setDepartureData(this.currentDate);
-                this.$router.push('/fight');
-            },
             toOrderList() {
                 this.$router.push('/order-list');
-            },
-            transCity() {
-                var temp = this.toCity;
-                this.toCity = this.fromCity;
-                this.fromCity = temp;
-            },
-            ...mapMutations({
-                setToCity: types.SET_TO_CITY,
-                setFromCity: types.SET_FROM_CITY,
-                setDepartureData: types.SET_DEPARTURE_DATA
-            })
-        },
-        computed: {
-            searchCityList: function () {
-                var filterKey = this.searchCityValue && this.searchCityValue.toLowerCase();
-                if (filterKey) {
-                    var data = this.allCitiesList.filter(function (row) {
-                        return Object.keys(row).some(function (key) {
-                            return String(row[key]).toLowerCase().indexOf(filterKey) > -1;
-                        });
-                    });
-                    console.log(data);
-                    return data;
-                }
-            },
-            departureWeek: function () {
-                var currentDate = this.currentDate;
-                var weekArr = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'];
-                if (currentDate === this.formatDate(new Date())) {
-                    return '今天';
-                } else {
-                    return weekArr[new Date(currentDate).getDay()];
-                }
             }
-        },
-        created() {
-            // this._getCityList();
-            this.currentDate = this.formatDate(new Date());
-            this.selectedDate[0] = this.formatDate(new Date());
-            this.dateRange[0] = this.formatDate(new Date());
-            this.setDepartureData(this.formatDate(new Date()));
-        },
-        mounted() {
-            this.$refs.picker0.setData([data1]);
         }
     };
 </script>
@@ -381,7 +118,9 @@
     @import '~common/stylus/index';
     @import "~common/stylus/mixin";
     .search
-        height: 100vh
+        height: 100%
+        width: 100%
+        overflow: hidden
         .city-list
             position: fixed
             top: 0
@@ -421,90 +160,41 @@
                         .code
                             margin-left: 10px
                             font-size: $font-size-small
-        .main-bg
-            .fightSearch
+        .bottom-menu-wrapper
+            position: fixed
+            bottom: 0
+            left: 0
+            width: 100%
+            height: 50px
+            font-size: 10px
+            line-height: 1.3
+            overflow: hidden
+            text-overflow: ellipsis
+            white-space: nowrap
+            z-index: 10
+            .list
                 height: 100%
-                .tabview-panel
-                    height: 100%
-                    background-color: $color-background-d
-                    &.horizontal-padding
-                        padding: 0 15px
-                    .city-wrapper
-                        position: relative
-                        .trans
-                            position: absolute
-                            right: 0
-                            top: 25%
-                            height: 50px
-                            width: 50px
-                            background: #fff url('./trans.png') 50% no-repeat;
-                            background-size: 27px
-                            transform: rotate(90deg)
-                    .cell-inner
-                        height:50px
-                        line-height: 50px
-                        font-size: 18px
-                        display: flex
-                        align-items: center;
-                        border-bottom: 1px solid $color-underline
-                        .gray-tit
-                            font-size: 15px
-                            color: $color-text-d
-                            margin-right: 38px
-                        .week
-                            font-size: 12px
-                            color: #ccc
-                            margin-left: 5px
-                            margin-top: 5px
-                    .search-btn
-                        padding: 20px 0
-                        .submit
-                            height: 42px
-                            width: 100%
-                            box-sizing: border-box
-                            border-radius: 3px
-                            border: 1px solid $color-theme-d
-                            background: $color-theme-d
-                            line-height: 42px
-                            color: #fff
-                            font-size: 18px
-                .bottom-menu-wrapper
-                    position: fixed
-                    bottom: 0
-                    left: 0
-                    width: 100%
-                    height: 50px
-                    font-size: 10px
-                    line-height: 1.3
-                    overflow: hidden
-                    text-overflow: ellipsis
-                    white-space: nowrap
-                    z-index: 10
-                    .list
-                        height: 100%
-                        background-color: #fff
-                        position: relative
-                        display: flex
-                        align-items: center
-                        justify-content: space-around
-                        .item
-                            text-align: center
-                            position: relative
-                            flex: 1
-                            .icon
-                                display: inline-block
-                                width: 22px
-                                height: 22px
-                                background: no-repeat 50%
-                                background-size: contain
-                                &.icon-index
-                                    bg-image('icon-index')
-                                &.icon-order
-                                    bg-image('icon-order')
-                                &.icon-help
-                                    bg-image('icon-help')
-            .trainSearch
-                display: none
+                background-color: #fff
+                position: relative
+                display: flex
+                align-items: center
+                justify-content: space-around
+                .item
+                    text-align: center
+                    position: relative
+                    flex: 1
+                    .icon
+                        display: inline-block
+                        width: 22px
+                        height: 22px
+                        background: no-repeat 50%
+                        background-size: contain
+                        &.icon-index
+                            bg-image('icon-index')
+                        &.icon-order
+                            bg-image('icon-order')
+                        &.icon-help
+                            bg-image('icon-help')
     .slide-enter-active, .slide-leave-active
         transition: all .8s
     .slide-enter, .slide-leave-to
